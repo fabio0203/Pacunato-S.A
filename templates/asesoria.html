@@ -1,0 +1,825 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Asesoría Personalizada - Pacunato S.A.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero" style="min-height: 60vh;">
+    <div class="container">
+        <div class="hero-content-page">
+            <div class="section-badge">ATENCIÓN AL CLIENTE</div>
+            <h1>¿Necesitas Asesoría?</h1>
+            <p>Nuestro equipo está aquí para ayudarte con cualquier duda sobre nuestros servicios</p>
+        </div>
+    </div>
+</section>
+
+<!-- Formulario de Asesoría -->
+<section style="padding: 100px 0; background: var(--dark-bg);">
+    <div class="container">
+        <div style="max-width: 800px; margin: 0 auto;">
+            
+            <!-- Introducción -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-light); margin-bottom: 1rem;">
+                    Déjanos tus dudas aquí debajo en el siguiente formulario
+                </h2>
+                <p style="font-size: 1.1rem; color: var(--text-gray); line-height: 1.8;">
+                    Nuestro equipo de atención al cliente te facilitará toda la atención necesaria <strong style="color: var(--primary-color);">al instante</strong>
+                </p>
+            </div>
+            
+            <!-- Tarjetas de beneficios -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                <div style="background: var(--dark-bg-2); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center;">
+                    <i class="fas fa-bolt" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">Respuesta Rápida</h4>
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">Te contactamos en minutos</p>
+                </div>
+                
+                <div style="background: var(--dark-bg-2); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center;">
+                    <i class="fas fa-user-tie" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">Atención Personalizada</h4>
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">Asesoría experta</p>
+                </div>
+                
+                <div style="background: var(--dark-bg-2); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center;">
+                    <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                    <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">100% Confidencial</h4>
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">Tus datos seguros</p>
+                </div>
+            </div>
+            
+            <!-- Formulario -->
+            <div class="quote-form" style="background: var(--dark-bg-3); padding: 3rem; border-radius: 20px; border: 1px solid var(--border-color);">
+                <form method="POST" id="asesoriaForm">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" 
+                               id="nombre" 
+                               name="nombre" 
+                               required 
+                               placeholder="Ej: Juan Pérez">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" 
+                               id="email" 
+                               name="email" 
+                               required 
+                               placeholder="ejemplo@correo.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Número de Teléfono *</label>
+                        <input type="tel" 
+                               id="telefono" 
+                               name="telefono" 
+                               required 
+                               placeholder="+507 XXXX-XXXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="duda">Coméntenos aquí *</label>
+                        <textarea id="duda" 
+                                  name="duda" 
+                                  rows="6" 
+                                  required 
+                                  placeholder="Describe tu duda o consulta con el mayor detalle posible. Por ejemplo: necesito importar 500 unidades de..."></textarea>
+                        <small style="display: block; margin-top: 0.5rem; color: var(--text-gray); font-size: 0.85rem;">
+                            <i class="fas fa-info-circle"></i> Cuanto más detalle nos des, mejor podremos ayudarte
+                        </small>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-block btn-lg" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span id="btnText">Enviar Consulta</span>
+                        <span id="btnLoading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Enviando...
+                        </span>
+                    </button>
+                    
+                    <p class="form-privacy">
+                        Al enviar este formulario, aceptas nuestra 
+                        <a href="{% url 'website:privacidad' %}" target="_blank">Política de Privacidad</a>
+                    </p>
+                </form>
+            </div>
+            
+            <!-- Contacto alternativo -->
+            <div style="margin-top: 3rem; text-align: center; padding: 2rem; background: rgba(0, 180, 216, 0.1); border-radius: 15px; border: 1px solid rgba(0, 180, 216, 0.3);">
+                <h3 style="color: var(--text-light); margin-bottom: 1rem;">¿Prefieres contactarnos directamente?</h3>
+                <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/50764418437?text=Hola%2C%20necesito%20asesoría" 
+                       target="_blank"
+                       style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color); font-weight: 600; transition: transform 0.3s ease;">
+                        <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i>
+                        Chat en WhatsApp
+                    </a>
+                    
+                    <a href="mailto:pacunatosa2023@gmail.com?subject=Consulta%20de%20Asesoría" 
+                       style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color); font-weight: 600; transition: transform 0.3s ease;">
+                        <i class="fas fa-envelope" style="font-size: 1.5rem;"></i>
+                        Enviar Email
+                    </a>
+                    
+                    <a href="tel:+50764418437" 
+                       style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color); font-weight: 600; transition: transform 0.3s ease;">
+                        <i class="fas fa-phone" style="font-size: 1.5rem;"></i>
+                        Llamar Ahora
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     MODAL DE ÉXITO
+     ============================================ -->
+<div id="successModal" class="modal-overlay" style="display: none;">
+    <div class="modal-container">
+        <div class="modal-content">
+            <!-- Icono de éxito con animación -->
+            <div class="success-icon">
+                <div class="success-icon-circle">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Título -->
+            <h2 class="modal-title">¡Consulta Enviada!</h2>
+            
+            <!-- Mensaje -->
+            <p class="modal-message">
+                Tu consulta ha sido enviada correctamente.<br>
+                Un asesor te contactará muy pronto.
+            </p>
+            
+            <!-- Información adicional -->
+            <div class="modal-info">
+                <div class="info-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Respuesta inmediata</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Asesor dedicado</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>Contacto directo</span>
+                </div>
+            </div>
+            
+            <!-- Botones -->
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="closeSuccessModal()">
+                    <i class="fas fa-check"></i>
+                    Entendido
+                </button>
+                <a href="{% url 'website:home' %}#cotizacion" class="btn-secondary">
+                    <i class="fas fa-paper-plane"></i>
+                    Solicitar Cotización
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    background: var(--dark-bg-2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-gray-dark);
+}
+
+.field-error {
+    color: #FF6B6B;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.form-privacy {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 0.875rem;
+    margin-top: 1rem;
+}
+
+.form-privacy a {
+    color: var(--primary-color);
+}
+
+#submitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   ESTILOS DEL MODAL
+   ============================================ */
+
+/* Overlay del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Contenedor del modal */
+.modal-container {
+    max-width: 500px;
+    width: 90%;
+    animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Contenido del modal */
+.modal-content {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 180, 216, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de brillo de fondo */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.1) 0%, transparent 70%);
+    animation: rotate 10s linear infinite;
+}
+
+/* Icono de éxito */
+.success-icon {
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.success-icon-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.checkmark {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 3;
+    stroke: #00D9A5;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #00D9A5;
+}
+
+.checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+    stroke: #00D9A5;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke: #00D9A5;
+    stroke-width: 3;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+/* Título */
+.modal-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Mensaje */
+.modal-message {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    opacity: 0.9;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Información adicional */
+.modal-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.info-item {
+    background: rgba(0, 180, 216, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: rgba(0, 180, 216, 0.2);
+    transform: translateY(-3px);
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.info-item span {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Botones */
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.modal-actions .btn-primary,
+.modal-actions .btn-secondary {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.modal-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+}
+
+.modal-actions .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .modal-message {
+        font-size: 1rem;
+    }
+    
+    .success-icon-circle,
+    .checkmark {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .modal-actions .btn-primary,
+    .modal-actions .btn-secondary {
+        width: 100%;
+    }
+    
+    .modal-info {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// ============================================
+// ASESORIA-FORM.JS - CON MODAL DE ÉXITO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📝 Asesoría Form Script (con Modal) cargado');
+    
+    const asesoriaForm = document.getElementById('asesoriaForm');
+    
+    if (!asesoriaForm) {
+        console.warn('⚠️ Formulario de asesoría no encontrado en esta página');
+        return;
+    }
+    
+    console.log('✅ Formulario de asesoría encontrado');
+    
+    asesoriaForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevenir envío tradicional
+        
+        console.log('📤 Formulario de asesoría enviándose por AJAX...');
+        
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnLoading = document.getElementById('btnLoading');
+        
+        // Validar todos los campos
+        let isValid = true;
+        const requiredFields = [
+            { id: 'nombre', name: 'Nombre' },
+            { id: 'email', name: 'Email' },
+            { id: 'telefono', name: 'Teléfono' },
+            { id: 'duda', name: 'Consulta' }
+        ];
+        
+        // Limpiar errores previos
+        document.querySelectorAll('.field-error').forEach(error => error.remove());
+        document.querySelectorAll('.error').forEach(field => field.classList.remove('error'));
+        
+        // Validar cada campo
+        for (const field of requiredFields) {
+            const element = document.getElementById(field.id);
+            if (!element) continue;
+            
+            const value = element.value.trim();
+            if (!value) {
+                showFieldError(element, `${field.name} es requerido`);
+                isValid = false;
+            } else {
+                // Validaciones específicas
+                if (field.id === 'email') {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(value)) {
+                        showFieldError(element, 'Email inválido');
+                        isValid = false;
+                    }
+                }
+                
+                if (field.id === 'telefono') {
+                    const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+                    if (!phoneRegex.test(value)) {
+                        showFieldError(element, 'Teléfono inválido');
+                        isValid = false;
+                    }
+                }
+                
+                if (field.id === 'duda' && value.length < 10) {
+                    showFieldError(element, 'La consulta debe tener al menos 10 caracteres');
+                    isValid = false;
+                }
+            }
+        }
+        
+        if (!isValid) {
+            console.error('❌ Validación falló');
+            const firstError = document.querySelector('.error');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.focus();
+            }
+            return false;
+        }
+        
+        console.log('✅ Validación exitosa');
+        
+        // Mostrar loading
+        if (submitBtn) submitBtn.disabled = true;
+        if (btnText) btnText.style.display = 'none';
+        if (btnLoading) btnLoading.style.display = 'inline';
+        
+        // Preparar datos
+        const formData = new FormData(asesoriaForm);
+        
+        try {
+            // Obtener CSRF token
+            const csrftoken = getCookie('csrftoken');
+            
+            // Enviar por AJAX
+            const response = await fetch(asesoriaForm.action || window.location.href, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: formData
+            });
+            
+            if (response.ok) {
+                console.log('✅ Formulario enviado exitosamente');
+                
+                // Limpiar formulario
+                asesoriaForm.reset();
+                
+                // ⭐ MOSTRAR MODAL DE ÉXITO
+                showSuccessModal();
+                
+                // Scroll al inicio después de 1 segundo
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1000);
+                
+            } else {
+                console.error('❌ Error del servidor:', response.status);
+                alert('Hubo un problema al enviar tu consulta. Por favor intenta nuevamente.');
+            }
+            
+        } catch (error) {
+            console.error('❌ Error:', error);
+            alert('Hubo un error al enviar la consulta. Por favor intenta nuevamente o contáctanos por WhatsApp.');
+        } finally {
+            // Rehabilitar botón
+            if (submitBtn) submitBtn.disabled = false;
+            if (btnText) btnText.style.display = 'inline';
+            if (btnLoading) btnLoading.style.display = 'none';
+        }
+    });
+    
+    console.log('✅ Event listener de formulario de asesoría (AJAX con Modal) configurado');
+});
+
+// ============================================
+// VALIDACIÓN EN TIEMPO REAL
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('#asesoriaForm input, #asesoriaForm textarea');
+    
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            if (this.hasAttribute('required') && this.value.trim()) {
+                validateField(this);
+            }
+        });
+        
+        input.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                const existingError = this.parentElement.querySelector('.field-error');
+                if (existingError) existingError.remove();
+                this.classList.remove('error');
+            }
+        });
+    });
+});
+
+function validateField(field) {
+    const value = field.value.trim();
+    field.classList.remove('error');
+    const existingError = field.parentElement.querySelector('.field-error');
+    if (existingError) existingError.remove();
+    
+    if (field.type === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            showFieldError(field, 'Email inválido');
+            return false;
+        }
+    }
+    
+    if (field.type === 'tel' && value) {
+        const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+        if (!phoneRegex.test(value)) {
+            showFieldError(field, 'Teléfono inválido');
+            return false;
+        }
+    }
+    
+    if (field.id === 'duda' && value.length > 0 && value.length < 10) {
+        showFieldError(field, 'La consulta debe tener al menos 10 caracteres');
+        return false;
+    }
+    
+    return true;
+}
+
+function showFieldError(field, message) {
+    field.classList.add('error');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'field-error';
+    errorDiv.textContent = message;
+    errorDiv.style.color = '#FF6B6B';
+    errorDiv.style.fontSize = '0.875rem';
+    errorDiv.style.marginTop = '0.5rem';
+    field.parentElement.appendChild(errorDiv);
+}
+
+// ============================================
+// HELPER FUNCTION - CSRF TOKEN
+// ============================================
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+// ============================================
+// FUNCIONES DEL MODAL
+// ============================================
+
+// Función para mostrar el modal
+function showSuccessModal() {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevenir scroll
+    }
+}
+
+// Función para cerrar el modal
+function closeSuccessModal() {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.style.animation = 'fadeOut 0.3s ease';
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modal.style.animation = '';
+            document.body.style.overflow = ''; // Restaurar scroll
+        }, 300);
+    }
+}
+
+// Cerrar modal con ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeSuccessModal();
+    }
+});
+
+// Cerrar modal al hacer click fuera
+document.getElementById('successModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeSuccessModal();
+    }
+});
+
+// ============================================
+// ESTILOS CSS ADICIONALES
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    if (!document.getElementById('asesoria-form-error-styles')) {
+        const style = document.createElement('style');
+        style.id = 'asesoria-form-error-styles';
+        style.innerHTML = `
+            #asesoriaForm input.error,
+            #asesoriaForm textarea.error {
+                border-color: #FF6B6B !important;
+                animation: shake 0.3s ease;
+            }
+            
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+});
+
+console.log('✅ Asesoría Form Script (AJAX con Modal) completamente cargado');
+</script>
+{% endblock %}

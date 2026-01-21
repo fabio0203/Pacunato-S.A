@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #00B4D8, #023E8A);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        .button {
+            display: inline-block;
+            background: #00B4D8;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>¡Bienvenido a Pacunato S.A.! 🚢</h1>
+    </div>
+    <div class="content">
+        <p>Hola{{#if 1.name}} {{1.name}}{{/if}},</p>
+        
+        <p>¡Gracias por suscribirte a nuestro newsletter!</p>
+        
+        <p>Ahora recibirás actualizaciones sobre:</p>
+        <ul>
+            <li>📦 Nuevos servicios logísticos</li>
+            <li>🌍 Tendencias en comercio internacional</li>
+            <li>💡 Tips para optimizar tus importaciones</li>
+            <li>🎉 Ofertas exclusivas para suscriptores</li>
+        </ul>
+        
+        <center>
+            <a href="https://tupagina.com" class="button">Visitar nuestra web</a>
+        </center>
+        
+        <p>Si tienes alguna consulta, responde a este email o contáctanos:</p>
+        <p>
+            📧 Email: pacunatosa2023@gmail.com<br>
+            📱 WhatsApp: +507 6441-8437
+        </p>
+        
+        <p>¡Bienvenido a bordo!</p>
+        <p><strong>Equipo Pacunato S.A.</strong></p>
+    </div>
+    <div class="footer">
+        <p>Pacunato S.A. - Compras Internacionales</p>
+        <p>Panamá, República de Panamá</p>
+        <p><a href="{{unsubscribe_url}}">Darse de baja</a></p>
+    </div>
+</body>
+</html>
+```
+
+---
+
+## **2.5 Módulo 3: Slack (Notificación al Equipo) - OPCIONAL**
+
+### **A. Agregar Slack**
+
+1. Click en **"+"**
+2. Busca **"Slack"**
+3. Selecciona **"Create a Message"**
+4. Conecta tu Slack workspace
+
+### **B. Configurar mensaje**
+```
+Channel: #ventas (o el que prefieras)
+
+Message:
+🎉 *Nueva suscripción al Newsletter!*
+
+📧 Email: {{1.email}}
+👤 Nombre: {{1.name}}
+📍 IP: {{1.ip_address}}
+📄 Página: {{1.page}}
+🕐 Hora: {{1.timestamp}}
+
+_Total suscriptores hoy: {{count}}_ (necesitas agregar módulo counter)
+```
+
+---
+
+## **2.6 Módulo 4: Router (Condicional) - AVANZADO**
+
+Para enviar a diferentes listas según el interés:
+
+1. Agregar **"Router"** después del Webhook
+2. Crear rutas:
+
+### **Ruta 1: Suscriptor nuevo**
+```
+Condición: Email no existe en Google Sheets
+→ Enviar email de bienvenida
+→ Agregar a Mailchimp lista "Nuevos"
+```
+
+### **Ruta 2: Suscriptor existente**
+```
+Condición: Email ya existe
+→ Actualizar fecha
+→ Enviar email "Bienvenido de vuelta"
+```
+
+---
+
+# 📊 **PASO 3: INTEGRACIONES ADICIONALES**
+
+## **3.1 Mailchimp (Opcional pero recomendado)**
+
+1. En Make, agregar módulo **"Mailchimp"**
+2. Acción: **"Add/Update Subscriber"**
+3. Configurar:
+```
+Email: {{1.email}}
+Status: subscribed
+Merge Fields:
+  - FNAME: {{1.name}}
+  - SOURCE: website
+Tags: newsletter, 2026

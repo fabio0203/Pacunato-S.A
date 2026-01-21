@@ -1,0 +1,389 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Exitosa Participación en la Feria Internacional de Colón - Blog Pacunato S.A.{% endblock %}
+
+{% block content %}
+<!-- Post Hero -->
+<section class="post-hero">
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="{% url 'website:home' %}">Inicio</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="{% url 'website:blog' %}">Blog</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Feria Internacional de Colón</span>
+        </div>
+        
+        <div class="post-hero-content">
+            <div class="post-category-badge">
+                <i class="fas fa-handshake"></i>
+                Eventos
+            </div>
+            
+            <h1 class="post-title">Exitosa Participación en la Feria Internacional de Colón con Milexus</h1>
+            
+            <div class="post-meta-bar">
+                <div class="post-author-info">
+                    <div class="author-avatar-lg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="author-details">
+                        <span class="author-name">Equipo Pacunato</span>
+                        <span class="post-date">
+                            <i class="far fa-calendar"></i>
+                            15 de Enero, 2026
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="post-stats">
+                    <span class="post-stat">
+                        <i class="far fa-clock"></i>
+                        3 min lectura
+                    </span>
+                    <span class="post-stat">
+                        <i class="far fa-eye"></i>
+                        <span id="view-counter">{{ view_count }}</span> vista{{ view_count|pluralize }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Post Content -->
+<section class="post-content-section">
+    <div class="container">
+        <div class="post-layout">
+            <!-- Main Content -->
+            <article class="post-main-content">
+                <!-- Featured Image -->
+                <div class="post-featured-image">
+                    <img src="{% static 'images/director.jpeg' %}" alt="Feria Internacional de Colón">
+                    <div class="image-caption">
+                        <i class="fas fa-camera"></i>
+                        Reunión con nuestros proveedores de Milexus en la Feria Internacional de Colón
+                    </div>
+                </div>
+                
+                <!-- Content -->
+                <div class="post-content-body">
+                    <p class="lead-paragraph">
+                        Pacunato S.A. reafirma su compromiso con la excelencia y la expansión de su red internacional tras su exitosa 
+                        participación en la prestigiosa Feria Internacional de Colón, uno de los eventos comerciales más importantes 
+                        de Centroamérica.
+                    </p>
+                    
+                    <h2>Fortaleciendo Alianzas Estratégicas</h2>
+                    
+                    <p>
+                        Durante el evento, nuestro equipo directivo mantuvo reuniones productivas con representantes de 
+                        <strong>Milexus</strong>, uno de nuestros principales proveedores internacionales. Estas conversaciones 
+                        estratégicas permitieron consolidar nuestra relación comercial y explorar nuevas oportunidades de colaboración 
+                        que beneficiarán directamente a nuestros clientes.
+                    </p>
+                    
+                    <div class="content-highlight">
+                        <i class="fas fa-quote-left"></i>
+                        <p>
+                            "La Feria Internacional de Colón representa una oportunidad invaluable para fortalecer nuestras 
+                            relaciones con proveedores clave como Milexus. Estas alianzas nos permiten ofrecer a nuestros clientes 
+                            productos de la más alta calidad con precios competitivos."
+                        </p>
+                        <span class="highlight-author">- Dirección Pacunato S.A.</span>
+                    </div>
+                    
+                    <h2>Logros Principales del Encuentro</h2>
+                    
+                    <ul class="content-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Renovación de acuerdos comerciales:</strong> Se firmaron nuevos términos que garantizan 
+                                mejores condiciones para nuestros clientes.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Ampliación del catálogo de productos:</strong> Acceso a nuevas líneas de productos de 
+                                electrodomésticos y tecnología.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Optimización logística:</strong> Implementación de nuevas rutas de envío que reducirán 
+                                tiempos de entrega.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Capacitación técnica:</strong> Nuestro equipo recibió actualizaciones sobre las últimas 
+                                tendencias del mercado.
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <!-- Second Image -->
+                    <div class="post-inline-image">
+                        <img src="{% static 'images/director1.jpeg' %}" alt="Equipo en Feria Internacional">
+                        <div class="image-caption">
+                            <i class="fas fa-camera"></i>
+                            Nuestro equipo durante las negociaciones con representantes de Milexus
+                        </div>
+                    </div>
+                    
+                    <h2>Compromiso con la Calidad</h2>
+                    
+                    <p>
+                        La participación en eventos de esta magnitud reafirma nuestra posición como líderes en intermediación 
+                        comercial y logística internacional en Panamá. Cada encuentro con nuestros proveedores representa una 
+                        oportunidad para negociar mejores condiciones, conocer productos innovadores y mantenernos a la vanguardia 
+                        de las tendencias del mercado global.
+                    </p>
+                    
+                    <div class="info-box">
+                        <div class="info-box-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="info-box-content">
+                            <h4>¿Sabías que...?</h4>
+                            <p>
+                                La Feria Internacional de Colón reúne anualmente a más de 200 expositores de 15 países, 
+                                convirtiéndola en uno de los eventos comerciales más importantes de Centroamérica y el Caribe.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <h2>Próximos Pasos</h2>
+                    
+                    <p>
+                        Los acuerdos alcanzados durante la feria se implementarán de forma progresiva durante los próximos meses. 
+                        Nuestros clientes podrán beneficiarse de:
+                    </p>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <h4>Mejores Precios</h4>
+                            <p>Condiciones comerciales más competitivas</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-box-open"></i>
+                            </div>
+                            <h4>Mayor Variedad</h4>
+                            <p>Acceso a nuevos productos y marcas</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <h4>Envíos Más Rápidos</h4>
+                            <p>Rutas logísticas optimizadas</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Conclusión</h2>
+                    
+                    <p>
+                        Esta participación en la Feria Internacional de Colón marca un hito importante en nuestro crecimiento 
+                        como empresa. Continuaremos trabajando incansablemente para ofrecer a nuestros clientes el mejor 
+                        servicio de intermediación comercial, siempre con la calidad, confiabilidad y compromiso que nos caracteriza.
+                    </p>
+                    
+                    <p>
+                        Agradecemos a <strong>Milexus</strong> y a todos los proveedores que nos acompañan en este camino de 
+                        crecimiento y expansión internacional.
+                    </p>
+                </div>
+                
+                <!-- Tags -->
+                <div class="post-tags">
+                    <span class="tags-label">Etiquetas:</span>
+                    <a href="#" class="tag-item">Feria Internacional</a>
+                    <a href="#" class="tag-item">Milexus</a>
+                    <a href="#" class="tag-item">Colón</a>
+                    <a href="#" class="tag-item">Alianzas</a>
+                    <a href="#" class="tag-item">Comercio</a>
+                </div>
+                
+                <!-- Share -->
+                <div class="post-share">
+                    <span class="share-label">Compartir:</span>
+                    <div class="share-buttons">
+                        <a href="#" class="share-btn facebook" title="Compartir en Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="share-btn twitter" title="Compartir en Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="share-btn linkedin" title="Compartir en LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="share-btn whatsapp" title="Compartir en WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="post-navigation">
+                    <div class="nav-item prev disabled">
+                        <span class="nav-label">
+                            <i class="fas fa-arrow-left"></i>
+                            Anterior
+                        </span>
+                        <span class="nav-title">No hay artículos anteriores</span>
+                    </div>
+                    
+                    <div class="nav-item next disabled">
+                        <span class="nav-label">
+                            Siguiente
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                        <span class="nav-title">No hay artículos siguientes</span>
+                    </div>
+                </div>
+                
+                <!-- CTA - ⭐ BOTÓN ACTUALIZADO PARA IR A HOME#COTIZACIÓN -->
+                <div class="post-cta">
+                    <div class="cta-content">
+                        <h3>¿Interesado en nuestros servicios?</h3>
+                        <p>Contacta con nosotros y descubre cómo podemos ayudarte con tus compras internacionales</p>
+                    </div>
+                    <a href="{% url 'website:home' %}#cotizacion" class="btn-primary btn-lg">
+                        <i class="fas fa-comments"></i>
+                        Solicitar Cotización
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Sidebar -->
+            <aside class="post-sidebar">
+                <!-- Table of Contents -->
+                <div class="sidebar-widget sticky-widget">
+                    <h3 class="widget-title">Contenido</h3>
+                    <nav class="table-of-contents">
+                        <a href="#" class="toc-link active">
+                            <i class="fas fa-circle"></i>
+                            Fortaleciendo Alianzas Estratégicas
+                        </a>
+                        <a href="#" class="toc-link">
+                            <i class="fas fa-circle"></i>
+                            Logros Principales del Encuentro
+                        </a>
+                        <a href="#" class="toc-link">
+                            <i class="fas fa-circle"></i>
+                            Compromiso con la Calidad
+                        </a>
+                        <a href="#" class="toc-link">
+                            <i class="fas fa-circle"></i>
+                            Próximos Pasos
+                        </a>
+                        <a href="#" class="toc-link">
+                            <i class="fas fa-circle"></i>
+                            Conclusión
+                        </a>
+                    </nav>
+                </div>
+                
+                <!-- Related Posts -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Artículos Relacionados</h3>
+                    <div class="related-posts-list">
+                        <div class="coming-soon-small">
+                            <i class="fas fa-newspaper"></i>
+                            <p>Próximamente más artículos sobre eventos y tendencias</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<!-- Back to Blog -->
+<section class="back-to-blog">
+    <div class="container">
+        <a href="{% url 'website:blog' %}" class="btn-secondary btn-lg">
+            <i class="fas fa-arrow-left"></i>
+            Volver al Blog
+        </a>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/blog.js' %}"></script>
+
+<!-- ⭐ SCRIPT PARA ANIMACIÓN AL LLEGAR DESDE NAVBAR -->
+<script>
+// Animación cuando se llega desde el botón "Solicitar Cotización"
+document.addEventListener('DOMContentLoaded', function() {
+    // Si viene desde un enlace con hash
+    if (window.location.hash === '#cotizacion') {
+        setTimeout(function() {
+            const cotizacionForm = document.querySelector('#cotizacion');
+            if (cotizacionForm) {
+                cotizacionForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                cotizacionForm.classList.add('highlight-animation');
+                
+                setTimeout(function() {
+                    cotizacionForm.classList.remove('highlight-animation');
+                }, 2000);
+            }
+        }, 100);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📧 Inicializando botón de email...');
+    
+    const emailBtn = document.querySelector('.share-btn.email');
+    
+    if (emailBtn) {
+        console.log('✅ Botón de email encontrado');
+        
+        emailBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+            
+            const subject = 'Te recomiendo este artículo: ' + pageTitle;
+            const body = 'Hola,\n\n' +
+                         'Te quiero compartir este interesante artículo de Pacunato S.A.:\n\n' +
+                         pageTitle + '\n\n' +
+                         'Puedes leerlo aquí: ' + pageUrl + '\n\n' +
+                         '¡Saludos!';
+            
+            const mailtoLink = 'mailto:?subject=' + encodeURIComponent(subject) + 
+                               '&body=' + encodeURIComponent(body);
+            
+            console.log('📧 Abriendo cliente de email...');
+            window.location.href = mailtoLink;
+            
+            this.style.transform = 'scale(1.2)';
+            this.style.transition = 'transform 0.2s ease';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 300);
+        });
+    } else {
+        console.error('❌ Botón de email NO encontrado');
+    }
+});
+
+</script>
+{% endblock %}

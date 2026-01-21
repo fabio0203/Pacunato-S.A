@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Por Qué Nosotros - Pacunato S.A.{% endblock %}
+
+{% block content %}
+<!-- Hero con Carrusel de Fondo Fijo -->
+<section class="why-us-hero">
+    <!-- Carrusel de Fondo -->
+    <div class="hero-carousel-bg">
+        <div class="hero-bg-slide active" style="background-image: url({% static 'images/servicios5.jpg' %});"></div>
+        <div class="hero-bg-slide" style="background-image: url({% static 'images/servicios4.jpg' %});"></div>
+        <div class="hero-bg-slide" style="background-image: url({% static 'images/servicios6.jpg' %});"></div>
+        <div class="hero-bg-slide" style="background-image: url({% static 'images/confianza1.jpg' %});"></div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="hero-overlay-why"></div>
+    
+    <!-- Contenido del Hero -->
+    <div class="container">
+        <div class="why-us-hero-content">
+            <h1>¿Por Qué <span class="text-primary">Pacunato S.A.</span>?</h1>
+            <p>Tu socio estratégico en comercio internacional</p>
+        </div>
+    </div>
+</section>
+
+<!-- Experiencia de la Empresa -->
+<section class="company-experience">
+    <div class="container">
+        <div class="experience-content">
+            <div class="section-badge">NUESTRA TRAYECTORIA</div>
+            <h2 class="section-title">Más de 5 Años Conectando <span class="text-primary">Negocios con el Mundo</span></h2>
+            <p class="experience-description">
+                Somos una empresa panameña especializada en compras internacionales, intermediación comercial y soluciones logísticas integrales. 
+                Conectamos a emprendedores, negocios y empresas con proveedores confiables en Panamá, Latinoamérica, Asia y el resto del mundo.
+            </p>
+            <p class="experience-description">
+                Nuestra experiencia nos ha permitido consolidar relaciones estratégicas con los mejores proveedores del mercado, garantizando 
+                calidad, precios competitivos y cumplimiento en cada operación. Entendemos las necesidades únicas de cada cliente y diseñamos 
+                soluciones personalizadas que impulsan el crecimiento de su negocio.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Proveedores y Equipo -->
+<section class="providers-team">
+    <div class="container">
+        <div class="providers-team-grid">
+            <!-- Izquierda: Proveedores -->
+            <div class="providers-section">
+                <div class="section-badge">NUESTROS ALIADOS</div>
+                <h2 class="section-title">Proveedores de <span class="text-primary">Marcas Reconocidas</span></h2>
+                <p>Trabajamos con las marcas más confiables del mercado, garantizando productos de calidad para tu negocio.</p>
+                
+                <div class="providers-categories">
+                    <div class="provider-category">
+                        <div class="provider-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h3>Electrodomésticos</h3>
+                        <p>Samsung, LG, Whirlpool, Electrolux, Sony, Panasonic y más marcas líderes en tecnología y hogar.</p>
+                    </div>
+                    
+                    <div class="provider-category">
+                        <div class="provider-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Alimentos y Bebidas</h3>
+                        <p>Nestlé, Coca-Cola, PepsiCo, Mondelez, Unilever y otras marcas reconocidas internacionalmente.</p>
+                    </div>
+                    
+                    <div class="provider-category">
+                        <div class="provider-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <h3>Productos Diversos</h3>
+                        <p>Amplia red de proveedores en múltiples categorías para satisfacer todas tus necesidades comerciales.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Derecha: Carrusel de Directores -->
+            <div class="team-section">
+                <div class="team-carousel-card">
+                    <div class="team-carousel-container">
+                        <div class="team-slide active">
+                            <img src="{% static 'images/director.jpeg' %}" alt="Feria Internacional">
+                        </div>
+                        <div class="team-slide">
+                            <img src="{% static 'images/director1.jpeg' %}" alt="Feria Internacional">
+                        </div>
+                        
+                        <!-- Indicadores -->
+                        <div class="team-carousel-indicators">
+                            <span class="team-indicator active" data-slide="0"></span>
+                            <span class="team-indicator" data-slide="1"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Pie de foto -->
+                    <div class="team-carousel-caption">
+                        <i class="fas fa-handshake"></i>
+                        <p>Feria Internacional de Colón con nuestros proveedores de Milexus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Misión -->
+<section class="mission-section">
+    <div class="container">
+        <div class="mission-content">
+            <div class="section-badge">NUESTRA MISIÓN</div>
+            <h2 class="section-title"><span class="text-primary">Misión</span></h2>
+            <p class="mission-text">
+                Facilitar el comercio internacional de manera eficiente, transparente y confiable, conectando a empresas con 
+                proveedores de calidad en todo el mundo. Nos comprometemos a simplificar cada etapa del proceso de compra internacional, 
+                desde la búsqueda hasta la entrega, brindando soluciones personalizadas que impulsen el crecimiento de nuestros clientes 
+                y fortalezcan sus operaciones comerciales.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Visión -->
+<section class="vision-section">
+    <div class="container">
+        <div class="vision-content">
+            <div class="section-badge">NUESTRA VISIÓN</div>
+            <h2 class="section-title"><span class="text-primary">Visión</span></h2>
+            <p class="vision-text">
+                Ser reconocidos como el socio estratégico más confiable en comercio internacional para empresas en Panamá y Latinoamérica, 
+                destacándonos por nuestra excelencia operativa, innovación en soluciones logísticas y compromiso con el éxito de nuestros 
+                clientes. Aspiramos a consolidarnos como el puente que conecta negocios con oportunidades globales, facilitando el acceso 
+                a mercados internacionales de forma segura y rentable.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Valores -->
+<section class="values-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">NUESTROS PRINCIPIOS</div>
+            <h2 class="section-title">Valores que nos <span class="text-primary">Definen</span></h2>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                     <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Confianza</h3>
+                <p>Construimos relaciones duraderas basadas en transparencia, honestidad y cumplimiento de compromisos.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Excelencia</h3>
+                <p>Nos esforzamos por superar expectativas en cada operación, garantizando la más alta calidad en nuestros servicios.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovación</h3>
+                <p>Adoptamos nuevas tecnologías y metodologías para ofrecer soluciones logísticas modernas y eficientes.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Compromiso</h3>
+                <p>Nos dedicamos al éxito de nuestros clientes, trabajando como verdaderos socios estratégicos en su crecimiento.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Contáctanos con Despliegue -->
+<section class="contact-cta-section">
+    <div class="container">
+        <div class="cta-main">
+            <h2>¿Listo para Comenzar?</h2>
+            <p>Contáctanos y descubre cómo podemos ayudarte a optimizar tus compras internacionales</p>
+            <button id="toggleContactBtn" class="btn-primary btn-lg cta-toggle-btn">
+                <i class="fas fa-comments"></i>
+                Contáctanos Ahora
+            </button>
+        </div>
+        
+        <!-- Contenido Desplegable -->
+        <div id="contactOptionsCollapse" class="contact-options-collapse">
+            <div class="direct-contact-options">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pacunatosa2023@gmail.com&su=Consulta%20desde%20la%20web&body=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%2C%20quer%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" target="_blank" rel="noopener noreferrer" class="contact-option-card email">
+                    <div class="contact-option-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>pacunatosa2023@gmail.com</p>
+                </a>
+                
+                <a href="https://wa.me/50764418437?text=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%20porque%20quisiera%20conocer%20mas%20de%20sus%20servicios" target="_blank" rel="noopener noreferrer" class="contact-option-card whatsapp">
+                    <div class="contact-option-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>+507 6441-8437</p>
+                </a>
+            </div>
+            
+            <!-- ⭐ FORMULARIO DE COTIZACIÓN INCLUIDO -->
+            <div class="quote-form-container">
+                <h3>O solicita tu cotización aquí</h3>
+                {% include '_quote_form.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/why-us-carousel.js' %}"></script>
+<script src="{% static 'js/quote-form.js' %}"></script>
+{% endblock %}

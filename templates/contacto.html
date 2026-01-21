@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contacto - Pacunato S.A.{% endblock %}
+
+{% block content %}
+<!-- Hero Contacto -->
+<section class="contact-hero">
+    <div class="container">
+        <div class="contact-hero-content">
+            <div class="section-badge">ESTAMOS LISTOS PARA ATENDERTE</div>
+            <h1>¿Listo para Optimizar tus <span class="text-primary">Compras Internacionales</span>?</h1>
+            <p>Nuestro equipo de expertos está disponible para brindarte una solución personalizada. Agenda tu cotización hoy mismo.</p>
+            <a href="#formulario-contacto" class="btn-primary btn-lg">
+                <i class="fas fa-calendar-check"></i>
+                Agendar Cotización Ahora
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Canales de Comunicación -->
+<section class="contact-channels">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">SÍGUENOS Y CONÉCTATE</div>
+            <h2 class="section-title">Encuéntranos en <span class="text-primary">Todos los Canales</span></h2>
+            <p class="section-description">
+                Estamos presentes en múltiples plataformas para estar siempre cerca de ti
+            </p>
+        </div>
+        
+        <div class="channels-grid">
+            <a href="https://www.google.com/maps/place/Pacunato+S.A./@9.0702666,-79.4635828,17z/data=!3m1!4b1!4m6!3m5!1s0x8fab55d85796c6bb:0x7790be08c51c6edb!8m2!3d9.0702666!4d-79.4610079!16s%2Fg%2F11kpqfmlw8?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="channel-card">
+                <div class="channel-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Google Maps</h3>
+                <p>Encuentra nuestra ubicación y cómo llegar</p>
+                <span class="channel-link">Ver en el Mapa <i class="fas fa-arrow-right"></i></span>
+            </a>
+            
+            <a href="#" target="_blank" rel="noopener noreferrer" class="channel-card">
+                <div class="channel-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h3>Instagram</h3>
+                <p>Síguenos para ver nuestro día a día</p>
+                <span class="channel-link">@pacunatosa <i class="fas fa-arrow-right"></i></span>
+            </a>
+            
+            <a href="#" target="_blank" rel="noopener noreferrer" class="channel-card">
+                <div class="channel-icon facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <h3>Facebook</h3>
+                <p>Mantente actualizado con nuestras novedades</p>
+                <span class="channel-link">Pacunato S.A. <i class="fas fa-arrow-right"></i></span>
+            </a>
+            
+            <a href="#" target="_blank" rel="noopener noreferrer" class="channel-card">
+                <div class="channel-icon linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+                <h3>LinkedIn</h3>
+                <p>Conéctate con nosotros profesionalmente</p>
+                <span class="channel-link">Pacunato S.A. <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contacto Directo -->
+<section class="direct-contact">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">CONTACTO INMEDIATO</div>
+            <h2 class="section-title">¿Prefieres Hablar <span class="text-primary">Directamente</span>?</h2>
+            <p class="section-description">
+                Contáctanos por tu medio preferido y recibe atención personalizada al instante
+            </p>
+        </div>
+        
+        <div class="direct-contact-cards">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pacunatosa2023@gmail.com&su=Consulta%20desde%20la%20web&body=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%2C%20quer%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="direct-contact-card email-card">
+                <div class="direct-contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Envíanos un Email</h3>
+                <p>Escríbenos y te responderemos en menos de 24 horas</p>
+                <span class="direct-contact-email">pacunatosa2023@gmail.com</span>
+                <button class="btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Enviar Email
+                </button>
+            </a>
+            
+            <a href="https://wa.me/50764418437?text=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%20porque%20quisiera%20conocer%20mas%20de%20sus%20servicios" target="_blank" rel="noopener noreferrer" class="direct-contact-card whatsapp-card">
+                <div class="direct-contact-icon whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>Chatea por WhatsApp</h3>
+                <p>Conversación instantánea con nuestro equipo</p>
+                <span class="direct-contact-phone">+507 6441-8437</span>
+                <button class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Abrir WhatsApp
+                </button>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Formulario de Contacto -->
+<section class="quote" id="formulario-contacto">
+    <div class="container">
+        <div class="quote-content">
+            <div class="quote-left">
+                <div class="section-badge">SOLICITA TU COTIZACIÓN</div>
+                <h2>Solicita tu <span class="text-primary">Cotización</span> Sin Compromiso</h2>
+                <p>Cuéntanos sobre tu carga y te enviaremos una cotización personalizada en menos de 24 horas. 
+                   Sin letra pequeña, sin sorpresas.</p>
+                
+                <div class="quote-features">
+                    <div class="quote-feature">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Respuesta garantizada en 24 horas</strong>
+                        </div>
+                    </div>
+                    <div class="quote-feature">
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <strong>Cotización detallada y transparente</strong>
+                        </div>
+                    </div>
+                    <div class="quote-feature">
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <strong>Asesoría personalizada incluida</strong>
+                        </div>
+                    </div>
+                    <div class="quote-feature">
+                        <i class="fas fa-shield-check"></i>
+                        <div>
+                            <strong>Sin compromiso ni costos ocultos</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-box">
+                    <h3>¿Prefieres Hablar Directamente?</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+507 6441-8437</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pacunatosa2023@gmail.com&su=Consulta%20desde%20la%20web&body=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%2C%20quer%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="contact-link"
+                               title="Enviar email"
+                               style="color: var(--text-gray);">
+                                pacunatosa2023@gmail.com
+                            </a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Panamá, República de Panamá</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ⭐ FORMULARIO REUTILIZABLE INCLUIDO -->
+            <div class="quote-right">
+                {% include '_quote_form.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/quote-form.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,104 @@
+<!-- ============================================
+     FORMULARIO DE COTIZACIÓN REUTILIZABLE
+     ============================================ -->
+
+<form id="quoteForm" class="quote-form" method="POST" action="{% url 'website:cotizacion' %}">
+    {% csrf_token %}
+    
+    <div class="form-row">
+        <div class="form-group">
+            <label for="nombre">Nombre Completo *</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+        </div>
+        
+        <div class="form-group">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Opcional">
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+        </div>
+        
+        <div class="form-group">
+            <label for="telefono">Teléfono *</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="+507 XXXX-XXXX">
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group">
+            <label for="pais_origen">
+                <i class="fas fa-plane-departure" style="color: var(--primary-color);"></i> 
+                País de Origen *
+            </label>
+            <input type="text" 
+                   id="pais_origen" 
+                   name="pais_origen" 
+                   required 
+                   placeholder="Ej: China, Estados Unidos, México...">
+            <small style="display: block; margin-top: 0.5rem; color: var(--text-gray); font-size: 0.85rem;">
+                <i class="fas fa-info-circle"></i> País donde se fabrica o compra la mercancía
+            </small>
+        </div>
+        
+        <div class="form-group">
+            <label for="pais_destino">
+                <i class="fas fa-plane-arrival" style="color: var(--success-color, #00D9A5);"></i> 
+                País de Destino *
+            </label>
+            <input type="text" 
+                   id="pais_destino" 
+                   name="pais_destino" 
+                   required 
+                   placeholder="Ej: Panamá, Colombia, Costa Rica...">
+            <small style="display: block; margin-top: 0.5rem; color: var(--text-gray); font-size: 0.85rem;">
+                <i class="fas fa-info-circle"></i> País donde recibirás la mercancía
+            </small>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="tipo_servicio">Tipo de Servicio *</label>
+        <select id="tipo_servicio" name="tipo_servicio" required>
+            <option value="">Seleccione un servicio</option>
+            <option value="Búsqueda de Proveedores">🔍 Búsqueda de Proveedores</option>
+            <option value="Verificación de Proveedores">✅ Verificación de Proveedores</option>
+            <option value="Cotización y Negociación">💰 Cotización y Negociación</option>
+            <option value="Gestión de Compras">🛒 Gestión de Compras</option>
+            <option value="Consolidación de Mercancía">📦 Consolidación de Mercancía</option>
+            <option value="Coordinación de Envíos">🚢 Coordinación de Envíos</option>
+            <option value="Servicio Completo">⭐ Servicio Completo (Todo incluido)</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="mensaje">Describe tu Proyecto *</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required 
+                  placeholder="Cuéntanos sobre:
+- Productos que necesitas (nombre, cantidad)
+- Volumen estimado (cajas, pallets, contenedores)
+- Frecuencia de envíos
+- Fechas límite o plazos importantes
+- Requisitos especiales (certificaciones, embalaje, etc.)"></textarea>
+    </div>
+    
+    <button type="submit" class="btn-primary btn-block btn-lg">
+        <span id="btnText">
+            <i class="fas fa-paper-plane"></i>
+            Enviar Solicitud
+        </span>
+        <span id="btnLoading" style="display: none;">
+            <i class="fas fa-spinner fa-spin"></i>
+            Enviando...
+        </span>
+    </button>
+    
+    <p class="form-privacy">
+        <i class="fas fa-lock"></i>
+        Tu información está protegida y será utilizada exclusivamente para responderte.
+    </p>
+</form>

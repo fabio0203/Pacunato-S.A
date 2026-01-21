@@ -1,0 +1,513 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">COMPRAS INTERNACIONALES • INTERMEDIACIÓN COMERCIAL</div>
+            
+            <!-- TÍTULO CON EFECTO TYPING -->
+           <h1 class="hero-title">
+    <span id="typingText"></span>
+    <span class="typing-cursor">|</span>
+</h1>
+    
+            
+            <p class="hero-description">
+                Especialistas en compras internacionales y soluciones logísticas integrales. 
+                Gestionamos todo el proceso desde la búsqueda del proveedor hasta la entrega en destino. 
+                Seguro, transparente y eficiente.
+            </p>
+            <br>
+            <br>
+            <div class="hero-buttons">
+                <a href="#cotizacion" class="btn-primary btn-lg">
+                    <i class="fas fa-shopping-cart"></i>
+                    Solicitar Cotización
+                </a>
+                <a href="{% url 'website:asesoria' %}" class="btn-secondary btn-lg">
+                 <i class="fas fa-headset"></i>
+                     Hablar con un Asesor
+                </a>
+            </div>
+            <br>
+            <br>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Compras 100% Seguras</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-handshake"></i>
+                    <span>Proveedores Verificados</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-globe"></i>
+                    <span>Alcance Global</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- Servicios Section -->
+<section class="services" id="servicios">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">NUESTROS SERVICIOS</div>
+            <h2 class="section-title">
+                Soluciones Comerciales <span class="text-primary">Integrales</span>
+            </h2>
+            <p class="section-description">
+                Desde la búsqueda de proveedores hasta la entrega en tu destino. Gestionamos cada paso 
+                del proceso de compra internacional.
+            </p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-search-dollar"></i>
+                </div>
+                <h3>Búsqueda de Proveedores</h3>
+                <p>Conectamos tu negocio con proveedores confiables en Panamá, Latinoamérica, Asia y el resto del mundo.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>Verificación de Proveedores</h3>
+                <p>Validamos la confiabilidad, calidad y cumplimiento de cada proveedor antes de trabajar con ellos.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>Cotización y Negociación</h3>
+                <p>Gestionamos cotizaciones competitivas y negociamos las mejores condiciones comerciales para ti.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Gestión de Compras</h3>
+                <p>Realizamos la compra completa en tu nombre con total seguridad, transparencia y trazabilidad.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-boxes"></i>
+                </div>
+                <h3>Consolidación y Manejo de Mercancía</h3>
+                <p>Recibimos, inspeccionamos, consolidamos y preparamos tu mercancía para el envío internacional.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>Coordinación de Envíos Internacionales</h3>
+                <p>Gestionamos todo el proceso logístico desde el origen hasta la entrega en tu destino final.</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'website:servicios' %}" class="btn-outline">
+                Ver Todos los Servicios en Detalle
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Por Qué Nosotros Section -->
+<section class="why-us" id="nosotros">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">NUESTRA PROPUESTA DE VALOR</div>
+            <h2 class="section-title">
+                ¿Por Qué Elegir <span class="text-primary">Pacunato S.A.</span>?
+            </h2>
+            <p class="section-description">
+                No somos solo un proveedor de logística. Somos tu socio estratégico para conectar 
+                tu negocio con el mundo de manera eficiente y confiable.
+            </p>
+        </div>
+        
+        <div class="why-us-content">
+            <div class="why-us-left">
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Empresa Establecida en Panamá</h3>
+                        <p>Operamos desde uno de los centros logísticos más importantes del mundo, con acceso privilegiado al Canal de Panamá.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Enfoque Profesional y Operativo</h3>
+                        <p>Cada envío es gestionado con protocolos rigurosos y atención personalizada de principio a fin.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fas fa-list-check"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Procesos Claros y Eficientes</h3>
+                        <p>Sin sorpresas, sin retrasos innecesarios. Sabes exactamente qué esperar en cada etapa del proceso.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Comunicación Directa y Transparente</h3>
+                        <p>Acceso directo a tu ejecutivo de cuenta. Respuestas rápidas y actualizaciones constantes.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Soluciones Adaptadas a Cada Cliente</h3>
+                        <p>No hay dos negocios iguales. Diseñamos la estrategia logística que realmente necesitas.</p>
+                    </div>
+                </div>
+                
+                <div class="why-us-item">
+                    <div class="why-us-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="why-us-text">
+                        <h3>Compromiso con Tiempos, Seguridad y Costos</h3>
+                        <p>Cumplimos lo que prometemos. Tu carga llega cuando debe llegar, en las condiciones correctas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="why-us-right">
+                <div class="stats-card">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>24/7</h3>
+                            <p>Disponibilidad</p>
+                            <span>Soporte continuo para tus operaciones</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>100%</h3>
+                            <p>Transparencia</p>
+                            <span>Seguimiento completo de tu envío</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Alcance Global</h3>
+                            <p>Conectamos con todos los continentes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Excelencia</h3>
+                            <p>Compromiso con la calidad total</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'website:nosotros' %}" class="btn-primary">
+                Conoce Más Sobre Nosotros
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Confianza Section -->
+<section class="trust" id="confianza">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">CONFIANZA Y CREDIBILIDAD</div>
+            <h2 class="section-title">
+                Respaldados por <span class="text-primary">Experiencia y Cumplimiento</span>
+            </h2>
+            <p class="section-description">
+                Tu tranquilidad es nuestra prioridad. Operamos con los más altos estándares de la 
+                industria logística internacional.
+            </p>
+        </div>
+        
+        <div class="trust-grid">
+            <div class="trust-card">
+                <div class="trust-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Empresa Registrada</h3>
+                <p>Operación formal y legal en Panamá</p>
+            </div>
+            
+            <div class="trust-card">
+                <div class="trust-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Cumplimiento Normativo</h3>
+                <p>Seguimiento de regulaciones internacionales</p>
+            </div>
+            
+            <div class="trust-card">
+                <div class="trust-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Seguridad de Carga</h3>
+                <p>Protocolos certificados de protección</p>
+            </div>
+            
+            <div class="trust-card">
+                <div class="trust-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3>Contratos Transparentes</h3>
+                <p>Términos claros y condiciones justas</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ubicación Section -->
+<section class="location">
+    <div class="container">
+        <!-- Título centrado -->
+        <div class="location-header">
+            <div class="section-badge">NUESTRA UBICACIÓN</div>
+            
+        </div>
+        
+        <!-- Contenido: Carrusel (izquierda) y Mapa (derecha) -->
+        <div class="location-content">
+            <!-- Columna izquierda: Carrusel -->
+            <div class="location-left">
+                <div class="location-image">
+                    <!-- CARRUSEL DE IMÁGENES -->
+                    <div class="carousel-container">
+                        <img src="{% static 'images/warehouse.jpg' %}" alt="Ubicación Pacunato" class="carousel-slide active">
+                        <img src="{% static 'images/warehouse3.jpg' %}" alt="Instalaciones Pacunato" class="carousel-slide">
+                        <img src="{% static 'images/warehouse4.jpg' %}" alt="Logística Pacunato" class="carousel-slide">
+                        
+                        <!-- Indicadores -->
+                        <div class="carousel-indicators">
+                            <span class="indicator active" data-slide="0"></span>
+                            <span class="indicator" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                        </div>
+                        
+                        <!-- Controles -->
+                        <button class="carousel-control prev" aria-label="Anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-control next" aria-label="Siguiente">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="location-badge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Ubicados en Panamá</strong>
+                            <span>Ciudad de Panamá</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna derecha: Mapa -->
+            <div class="location-right">
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.9286316894954!2d-79.46358282559085!3d9.070266590992713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fab55d85796c6bb%3A0x7790be08c51c6edb!2sPacunato%20S.A.!5e0!3m2!1ses-419!2scu!4v1768666682100!5m2!1ses-419!2scu" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Section -->
+<section class="quote" id="cotizacion">
+    <div class="container">
+        <div class="quote-content">
+            <div class="quote-left">
+                <h2>Solicita tu <span class="text-primary">Cotización</span></h2>
+                <p>
+                    Obtén una cotización personalizada para tus necesidades de importación. 
+                    Nuestro equipo te responderá en menos de 24 horas.
+                </p>
+                
+                <div class="quote-features">
+                    <div class="quote-feature">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Respuesta Rápida</strong>
+                            <p>Cotización en menos de 24 horas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quote-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <strong>Sin Compromiso</strong>
+                            <p>Cotización gratuita y sin obligación</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quote-feature">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <strong>Asesoría Personalizada</strong>
+                            <p>Ejecutivo dedicado a tu proyecto</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-box">
+                    <h3>¿Prefieres hablar directamente?</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+507 6441-8437</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pacunatosa2023@gmail.com&su=Consulta%20desde%20la%20web&body=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%2C%20quer%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="contact-link"
+                               title="Enviar email">
+                                pacunatosa2023@gmail.com
+                            </a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/50764418437?text=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%2C%20quer%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" 
+                               target="_blank" 
+                               style="color: var(--primary-color);">
+                                Chat en WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ⭐ FORMULARIO INCLUIDO -->
+            
+                {% include '_quote_form.html' %}
+            
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     MODAL DE ÉXITO - Añade esto al final de home.html, antes de cerrar </body>
+     ============================================ -->
+
+
+
+<!-- JavaScript del Modal -->
+<script>
+
+
+// Cerrar modal con ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeSuccessModal();
+    }
+});
+
+// Cerrar modal al hacer click fuera
+document.getElementById('successModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeSuccessModal();
+    }
+});
+
+// Detectar si hay mensaje de éxito de Django
+document.addEventListener('DOMContentLoaded', function() {
+    // Opción 1: Detectar parámetro en URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+        showSuccessModal();
+        // Limpiar URL sin recargar
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+    
+    // Opción 2: Detectar mensaje de Django
+    const djangoMessage = document.querySelector('.messages .success');
+    if (djangoMessage) {
+        showSuccessModal();
+        // Ocultar mensaje de Django
+        djangoMessage.style.display = 'none';
+    }
+});
+</script>
+
+<style>
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+</style>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/quote-form.js' %}"></script>
+<script src="{% static 'js/typing-effect.js' %}"></script>
+{% endblock %}

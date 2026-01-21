@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Servicios - Pacunato S.A.{% endblock %}
+
+{% block content %}
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container">
+        <div class="hero-content-page">
+            <div class="section-badge">SOLUCIONES LOGÍSTICAS</div>
+            <h1 class="animated-title">
+                <span class="word">Nuestros</span> <span class="word text-primary">Servicios</span>
+            </h1>
+            <p>Soluciones integrales de comercio internacional diseñadas para impulsar tu negocio</p>
+        </div>
+    </div>
+</section>
+
+<!-- ACTUALIZACIÓN PARA SERVICIOS.HTML -->
+<!-- Reemplaza la sección "Servicios Principales" con esta versión que incluye IDs -->
+
+<!-- Servicios Principales -->
+<section class="services-detail">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Servicios Comerciales <span class="text-primary">Completos</span></h2>
+            <p class="section-description">
+                Desde la búsqueda de proveedores hasta la entrega en destino. Gestionamos cada paso 
+                del proceso de compra internacional con profesionalismo y transparencia.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Servicio 1: Búsqueda de Proveedores -->
+            <div class="service-card" id="busqueda-proveedores">
+                <div class="service-icon">
+                    <i class="fas fa-search-dollar"></i>
+                </div>
+                <h3>Búsqueda de Proveedores</h3>
+                <p>Conectamos tu negocio con proveedores confiables en Panamá, Latinoamérica, Asia y el resto del mundo.</p>
+                
+                <div class="service-details">
+                    <h4>¿Qué incluye?</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Investigación exhaustiva de mercado</li>
+                        <li><i class="fas fa-check"></i> Análisis de capacidades del proveedor</li>
+                        <li><i class="fas fa-check"></i> Evaluación de precios competitivos</li>
+                        <li><i class="fas fa-check"></i> Verificación de certificaciones</li>
+                        <li><i class="fas fa-check"></i> Conexión directa con fabricantes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Servicio 2: Verificación de Proveedores -->
+            <div class="service-card" id="verificacion-proveedores">
+                <div class="service-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>Verificación de Proveedores</h3>
+                <p>Validamos la confiabilidad, calidad y cumplimiento de cada proveedor antes de trabajar con ellos.</p>
+                
+                <div class="service-details">
+                    <h4>¿Qué incluye?</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Verificación de licencias y permisos</li>
+                        <li><i class="fas fa-check"></i> Auditoría de instalaciones</li>
+                        <li><i class="fas fa-check"></i> Revisión de historial comercial</li>
+                        <li><i class="fas fa-check"></i> Control de calidad de muestras</li>
+                        <li><i class="fas fa-check"></i> Validación de referencias</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Servicio 3: Cotización y Negociación -->
+            <div class="service-card" id="cotizacion-negociacion">
+                <div class="service-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>Cotización y Negociación</h3>
+                <p>Gestionamos cotizaciones competitivas y negociamos las mejores condiciones comerciales para ti.</p>
+                
+                <div class="service-details">
+                    <h4>¿Qué incluye?</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Solicitud de múltiples cotizaciones</li>
+                        <li><i class="fas fa-check"></i> Análisis comparativo de ofertas</li>
+                        <li><i class="fas fa-check"></i> Negociación de precios y términos</li>
+                        <li><i class="fas fa-check"></i> Gestión de contratos comerciales</li>
+                        <li><i class="fas fa-check"></i> Asesoría en términos INCOTERMS</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Servicio 4: Gestión de Compras -->
+            <div class="service-card" id="gestion-compras">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Gestión de Compras</h3>
+                <p>Realizamos la compra completa en tu nombre con total seguridad, transparencia y trazabilidad.</p>
+                
+                <div class="service-details">
+                    <h4>¿Qué incluye?</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Procesamiento de órdenes de compra</li>
+                        <li><i class="fas fa-check"></i> Control de pagos seguros</li>
+                        <li><i class="fas fa-check"></i> Seguimiento de producción</li>
+                        <li><i class="fas fa-check"></i> Documentación comercial completa</li>
+                        <li><i class="fas fa-check"></i> Reportes de estado en tiempo real</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Servicio 5: Consolidación y Manejo de Mercancía -->
+            <div class="service-card" id="consolidacion">
+                <div class="service-icon">
+                    <i class="fas fa-boxes"></i>
+                </div>
+                <h3>Consolidación y Manejo de Mercancía</h3>
+                <p>Recibimos, inspeccionamos, consolidamos y preparamos tu mercancía para el envío internacional.</p>
+                
+                <div class="service-details">
+                    <h4>¿Qué incluye?</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Recepción en nuestras instalaciones</li>
+                        <li><i class="fas fa-check"></i> Inspección de calidad exhaustiva</li>
+                        <li><i class="fas fa-check"></i> Consolidación de múltiples proveedores</li>
+                        <li><i class="fas fa-check"></i> Embalaje y etiquetado profesional</li>
+                        <li><i class="fas fa-check"></i> Almacenamiento temporal seguro</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Servicio 6: Coordinación de Envíos Internacionales -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>Coordinación de Envíos Internacionales</h3>
+                <p>Gestionamos todo el proceso logístico desde el origen hasta la entrega en tu destino final.</p>
+                
+                <div class="service-details">
+                    <h4>¿Qué incluye?</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Gestión de transporte marítimo/aéreo</li>
+                        <li><i class="fas fa-check"></i> Despacho aduanero completo</li>
+                        <li><i class="fas fa-check"></i> Seguro de carga internacional</li>
+                        <li><i class="fas fa-check"></i> Tracking en tiempo real</li>
+                        <li><i class="fas fa-check"></i> Entrega en destino final</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NOTA: Los IDs añadidos son:
+    - busqueda-proveedores
+    - verificacion-proveedores
+    - cotizacion-negociacion
+    - gestion-compras
+    - consolidacion
+-->
+
+<!-- Ventajas Adicionales -->
+<section class="additional-benefits">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">VALOR AGREGADO</div>
+            <h2 class="section-title">Beneficios <span class="text-primary">Adicionales</span></h2>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-box">
+                <div class="benefit-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Asesoría Personalizada</h3>
+                <p>Ejecutivo dedicado que conoce tu negocio y necesidades específicas</p>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Protección Total</h3>
+                <p>Seguros y garantías en cada etapa del proceso de compra</p>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Reportes Detallados</h3>
+                <p>Dashboard con información actualizada de tus operaciones</p>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h3>Precios Competitivos</h3>
+                <p>Tarifas transparentes sin costos ocultos ni sorpresas</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+
+<section class="cta-section" style="padding: 100px 0; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); position: relative; overflow: hidden;">
+    <!-- Efectos de fondo opcionales -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; background-image: radial-gradient(circle at 20% 50%, var(--primary-color) 0%, transparent 50%), radial-gradient(circle at 80% 80%, var(--primary-color) 0%, transparent 50%);"></div>
+    
+    <div class="container" style="position: relative; z-index: 1;">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            
+            <!-- Título centrado -->
+            <h2 style="font-size: 2.5rem; font-weight: 800; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.2;">
+                ¿Listo para Optimizar tus Compras Internacionales?
+            </h2>
+            
+            <!-- Subtítulo centrado -->
+            <p style="font-size: 1.2rem; color: var(--text-light); opacity: 0.9; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                Contáctanos hoy y descubre cómo podemos simplificar tu cadena de suministro
+            </p>
+            
+            <!-- Botones centrados -->
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                
+                <!-- Botón 1: Solicitar Cotización → Lleva al formulario -->
+                <a href="{% url 'website:home' %}#cotizacion" 
+                   class="btn-primary btn-lg" 
+                   style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; font-size: 1.1rem; min-width: 240px; justify-content: center;">
+                    <i class="fas fa-paper-plane"></i>
+                    Solicitar Cotización
+                </a>
+                
+                <!-- Botón 2: Hablar con un Asesor → Lleva a /asesoria/ -->
+                <a href="{% url 'website:asesoria' %}" 
+                   class="btn-secondary btn-lg" 
+                   style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; font-size: 1.1rem; min-width: 240px; justify-content: center;">
+                    <i class="fas fa-headset"></i>
+                    Hablar con un Asesor
+                </a>
+                
+            </div>
+            
+            <!-- Información adicional opcional -->
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);">
+                <i class="fas fa-shield-alt"></i> 
+                Sin compromiso • Respuesta en 24 horas
+            </p>
+            
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     ESTILOS ADICIONALES (si los necesitas)
+     ============================================ -->
+
+<style>
+/* Asegurar que los botones se vean bien en mobile */
+@media (max-width: 768px) {
+    .cta-section h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .cta-section p {
+        font-size: 1rem !important;
+    }
+    
+    .cta-section .btn-lg {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Efecto hover para los botones */
+.cta-section .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+}
+
+.cta-section .btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+console.log('Script cargado');
+
+// Esperar a que TODO esté listo, incluyendo CSS
+window.addEventListener('load', function() {
+    console.log('Página completamente cargada');
+    
+    const title = document.querySelector('.animated-title');
+    console.log('Título encontrado:', title);
+    
+    if (!title) {
+        console.error('No se encontró .animated-title');
+        return;
+    }
+    
+    const words = title.querySelectorAll('.word');
+    console.log('Palabras encontradas:', words.length);
+    
+    let letterIndex = 0;
+    
+    words.forEach((word, wordIndex) => {
+        const text = word.textContent;
+        console.log(`Palabra ${wordIndex}: "${text}"`);
+        word.textContent = '';
+        word.style.display = 'inline-block';
+        
+        text.split('').forEach((letter, i) => {
+            const span = document.createElement('span');
+            span.className = 'letter';
+            span.textContent = letter === ' ' ? '\u00A0' : letter;
+            span.style.display = 'inline-block';
+            span.style.opacity = '0';
+            
+            // Aplicar animación con delay
+            const delay = letterIndex * 50; // 50ms entre cada letra
+            
+            setTimeout(() => {
+                span.style.animation = `letterAppear 0.6s ease-out forwards`;
+                console.log(`Animando letra "${letter}" con delay ${delay}ms`);
+            }, delay);
+            
+            word.appendChild(span);
+            letterIndex++;
+        });
+    });
+    
+    console.log('Animación aplicada a', letterIndex, 'letras');
+});
+</script>
+{% endblock %}
