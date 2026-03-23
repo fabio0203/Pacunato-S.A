@@ -1,0 +1,20 @@
+# ============================================
+# DEPENDENCIAS PARA EL SISTEMA DE FORMULARIOS
+# ============================================
+
+# Django (ya lo debes tener)
+Django>=4.2
+
+# Requests - Para enviar datos a Make.com
+requests>=2.31.0
+
+# ============================================
+# INSTALAR CON:
+# pip install -r requirements.txt
+# ============================================
+
+# OPCIONAL: Si quieres usar PostgreSQL en producción
+# psycopg2-binary>=2.9.9
+
+# OPCIONAL: Si quieres usar MySQL en producción
+# mysqlclient>=2.2.0

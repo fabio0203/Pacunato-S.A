@@ -1,0 +1,9 @@
+# MCP Configuration (contains API keys)
+.mcp.json
+~/.mcp.json
+
+# n8n repositories
+n8n-mcp/
+n8n-skills/
+
+nul

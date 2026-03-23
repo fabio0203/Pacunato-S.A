@@ -1,0 +1,261 @@
+# ============================================
+# .HTACCESS - PACUNATO S.A.
+# SEO, Performance & Security Optimization
+# ============================================
+
+# ============================================
+# REWRITE ENGINE
+# ============================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Force HTTPS (SSL)
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Force WWW (o comentar si prefieres non-WWW)
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Redirect old URLs (ejemplos)
+    # RewriteRule ^old-page\.html$ /nueva-pagina/ [R=301,L]
+</IfModule>
+
+# ============================================
+# COMPRESSION (GZIP/DEFLATE)
+# ============================================
+<IfModule mod_deflate.c>
+    # Comprimir HTML, CSS, JavaScript, Text, XML, fonts
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/atom+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/truetype
+    AddOutputFilterByType DEFLATE font/opentype
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+
+    # Comprimir fuentes woff
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+</IfModule>
+
+# ============================================
+# BROWSER CACHING (EXPIRES HEADERS)
+# ============================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # Imágenes
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Fuentes
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+
+    # CSS y JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+
+    # HTML y dinámico
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType application/xml "access plus 0 seconds"
+
+    # Media
+    ExpiresByType audio/ogg "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 year"
+    ExpiresByType video/ogg "access plus 1 year"
+    ExpiresByType video/webm "access plus 1 year"
+</IfModule>
+
+# ============================================
+# CACHE CONTROL HEADERS
+# ============================================
+<IfModule mod_headers.c>
+    # Cache para recursos estáticos
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|css|js|woff|woff2|ttf|otf)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+
+    # No cache para HTML dinámico
+    <FilesMatch "\.(html|htm|php|py)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires 0
+    </FilesMatch>
+</IfModule>
+
+# ============================================
+# SECURITY HEADERS
+# ============================================
+<IfModule mod_headers.c>
+    # Prevenir XSS (Cross-Site Scripting)
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Prevenir Clickjacking
+    Header always set X-Frame-Options "DENY"
+
+    # Prevenir MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Content Security Policy (CSP) - Ajustar según necesites
+    # Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+
+    # Permissions Policy (antiguamente Feature-Policy)
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+    # Remove Server Signature
+    Header unset Server
+    Header unset X-Powered-By
+</IfModule>
+
+<IfModule mod_security.c>
+    # Ocultar información del servidor
+    ServerSignature Off
+</IfModule>
+
+# ============================================
+# BLOCK ACCESS TO SENSITIVE FILES
+# ============================================
+<FilesMatch "(^\.htaccess|^\.git|^\.env|^\.gitignore|db\.sqlite3|__pycache__|\.pyc$|\.pyo$|\.log$)">
+    Require all denied
+</FilesMatch>
+
+# Proteger directorio admin de Django
+<LocationMatch "^/admin/">
+    # Opcional: agregar autenticación HTTP básica adicional
+    # AuthType Basic
+    # AuthName "Admin Access"
+    # AuthUserFile /path/to/.htpasswd
+    # Require valid-user
+</LocationMatch>
+
+# ============================================
+# CHARSET UTF-8
+# ============================================
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .xml .json .rss .atom
+
+# ============================================
+# FILE UPLOAD LIMITS
+# ============================================
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# ============================================
+# ERROR DOCUMENTS (Opcional)
+# ============================================
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+# ErrorDocument 403 /403.html
+
+# ============================================
+# DISABLE DIRECTORY BROWSING
+# ============================================
+Options -Indexes
+
+# ============================================
+# FOLLOW SYMBOLIC LINKS (Si usas symlinks)
+# ============================================
+Options +FollowSymLinks
+
+# ============================================
+# HOTLINK PROTECTION (Opcional)
+# ============================================
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    # Bloquear hotlinking de imágenes
+    # RewriteCond %{HTTP_REFERER} !^$
+    # RewriteCond %{HTTP_REFERER} !^https://(www\.)?pacunato\.com [NC]
+    # RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F,L]
+</IfModule>
+
+# ============================================
+# CORS HEADERS (Si necesitas API pública)
+# ============================================
+<IfModule mod_headers.c>
+    # Permitir solo tu dominio
+    # SetEnvIf Origin "https://(www\.)?pacunato\.com$" AccessControlAllowOrigin=$0
+    # Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+    # Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    # Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+# ============================================
+# ETAGs
+# ============================================
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# ============================================
+# MIME TYPES (Por si acaso)
+# ============================================
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType text/javascript .js
+    AddType application/javascript .js
+    AddType application/json .json
+    AddType image/webp .webp
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+</IfModule>
+
+# ============================================
+# PRECOMPRESS (Si tienes archivos .gz pre-generados)
+# ============================================
+<IfModule mod_headers.c>
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.css $1\.css\.gz [QSA]
+
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.js $1\.js\.gz [QSA]
+
+    <FilesMatch "\.css\.gz$">
+        ForceType text/css
+        Header set Content-Encoding gzip
+    </FilesMatch>
+
+    <FilesMatch "\.js\.gz$">
+        ForceType application/javascript
+        Header set Content-Encoding gzip
+    </FilesMatch>
+</IfModule>
+
+# ============================================
+# END OF FILE
+# ============================================

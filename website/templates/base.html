@@ -1,0 +1,524 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" prefix="og: http://ogp.me/ns#">
+<head>
+    <!-- ============================================
+         SEO META TAGS - OPTIMIZADO PARA GOOGLE
+         ============================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Title Tag - Máximo 60 caracteres -->
+    <title>{% block title %}Pacunato S.A. | Compras Internacionales y Logística en Panamá{% endblock %}</title>
+
+    <!-- Meta Description - Máximo 160 caracteres -->
+    <meta name="description" content="{% block meta_description %}Especialistas en compras internacionales y logística desde Panamá. Conectamos tu negocio con proveedores verificados en todo el mundo. ¡Cotiza ahora!{% endblock %}">
+
+    <!-- Keywords - Optimizado para SEO local Panamá -->
+    <meta name="keywords" content="{% block meta_keywords %}compras internacionales panamá, logística panamá, importación panamá, exportación panamá, proveedores internacionales, intermediación comercial, búsqueda de proveedores, comercio internacional{% endblock %}">
+
+    <!-- Author & Copyright -->
+    <meta name="author" content="Pacunato S.A.">
+    <meta name="copyright" content="Pacunato S.A. 2026">
+    <meta name="robots" content="{% block robots %}index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1{% endblock %}">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Geo Tags - SEO Local Panamá -->
+    <meta name="geo.region" content="PA">
+    <meta name="geo.placename" content="Panamá">
+    <meta name="geo.position" content="9.0759953;-79.5254479">
+    <meta name="ICBM" content="9.0759953, -79.5254479">
+
+    <!-- Language & Content -->
+    <meta name="language" content="Spanish">
+    <meta http-equiv="content-language" content="es-PA">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical %}https://www.pacunato.com{{ request.path }}{% endblock %}">
+
+    <!-- ============================================
+         OPEN GRAPH TAGS - FACEBOOK & LINKEDIN
+         ============================================ -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Pacunato S.A. | Compras Internacionales y Logística{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Especialistas en compras internacionales y logística desde Panamá. Conectamos tu negocio con proveedores verificados.{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://www.pacunato.com{{ request.path }}{% endblock %}">
+    <meta property="og:site_name" content="Pacunato S.A.">
+    <meta property="og:locale" content="es_PA">
+    <meta property="og:image" content="{% block og_image %}https://www.pacunato.com{% static 'images/logo.png' %}{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Pacunato S.A. - Compras Internacionales">
+
+    <!-- ============================================
+         TWITTER CARD TAGS
+         ============================================ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Pacunato S.A. | Compras Internacionales{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Especialistas en logística y compras internacionales desde Panamá.{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}https://www.pacunato.com{% static 'images/logo.png' %}{% endblock %}">
+    <meta name="twitter:image:alt" content="Pacunato S.A. Logo">
+
+    <!-- ============================================
+         FAVICON & APP ICONS
+         ============================================ -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/logo.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/logo.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/logo.png' %}">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#00B4D8">
+    <meta name="msapplication-TileColor" content="#00B4D8">
+
+    <!-- ============================================
+         DNS PREFETCH & PRECONNECT - PERFORMANCE
+         ============================================ -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//www.gstatic.com">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- ============================================
+         PRELOAD CRITICAL RESOURCES
+         ============================================ -->
+    <link rel="preload" href="{% static 'css/style.css' %}" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
+
+    <!-- ============================================
+         STYLESHEETS
+         ============================================ -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal-system.css' %}">
+    <!-- WhatsApp Widget CSS -->
+<link rel="stylesheet" href="{% static 'css/whatsapp-widget.css' %}">
+
+    <!-- ============================================
+         SCHEMA.ORG JSON-LD - STRUCTURED DATA
+         ============================================ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.pacunato.com/#organization",
+                "name": "Pacunato S.A.",
+                "url": "https://www.pacunato.com",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.pacunato.com{% static 'images/logo.png' %}",
+                    "width": 300,
+                    "height": 300
+                },
+                "description": "Especialistas en compras internacionales y soluciones logísticas integrales desde Panamá",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "PA",
+                    "addressLocality": "Panamá",
+                    "addressRegion": "Panamá"
+                },
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+507-6441-8437",
+                    "contactType": "Customer Service",
+                    "email": "pacunatosa2023@gmail.com",
+                    "availableLanguage": ["Spanish", "English"],
+                    "areaServed": ["PA", "US", "CN", "LATAM"]
+                },
+                "sameAs": [
+                    "https://www.facebook.com/TuPaginaFacebook",
+                    "https://www.linkedin.com/company/tu-empresa",
+                    "https://www.instagram.com/tuusuario"
+                ]
+            },
+            {
+                "@type": "LocalBusiness",
+                "@id": "https://www.pacunato.com/#localbusiness",
+                "name": "Pacunato S.A.",
+                "image": "https://www.pacunato.com{% static 'images/logo.png' %}",
+                "telephone": "+507-6441-8437",
+                "email": "pacunatosa2023@gmail.com",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "PA",
+                    "addressLocality": "Panamá",
+                    "addressRegion": "Panamá"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "9.0759953",
+                    "longitude": "-79.5254479"
+                },
+                "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                    "opens": "08:00",
+                    "closes": "18:00"
+                },
+                "priceRange": "$$",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "127"
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.pacunato.com/#website",
+                "url": "https://www.pacunato.com",
+                "name": "Pacunato S.A.",
+                "description": "Compras Internacionales y Logística en Panamá",
+                "publisher": {
+                    "@id": "https://www.pacunato.com/#organization"
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.pacunato.com/buscar?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://www.pacunato.com/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Inicio",
+                        "item": "https://www.pacunato.com"
+                    }
+                    {% block breadcrumb_schema %}{% endblock %}
+                ]
+            }
+        ]
+    }
+    </script>
+
+    {% block extra_css %}{% endblock %}
+    {% block extra_schema %}{% endblock %}
+
+    
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="{% url 'website:home' %}" class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="Pacunato S.A.">
+                    <div class="logo-text">
+                        <span class="logo-title">Pacunato S.A.</span>
+                        <span class="logo-subtitle">Compras Internacionales</span>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="nav-menu" id="navMenu">
+                    <a href="{% url 'website:home' %}" class="nav-link">Inicio</a>
+                    <a href="{% url 'website:servicios' %}" class="nav-link">Servicios</a>
+                    <a href="{% url 'website:nosotros' %}" class="nav-link">Por Qué Nosotros</a>
+                    <a href="{% url 'website:blog' %}" class="nav-link">Blog</a>
+                    <a href="{% url 'website:contacto' %}" class="nav-link">Contacto</a>
+                    <a href="{% url 'website:home' %}#cotizacion" 
+                        class="btn-primary nav-link" 
+                        id="cotizarBtn"><b>
+                         Cotizar Ahora
+                         </b>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Columna 1: Logo y Redes Sociales -->
+            <div class="footer-column">
+                <img src="{% static 'images/logo.png' %}" alt="Pacunato S.A." class="footer-logo">
+                <p class="footer-description">
+                    Logística internacional de confianza. Conectamos tu negocio con el mundo desde Panamá.
+                </p>
+                <div class="social-links">
+                    <!-- Facebook - Reemplaza 'TuPaginaFacebook' con tu página real -->
+                    <a href="https://www.facebook.com/TuPaginaFacebook" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link" 
+                       title="Síguenos en Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    
+                    <!-- LinkedIn - Reemplaza 'tu-empresa' con tu perfil real -->
+                    <a href="https://www.linkedin.com/company/tu-empresa" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link" 
+                       title="Conéctate en LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    
+                    <!-- Instagram - Reemplaza 'tuusuario' con tu usuario real -->
+                    <a href="https://www.instagram.com/tuusuario" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link" 
+                       title="Síguenos en Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    
+                    <!-- WhatsApp - Mensaje predefinido -->
+                    <a href="https://wa.me/50764418437?text=Hola%20vengo%20de%20su%20pagina%20web%2C%20queria%20saber%20mas%20de%20sus%20servicios" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link whatsapp" 
+                       title="Chatea con nosotros en WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li>
+                        <a href="{% url 'website:home' %}" class="footer-page-link" data-page="home">
+                            <i class="fas fa-chevron-right"></i> Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:servicios' %}" class="footer-page-link" data-page="servicios">
+                            <i class="fas fa-chevron-right"></i> Servicios
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:nosotros' %}" class="footer-page-link" data-page="nosotros">
+                            <i class="fas fa-chevron-right"></i> Por Qué Nosotros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:blog' %}" class="footer-page-link" data-page="blog">
+                            <i class="fas fa-chevron-right"></i> Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#cotizacion" class="footer-anchor-link">
+                            <i class="fas fa-chevron-right"></i> Cotización
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:contacto' %}" class="footer-page-link" data-page="contacto">
+                            <i class="fas fa-chevron-right"></i> Contacto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Columna 3: Servicios -->
+            <div class="footer-column">
+                <h3>Servicios</h3>
+                <ul class="footer-links">
+                    <li>
+                        <a href="{% url 'website:servicios' %}#busqueda-proveedores">
+                            <i class="fas fa-ship"></i> Búsqueda de Proveedores
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:servicios' %}#verificacion-proveedores">
+                            <i class="fas fa-box"></i> Verificación de Proveedores
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:servicios' %}#cotizacion-negociacion">
+                            <i class="fas fa-exchange-alt"></i> Cotización y Negociación
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:servicios' %}#gestion-compras">
+                            <i class="fas fa-users"></i> Gestión de Compras
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:servicios' %}#consolidacion">
+                            <i class="fas fa-truck"></i> Consolidación de Mercancía
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'website:contacto' %}">
+                            <i class="fas fa-headset"></i> Asesoría Especializada
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Columna 4: Contacto - ACTUALIZADO -->
+<div class="footer-column">
+    <h3>Contacto</h3>
+    <ul class="footer-contact">
+        <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Panamá<br>República de Panamá</span>
+        </li>
+        <li>
+            <i class="fas fa-phone"></i>
+            <!-- WhatsApp directo al hacer clic en el teléfono -->
+            <a href="https://wa.me/50764418437?text=Hola%20vengo%20de%20su%20pagina%20web%2C%20queria%20saber%20mas%20de%20sus%20servicios" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="contact-link"
+               title="Contactar por WhatsApp">
+                +507 6441-8437
+            </a>
+        </li>
+        <li>
+            <i class="fas fa-envelope"></i>
+            <!-- Gmail directo con mensaje predefinido -->
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pacunatosa2023@gmail.com&su=Consulta%20desde%20la%20web&body=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%2C%20quer%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="contact-link"
+               title="Enviar email">
+                pacunatosa2023@gmail.com
+            </a>
+        </li>
+        <li>
+            <i class="fas fa-clock"></i>
+            <span>Lunes - Viernes<br>8:00 AM - 6:00 PM</span>
+        </li>
+    </ul>
+</div>
+        </div>
+        
+      <!-- Footer Bottom - ACTUALIZADO CON ENLACES LEGALES -->
+<div class="footer-bottom">
+    <p>&copy; 2026 Pacunato S.A. Todos los derechos reservados.</p>
+    <div class="footer-bottom-links">
+        <a href="{% url 'website:privacidad' %}" class="footer-legal-link">Política de Privacidad</a>
+        <a href="{% url 'website:terminos' %}" class="footer-legal-link">Términos y Condiciones</a>
+    </div>
+</div>
+    </div>
+</footer>
+
+<!-- WhatsApp Floating Widget -->
+<div class="whatsapp-widget" id="whatsapp-widget">
+    <div class="whatsapp-bubble" id="whatsapp-bubble">
+        <div class="whatsapp-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/>
+                <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a12.062 12.062 0 005.713 1.447h.005c6.583 0 11.941-5.334 11.944-11.893 0-3.176-1.24-6.165-3.477-8.453zm-8.475 18.299c-1.776 0-3.517-.476-5.033-1.376l-.36-.214-3.742.977 1-3.645-.235-.374a9.861 9.861 0 01-1.511-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.993c-.002 5.45-4.436 9.885-9.887 9.885z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="whatsapp-close" id="whatsapp-close">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <span class="whatsapp-pulse"></span>
+    </div>
+    
+    <div class="whatsapp-popup" id="whatsapp-popup">
+        <div class="whatsapp-popup-header">
+            <div class="whatsapp-popup-avatar">
+                <img src="{% static 'images/pacunato-avatar.jpg' %}" alt="Pacunato" onerror="this.style.display='none'">
+                <span class="whatsapp-online"></span>
+            </div>
+            <div class="whatsapp-popup-info">
+                <h4>Pacunato S.A.</h4>
+                <p>En línea • Responde en minutos</p>
+            </div>
+        </div>
+        <div class="whatsapp-popup-body">
+            <div class="whatsapp-message">
+                <p>👋 ¡Hola! ¿En qué podemos ayudarte?</p>
+                <span class="whatsapp-time">Ahora</span>
+            </div>
+        </div>
+        <div class="whatsapp-popup-footer">
+           <a href="https://wa.me/50764418437?text=Hola%20vengo%20de%20su%20p%C3%A1gina%20web%2C%20quer%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="whatsapp-cta">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Iniciar conversación
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- JavaScript -->
+    <!-- Preloader JS - DEBE IR PRIMERO -->
+    <script>
+        // Pasar ruta del logo al preloader
+        window.logoPath = "{% static 'images/logo.png' %}";
+    </script>
+     <!-- AUDIO SYSTEM - DEBE IR PRIMERO -->
+    <script src="{% static 'js/audio-system.js' %}"></script>
+     <!-- SISTEMA DE MODALES - DEBE IR ANTES DE LOS FORMULARIOS -->
+    <script src="{% static 'js/modal-system.js' %}"></script>
+     <script src="{% static 'js/navbar-active.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+    <script src="{% static 'js/cotizar-btn.js' %}"></script>
+    <!-- WhatsApp Widget JS -->
+<script src="{% static 'js/whatsapp-widget.js' %}"></script>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyD2Pj1TW231PqoQKv7Z-TAD4cNeLKQbX0U",
+    authDomain: "pacunatosa-d8589.firebaseapp.com",
+    projectId: "pacunatosa-d8589",
+    storageBucket: "pacunatosa-d8589.firebasestorage.app",
+    messagingSenderId: "576145908647",
+    appId: "1:576145908647:web:3e3d4e2d35531c8ce94c82",
+    measurementId: "G-082MH59EXS"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+    
+    {% block extra_js %}{% endblock %}
+    
+   
+
+</body>
+</html>
