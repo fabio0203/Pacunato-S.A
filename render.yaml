@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: pacunato-web
+    runtime: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn pacunato_project.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: DEBUG
+        value: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: pacunato-web.onrender.com,pacunato.com,www.pacunato.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: pacunato-db
+          property: connectionString
+
+databases:
+  - name: pacunato-db
+    plan: free
