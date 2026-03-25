@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.conf import settings
 from django.utils import timezone
+from django.core.mail import send_mail
 import json
 import requests
 import re
@@ -179,21 +180,40 @@ def asesoria(request):
                 user_agent=request.META.get('HTTP_USER_AGENT', '')[:500]
             )
             
-            webhook_url = getattr(settings, 'MAKE_WEBHOOK_ASESORIA', None)
-            
-            if webhook_url:
-                enviar_a_make(webhook_url, {
-                    'tipo': 'asesoria',
-                    'nombre': nombre,
-                    'email': email,
-                    'telefono': telefono,
-                    'duda': duda,
-                    'fecha': consulta.fecha_envio.isoformat(),
-                    'id_consulta': consulta.id
-                })
-                consulta.enviado_make = True
-                consulta.save()
-            
+            # Notificación al equipo de Pacunato
+            try:
+                send_mail(
+                    subject=f'[Nueva Consulta] {nombre} - Asesoría',
+                    message=(
+                        f'Nueva consulta de asesoría recibida:\n\n'
+                        f'Nombre: {nombre}\n'
+                        f'Email: {email}\n'
+                        f'Teléfono: {telefono}\n\n'
+                        f'Consulta:\n{duda}\n\n'
+                        f'ID en base de datos: #{consulta.id}'
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.CONTACT_EMAIL],
+                    fail_silently=True,
+                )
+                # Auto-respuesta al usuario
+                send_mail(
+                    subject='Recibimos tu consulta — Pacunato S.A.',
+                    message=(
+                        f'Hola {nombre},\n\n'
+                        f'Hemos recibido tu consulta y te responderemos en menos de 24 horas.\n\n'
+                        f'Tu consulta:\n{duda}\n\n'
+                        f'Si tienes una urgencia, escríbenos a info@pacunato.com '
+                        f'o por WhatsApp al +507 6441-8437.\n\n'
+                        f'Saludos,\nEquipo Pacunato S.A.'
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    fail_silently=True,
+                )
+            except Exception:
+                pass
+
             return render(request, 'asesoria.html', {
                 'mensaje_exito': True,
                 'nombre': nombre,
@@ -243,26 +263,45 @@ def cotizacion(request):
                 user_agent=request.META.get('HTTP_USER_AGENT', '')[:500]
             )
             
-            webhook_url = getattr(settings, 'MAKE_WEBHOOK_COTIZACION', None)
-            
-            if webhook_url:
-                enviar_a_make(webhook_url, {
-                    'tipo': 'cotizacion',
-                    'nombre': nombre,
-                    'empresa': empresa,
-                    'email': email,
-                    'telefono': telefono,
-                    'pais_origen': pais_origen,
-                    'pais_destino': pais_destino,
-                    'ruta': f"{pais_origen} → {pais_destino}",
-                    'tipo_servicio': tipo_servicio,
-                    'mensaje': mensaje,
-                    'fecha': solicitud.fecha_envio.isoformat(),
-                    'id_solicitud': solicitud.id
-                })
-                solicitud.enviado_make = True
-                solicitud.save()
-            
+            # Notificación al equipo de Pacunato
+            try:
+                empresa_str = f' ({empresa})' if empresa else ''
+                send_mail(
+                    subject=f'[Nueva Cotización] {nombre}{empresa_str} — {pais_origen} → {pais_destino}',
+                    message=(
+                        f'Nueva solicitud de cotización recibida:\n\n'
+                        f'Nombre: {nombre}\n'
+                        f'Empresa: {empresa or "No especificada"}\n'
+                        f'Email: {email}\n'
+                        f'Teléfono: {telefono}\n'
+                        f'Ruta: {pais_origen} → {pais_destino}\n'
+                        f'Servicio: {tipo_servicio}\n\n'
+                        f'Descripción:\n{mensaje}\n\n'
+                        f'ID en base de datos: #{solicitud.id}'
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.CONTACT_EMAIL],
+                    fail_silently=True,
+                )
+                # Auto-respuesta al usuario
+                send_mail(
+                    subject='Recibimos tu solicitud de cotización — Pacunato S.A.',
+                    message=(
+                        f'Hola {nombre},\n\n'
+                        f'Hemos recibido tu solicitud de cotización para la ruta '
+                        f'{pais_origen} → {pais_destino}.\n\n'
+                        f'Nuestro equipo la revisará y te contactará en menos de 48 horas.\n\n'
+                        f'Si tienes una urgencia, escríbenos a info@pacunato.com '
+                        f'o por WhatsApp al +507 6441-8437.\n\n'
+                        f'Saludos,\nEquipo Pacunato S.A.'
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    fail_silently=True,
+                )
+            except Exception:
+                pass
+
             messages.success(request, f'¡Gracias {nombre}! Tu solicitud ha sido enviada.')
             return redirect('website:home')
             
