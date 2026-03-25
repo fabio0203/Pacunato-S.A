@@ -1,0 +1,417 @@
+/* ============================================
+   SISTEMA DE MODALES UNIVERSAL - ESTILOS OPTIMIZADOS
+   Versión compacta que se adapta a todas las pantallas
+   ============================================ */
+
+/* Overlay del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Contenedor del modal - MÁS COMPACTO */
+.modal-container {
+    max-width: 480px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Contenido del modal - PADDING REDUCIDO */
+.modal-content {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 2px solid var(--primary-color);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 180, 216, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Modal de error - variante roja */
+.modal-content.modal-error {
+    border-color: #FF6B6B;
+}
+
+/* Efecto de brillo de fondo */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.1) 0%, transparent 70%);
+    animation: rotate 10s linear infinite;
+}
+
+.modal-content.modal-error::before {
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+}
+
+/* Icono de éxito - MÁS PEQUEÑO */
+.success-icon {
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.success-icon-circle {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.checkmark {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 3;
+    stroke: #00D9A5;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #00D9A5;
+}
+
+.checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+    stroke: #00D9A5;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke: #00D9A5;
+    stroke-width: 3;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+/* Icono de error - MÁS PEQUEÑO */
+.error-icon {
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.error-icon-circle {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    background: rgba(255, 107, 107, 0.2);
+    border: 3px solid #FF6B6B;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: errorPulse 1s ease-out;
+}
+
+.error-icon-circle i {
+    font-size: 2rem;
+    color: #FF6B6B;
+}
+
+/* Título - TAMAÑO REDUCIDO */
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+    line-height: 1.3;
+}
+
+/* Mensaje - TAMAÑO REDUCIDO */
+.modal-message,
+.error-modal-message {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Información del usuario - MÁS COMPACTO */
+.modal-user-info {
+    background: rgba(0, 180, 216, 0.1);
+    padding: 0.875rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.modal-user-info p {
+    margin: 0.35rem 0;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.modal-user-info strong {
+    color: var(--primary-color);
+}
+
+/* Información adicional - MÁS COMPACTO */
+.modal-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.info-item {
+    background: rgba(0, 180, 216, 0.1);
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: rgba(0, 180, 216, 0.2);
+    transform: translateY(-2px);
+}
+
+.info-item i {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.info-item span {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Botones - MÁS COMPACTOS */
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.modal-actions .btn-primary,
+.modal-actions .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.modal-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
+}
+
+.modal-actions .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes errorPulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive - MÓVIL */
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding: 15px;
+    }
+    
+    .modal-container {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .modal-content {
+        padding: 1.5rem 1.25rem;
+        border-radius: 12px;
+    }
+    
+    .modal-title {
+        font-size: 1.25rem;
+    }
+    
+    .modal-message,
+    .error-modal-message {
+        font-size: 0.9rem;
+    }
+    
+    .success-icon-circle,
+    .checkmark,
+    .error-icon-circle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .error-icon-circle i {
+        font-size: 1.75rem;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .modal-actions .btn-primary,
+    .modal-actions .btn-secondary {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .modal-info {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .info-item {
+        padding: 0.625rem;
+    }
+    
+    .info-item span {
+        font-size: 0.75rem;
+    }
+}
+
+/* Pantallas muy pequeñas (< 400px) */
+@media (max-width: 400px) {
+    .modal-content {
+        padding: 1.25rem 1rem;
+    }
+    
+    .modal-title {
+        font-size: 1.125rem;
+    }
+    
+    .modal-message,
+    .error-modal-message {
+        font-size: 0.85rem;
+    }
+    
+    .success-icon-circle,
+    .checkmark,
+    .error-icon-circle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .error-icon-circle i {
+        font-size: 1.5rem;
+    }
+    
+    .modal-actions .btn-primary,
+    .modal-actions .btn-secondary {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Scrollbar personalizado para el modal */
+.modal-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.modal-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
