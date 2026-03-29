@@ -8,7 +8,7 @@
 {% block og_type %}article{% endblock %}
 {% block og_title %}{{ post.title }}{% endblock %}
 {% block og_description %}{{ post.excerpt|truncatechars:155 }}{% endblock %}
-{% if post.featured_image %}{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}{% endblock %}{% endif %}
+{% block og_image %}{% if post.featured_image %}{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}{% else %}https://www.pacunato.com{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
 {% block breadcrumb_schema %},
     {
@@ -47,18 +47,16 @@
     },
     "datePublished": "{{ post.created_at|date:'Y-m-d' }}",
     "dateModified": "{{ post.updated_at|date:'Y-m-d' }}",
+    "image": {
+        "@type": "ImageObject",
+        "url": "{% if post.featured_image %}{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}{% else %}https://www.pacunato.com{% static 'images/logo.png' %}{% endif %}",
+        "width": 1200,
+        "height": 630
+    },
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://www.pacunato.com/blog/{{ post.slug }}/"
     },
-    {% if post.featured_image %}
-    "image": {
-        "@type": "ImageObject",
-        "url": "{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}",
-        "width": 1200,
-        "height": 630
-    },
-    {% endif %}
     "articleSection": "{{ post.get_category_display }}",
     "inLanguage": "es-PA",
     "isPartOf": {
