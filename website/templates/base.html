@@ -122,22 +122,60 @@
                     "width": 300,
                     "height": 300
                 },
-                "description": "Especialistas en compras internacionales y soluciones logísticas integrales desde Panamá",
+                "description": "Agente de compras internacionales y logística integral para empresas centroamericanas. Buscamos, verificamos y gestionamos proveedores en Asia, Europa y América para que tu importación sea segura y transparente.",
+                "foundingLocation": {
+                    "@type": "Place",
+                    "name": "Ciudad de Panamá, Panamá"
+                },
+                "areaServed": [
+                    {"@type": "Country", "name": "Panamá"},
+                    {"@type": "Country", "name": "Guatemala"},
+                    {"@type": "Country", "name": "Costa Rica"},
+                    {"@type": "Country", "name": "Honduras"},
+                    {"@type": "Country", "name": "El Salvador"},
+                    {"@type": "Country", "name": "Nicaragua"}
+                ],
+                "knowsAbout": [
+                    "Importación internacional",
+                    "Logística de carga",
+                    "Verificación de proveedores",
+                    "Comercio internacional",
+                    "Consolidación de mercancía",
+                    "Aduanas y documentación"
+                ],
                 "address": {
                     "@type": "PostalAddress",
+                    "streetAddress": "PH Urbana, calle 54 Este, Apto 26 C Obarrio, Bella Vista",
                     "addressCountry": "PA",
-                    "addressLocality": "Panamá",
+                    "addressLocality": "Ciudad de Panamá",
                     "addressRegion": "Panamá"
                 },
-                "contactPoint": {
-                    "@type": "ContactPoint",
-                    "telephone": "+507-6441-8437",
-                    "contactType": "Customer Service",
-                    "email": "info@pacunato.com",
-                    "availableLanguage": ["Spanish", "English"],
-                    "areaServed": ["PA", "US", "CN", "LATAM"]
-                },
-                "sameAs": []
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "telephone": "+507-6441-8437",
+                        "contactType": "Customer Service",
+                        "email": "info@pacunato.com",
+                        "availableLanguage": ["Spanish", "English"],
+                        "contactOption": "TollFree",
+                        "hoursAvailable": {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                            "opens": "08:00",
+                            "closes": "18:00"
+                        }
+                    },
+                    {
+                        "@type": "ContactPoint",
+                        "telephone": "+507-6441-8437",
+                        "contactType": "Sales",
+                        "availableLanguage": "Spanish"
+                    }
+                ],
+                "hasMap": "https://maps.app.goo.gl/Ujqjm9eHqUNKxCmb7",
+                "sameAs": [
+                    "https://wa.me/50764418437"
+                ]
             },
             {
                 "@type": "LocalBusiness",
@@ -146,10 +184,12 @@
                 "image": "https://www.pacunato.com{% static 'images/logo.png' %}",
                 "telephone": "+507-6441-8437",
                 "email": "info@pacunato.com",
+                "description": "Agente de compras internacionales y logística desde Panamá. Búsqueda y verificación de proveedores, gestión de compras, consolidación de mercancía y coordinación de envíos internacionales.",
                 "address": {
                     "@type": "PostalAddress",
+                    "streetAddress": "PH Urbana, calle 54 Este, Apto 26 C Obarrio, Bella Vista",
                     "addressCountry": "PA",
-                    "addressLocality": "Panamá",
+                    "addressLocality": "Ciudad de Panamá",
                     "addressRegion": "Panamá"
                 },
                 "geo": {
@@ -157,17 +197,24 @@
                     "latitude": "9.0759953",
                     "longitude": "-79.5254479"
                 },
+                "hasMap": "https://maps.app.goo.gl/Ujqjm9eHqUNKxCmb7",
                 "openingHoursSpecification": {
                     "@type": "OpeningHoursSpecification",
                     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
                     "opens": "08:00",
                     "closes": "18:00"
                 },
+                "currenciesAccepted": "USD",
+                "paymentAccepted": "Transferencia bancaria, Wire transfer, Zelle",
                 "priceRange": "$$",
-                "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "4.8",
-                    "reviewCount": "127"
+                "serviceArea": {
+                    "@type": "GeoCircle",
+                    "geoMidpoint": {
+                        "@type": "GeoCoordinates",
+                        "latitude": "9.0759953",
+                        "longitude": "-79.5254479"
+                    },
+                    "geoRadius": "3000000"
                 }
             },
             {
@@ -484,9 +531,12 @@
 </script>
 
     
+    <!-- Analytics Event Tracking -->
+    <script src="{% static 'js/analytics-events.js' %}"></script>
+
     {% block extra_js %}{% endblock %}
-    
-   
+
+
 
 </body>
 </html>

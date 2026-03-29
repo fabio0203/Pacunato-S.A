@@ -1,7 +1,74 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ post.title }} - Blog Pacunato S.A.{% endblock %}
+{% block title %}{{ post.title }} | Blog Pacunato S.A.{% endblock %}
+
+{% block meta_description %}{{ post.excerpt|truncatechars:155 }}{% endblock %}
+
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ post.title }}{% endblock %}
+{% block og_description %}{{ post.excerpt|truncatechars:155 }}{% endblock %}
+{% if post.featured_image %}{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}{% endblock %}{% endif %}
+
+{% block breadcrumb_schema %},
+    {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.pacunato.com/blog/"
+    },
+    {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ post.title|escapejs }}",
+        "item": "https://www.pacunato.com/blog/{{ post.slug }}/"
+    }
+{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ post.title|escapejs }}",
+    "description": "{{ post.excerpt|escapejs }}",
+    "author": {
+        "@type": "Organization",
+        "name": "{{ post.author|escapejs }}",
+        "url": "https://www.pacunato.com"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Pacunato S.A.",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.pacunato.com{% static 'images/logo.png' %}"
+        }
+    },
+    "datePublished": "{{ post.created_at|date:'Y-m-d' }}",
+    "dateModified": "{{ post.updated_at|date:'Y-m-d' }}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.pacunato.com/blog/{{ post.slug }}/"
+    },
+    {% if post.featured_image %}
+    "image": {
+        "@type": "ImageObject",
+        "url": "{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}",
+        "width": 1200,
+        "height": 630
+    },
+    {% endif %}
+    "articleSection": "{{ post.get_category_display }}",
+    "inLanguage": "es-PA",
+    "isPartOf": {
+        "@type": "Blog",
+        "name": "Blog Pacunato S.A.",
+        "url": "https://www.pacunato.com/blog/"
+    }
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <!-- Post Hero -->

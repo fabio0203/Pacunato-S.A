@@ -14,34 +14,85 @@
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Compras Internacionales y Logística",
-    "provider": {
-        "@type": "Organization",
-        "name": "Pacunato S.A.",
-        "image": "https://www.pacunato.com{% static 'images/logo.png' %}",
-        "telephone": "+507-6441-8437",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "PA",
-            "addressLocality": "Panamá"
-        }
-    },
-    "areaServed": {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
-            "@type": "GeoCoordinates",
-            "latitude": "9.0759953",
-            "longitude": "-79.5254479"
+    "@graph": [
+        {
+            "@type": "Service",
+            "name": "Compras Internacionales y Logística Integral",
+            "serviceType": "Agente de Compras Internacionales",
+            "provider": {"@id": "https://www.pacunato.com/#organization"},
+            "areaServed": [
+                {"@type": "Country", "name": "Panamá"},
+                {"@type": "Country", "name": "Guatemala"},
+                {"@type": "Country", "name": "Costa Rica"},
+                {"@type": "Country", "name": "Honduras"},
+                {"@type": "Country", "name": "El Salvador"},
+                {"@type": "Country", "name": "Nicaragua"}
+            ],
+            "description": "Servicio integral de compras internacionales desde Panamá: búsqueda y verificación de proveedores, cotización, gestión de compras, consolidación de mercancía y coordinación de envíos internacionales.",
+            "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "priceCurrency": "USD"
+            },
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Servicios de Importación",
+                "itemListElement": [
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Búsqueda de Proveedores"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Verificación de Proveedores"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cotización y Negociación"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gestión de Compras"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Consolidación de Mercancía"}},
+                    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Coordinación de Envíos Internacionales"}}
+                ]
+            }
         },
-        "geoRadius": "10000000"
-    },
-    "description": "Especialistas en compras internacionales y soluciones logísticas integrales desde Panamá",
-    "offers": {
-        "@type": "Offer",
-        "availability": "https://schema.org/InStock",
-        "priceCurrency": "USD"
-    }
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "¿Qué es un agente de compras internacionales?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Un agente de compras internacionales es una empresa o profesional que actúa como representante del comprador en el mercado internacional. Se encarga de buscar proveedores, verificar su confiabilidad, negociar precios, gestionar la compra y coordinar el envío de la mercancía hasta su destino. Pacunato S.A. ofrece este servicio completo desde Panamá para empresas en Centroamérica."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Por qué importar a través de Panamá?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Panamá es el principal hub logístico de América Latina gracias al Canal de Panamá y la Zona Libre de Colón, una de las zonas francas más grandes del mundo. Esto permite acceder a mejores precios, consolidar carga de múltiples proveedores y reducir costos de flete para toda Centroamérica. Pacunato S.A. aprovecha esta posición estratégica para ofrecer soluciones logísticas eficientes a empresas de toda la región."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cómo puedo importar desde China de manera segura?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Para importar desde China de manera segura se requiere: 1) Verificar la licencia y trayectoria del proveedor con documentos oficiales, 2) Solicitar muestras antes de la producción masiva, 3) Establecer contratos claros con términos de calidad y entrega, 4) Utilizar métodos de pago seguros como carta de crédito o servicios de escrow, 5) Contratar seguro de carga para el envío. Pacunato S.A. gestiona todo este proceso por ti, asumiendo la responsabilidad en cada etapa."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cuánto cobran por sus servicios de intermediación?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "La tarifa varía según el tipo y volumen de servicio requerido. Generalmente se trabaja con una comisión sobre el valor de la mercancía o una tarifa fija por operación. En muchos casos, los ahorros obtenidos gracias a nuestra negociación y eficiencia logística compensan ampliamente el costo del servicio. Solicita una cotización gratuita y sin compromiso para conocer la propuesta específica para tu proyecto."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Qué documentos se necesitan para importar mercancía a Centroamérica?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Los documentos principales para importar a Centroamérica incluyen: Factura comercial del proveedor, Lista de empaque (packing list), Conocimiento de embarque (Bill of Lading para marítimo o Air Waybill para aéreo), Certificado de origen cuando aplica para preferencias arancelarias, Permisos sanitarios o fitosanitarios según el tipo de producto, y Declaración aduanera de importación. Pacunato S.A. gestiona y verifica toda la documentación necesaria para tu importación."
+                    }
+                }
+            ]
+        }
+    ]
 }
 </script>
 {% endblock %}
@@ -52,29 +103,26 @@
     <div class="hero-overlay"></div>
     <div class="container">
         <div class="hero-content">
-            <div class="hero-badge">COMPRAS INTERNACIONALES • INTERMEDIACIÓN COMERCIAL</div>
-            
-            <!-- TÍTULO ESTÁTICO CON COLORES -->
+            <div class="hero-badge">AGENTE DE COMPRAS INTERNACIONALES DESDE PANAMÁ</div>
+
             <h1 class="hero-title">
-                Conectamos tu Negocio con <span class="text-primary">Proveedores Confiables</span> en <span class="text-primary">Todo el Mundo</span>
+                Importa sin Riesgos con <span class="text-primary">Proveedores Verificados</span> y <span class="text-primary">Logística Garantizada</span>
             </h1>
-    
-            
+
             <p class="hero-description">
-                Especialistas en compras internacionales y soluciones logísticas integrales. 
-                Gestionamos todo el proceso desde la búsqueda del proveedor hasta la entrega en destino. 
-                Seguro, transparente y eficiente.
+                Buscamos, verificamos y gestionamos tus proveedores internacionales — tú nos dices qué necesitas
+                y nosotros nos encargamos de que llegue a tiempo, con la calidad prometida y sin sorpresas.
             </p>
             <br>
             <br>
             <div class="hero-buttons">
-                <a href="#cotizacion" class="btn-primary btn-lg">
-                    <i class="fas fa-shopping-cart"></i>
-                    Solicitar Cotización
+                <a href="#cotizacion" class="btn-primary btn-lg" data-track-cta="hero-cotizar">
+                    <i class="fas fa-paper-plane"></i>
+                    Cotización Gratis en 24h
                 </a>
-                <a href="{% url 'website:asesoria' %}" class="btn-secondary btn-lg">
-                 <i class="fas fa-headset"></i>
-                     Hablar con un Asesor
+                <a href="{% url 'website:asesoria' %}" class="btn-secondary btn-lg" data-track-cta="hero-asesoria">
+                    <i class="fas fa-headset"></i>
+                    Hablar con un Asesor
                 </a>
             </div>
             <br>
@@ -82,15 +130,15 @@
             <div class="hero-features">
                 <div class="hero-feature">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Compras 100% Seguras</span>
+                    <span>Sin riesgo de fraude</span>
                 </div>
                 <div class="hero-feature">
-                    <i class="fas fa-handshake"></i>
-                    <span>Proveedores Verificados</span>
+                    <i class="fas fa-search-plus"></i>
+                    <span>Proveedores auditados</span>
                 </div>
                 <div class="hero-feature">
-                    <i class="fas fa-globe"></i>
-                    <span>Alcance Global</span>
+                    <i class="fas fa-file-alt"></i>
+                    <span>Documentación completa</span>
                 </div>
             </div>
         </div>
@@ -427,34 +475,34 @@
     <div class="container">
         <div class="quote-content">
             <div class="quote-left">
-                <h2>Solicita tu <span class="text-primary">Cotización</span></h2>
+                <h2>Recibe tu <span class="text-primary">Cotización Gratis</span><br>en Menos de 24 Horas</h2>
                 <p>
-                    Obtén una cotización personalizada para tus necesidades de importación. 
-                    Nuestro equipo te responderá en menos de 24 horas.
+                    Cuéntanos qué necesitas importar. Nuestro equipo te enviará una propuesta
+                    personalizada con proveedores verificados, costos detallados y tiempo estimado de entrega.
                 </p>
-                
+
                 <div class="quote-features">
                     <div class="quote-feature">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <strong>Respuesta Rápida</strong>
-                            <p>Cotización en menos de 24 horas</p>
+                            <strong>Respuesta en &lt;24 horas</strong>
+                            <p>Lunes a viernes, respuesta garantizada</p>
                         </div>
                     </div>
-                    
+
                     <div class="quote-feature">
                         <i class="fas fa-shield-alt"></i>
                         <div>
-                            <strong>Sin Compromiso</strong>
-                            <p>Cotización gratuita y sin obligación</p>
+                            <strong>Sin Costo, Sin Compromiso</strong>
+                            <p>Cotizar no te obliga a contratar</p>
                         </div>
                     </div>
-                    
+
                     <div class="quote-feature">
                         <i class="fas fa-user-tie"></i>
                         <div>
-                            <strong>Asesoría Personalizada</strong>
-                            <p>Ejecutivo dedicado a tu proyecto</p>
+                            <strong>Ejecutivo Dedicado</strong>
+                            <p>Una persona real atiende tu proyecto</p>
                         </div>
                     </div>
                 </div>
@@ -540,14 +588,335 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <style>
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+/* Lead Magnet Section */
+.lead-magnet-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(0,180,216,0.08) 0%, rgba(0,180,216,0.02) 100%);
+    border-top: 1px solid rgba(0,180,216,0.15);
+    border-bottom: 1px solid rgba(0,180,216,0.15);
+}
+.lead-magnet-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .lead-magnet-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+.lead-magnet-badge {
+    display: inline-block;
+    background: rgba(0,180,216,0.15);
+    color: var(--primary-color);
+    border: 1px solid rgba(0,180,216,0.3);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.lead-magnet-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-light);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+.lead-magnet-desc {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+.lead-magnet-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+}
+.lead-magnet-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-light);
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+}
+.lead-magnet-checklist li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+.lead-magnet-form {
+    background: var(--dark-bg-3, #111827);
+    border: 1px solid var(--border-color, rgba(255,255,255,0.08));
+    border-radius: 20px;
+    padding: 2.5rem;
+}
+.lead-magnet-form h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+.lead-magnet-form p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+.lead-magnet-form input {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    background: var(--dark-bg-2, #0f172a);
+    border: 1px solid var(--border-color, rgba(255,255,255,0.1));
+    border-radius: 8px;
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+.lead-magnet-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0,180,216,0.1);
+}
+.lead-magnet-form input::placeholder { color: rgba(255,255,255,0.3); }
+.lead-magnet-privacy {
+    font-size: 0.78rem;
+    color: var(--text-gray);
+    margin-top: 0.75rem;
+    text-align: center;
+}
+/* AI SEO FAQ Section */
+.faq-seo-section {
+    padding: 80px 0;
+    background: var(--dark-bg);
+}
+.faq-seo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+@media (max-width: 600px) {
+    .faq-seo-grid { grid-template-columns: 1fr; }
+}
+.faq-item {
+    background: var(--dark-bg-2, #111827);
+    border: 1px solid var(--border-color, rgba(255,255,255,0.06));
+    border-radius: 16px;
+    padding: 2rem;
+    transition: border-color 0.3s;
+}
+.faq-item:hover { border-color: rgba(0,180,216,0.3); }
+.faq-question {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+.faq-question i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+.faq-answer {
+    color: var(--text-gray);
+    line-height: 1.8;
+    font-size: 0.95rem;
 }
 </style>
+
+<!-- ============================================
+     LEAD MAGNET SECTION (Skill 8: Lead Magnets)
+     ============================================ -->
+<section class="lead-magnet-section" id="guia-importacion">
+    <div class="container">
+        <div class="lead-magnet-inner">
+            <!-- Contenido izquierdo -->
+            <div>
+                <span class="lead-magnet-badge">Recurso Gratuito</span>
+                <h2 class="lead-magnet-title">
+                    Guía de Importación para <span class="text-primary">Empresas Centroamericanas</span>
+                </h2>
+                <p class="lead-magnet-desc">
+                    Todo lo que necesitas saber para importar mercancía de manera segura, eficiente y sin
+                    perder dinero. Desde cómo encontrar proveedores confiables hasta cómo manejar la aduana.
+                </p>
+                <ul class="lead-magnet-checklist">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Los 7 errores más comunes al importar por primera vez</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Cómo verificar si un proveedor extranjero es legítimo</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>INCOTERMS explicados en español, sin tecnicismos</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Documentos aduanales que necesitas para cada país centroamericano</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Calculadora de costos de importación (hoja de cálculo incluida)</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- Formulario de captura -->
+            <div class="lead-magnet-form">
+                <h3>Recibe la Guía Gratis</h3>
+                <p>Te la enviamos directo a tu correo en menos de 5 minutos.</p>
+                <form id="leadMagnetForm" action="{% url 'website:suscribir_newsletter' %}" method="POST" novalidate>
+                    {% csrf_token %}
+                    <input type="text"
+                           name="name"
+                           placeholder="Tu nombre"
+                           autocomplete="given-name"
+                           required>
+                    <input type="email"
+                           name="email"
+                           placeholder="Tu correo empresarial"
+                           inputmode="email"
+                           autocomplete="email"
+                           required>
+                    <input type="hidden" name="source_page" value="home-lead-magnet">
+                    <button type="submit"
+                            class="btn-primary btn-block btn-lg"
+                            data-event="lead-magnet"
+                            data-magnet-title="Guia Importacion Centroamerica"
+                            style="width:100%; justify-content:center;">
+                        <i class="fas fa-download"></i>
+                        Enviarme la Guía Gratis
+                    </button>
+                </form>
+                <p class="lead-magnet-privacy">
+                    <i class="fas fa-lock"></i>
+                    Tu información está segura. Sin spam, te lo prometemos.
+                    <a href="{% url 'website:privacidad' %}" style="color:var(--primary-color);">Política de privacidad</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     AI SEO: SECCIÓN DE PREGUNTAS FRECUENTES
+     (Skill: AI SEO + Skill 12: SEO Audit)
+     Optimizada para ser citada por ChatGPT, Perplexity, Claude
+     ============================================ -->
+<section class="faq-seo-section" id="preguntas-frecuentes">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">PREGUNTAS FRECUENTES</div>
+            <h2 class="section-title">
+                Todo lo que Quieres Saber sobre <span class="text-primary">Importar desde Panamá</span>
+            </h2>
+            <p class="section-description">
+                Respuestas claras y directas sobre compras internacionales, logística y cómo trabajamos.
+            </p>
+        </div>
+
+        <div class="faq-seo-grid">
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-question-circle"></i>
+                    <span>¿Qué es un agente de compras internacionales y para qué sirve?</span>
+                </div>
+                <p class="faq-answer">
+                    Un agente de compras internacionales representa tus intereses como comprador en el mercado
+                    exterior. En lugar de negociar tú directamente con proveedores extranjeros — con la barrera
+                    del idioma, la diferencia de husos horarios y el riesgo de fraude — el agente lo hace por ti.
+                    En Pacunato S.A. buscamos los mejores proveedores, verificamos que sean legítimos, negociamos
+                    precios, gestionamos el pago de forma segura y coordinamos el envío hasta tu puerta.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-question-circle"></i>
+                    <span>¿Por qué es más conveniente importar a través de Panamá que de forma directa?</span>
+                </div>
+                <p class="faq-answer">
+                    Panamá concentra uno de los hubs logísticos más importantes del mundo gracias al Canal de
+                    Panamá y la Zona Libre de Colón. Esto significa acceso a fletes consolidados más económicos,
+                    menores tiempos de tránsito hacia el resto de Centroamérica, y la posibilidad de combinar
+                    mercancía de múltiples proveedores en un solo contenedor, reduciendo drásticamente los costos
+                    de envío para tu empresa.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-question-circle"></i>
+                    <span>¿Cómo sé que el proveedor que me consiguen es realmente confiable?</span>
+                </div>
+                <p class="faq-answer">
+                    Nuestro proceso de verificación incluye revisión de documentos legales y licencias
+                    comerciales, análisis del historial de transacciones con otros compradores, auditoría
+                    física de instalaciones cuando es posible, y control de calidad de muestras antes de
+                    ordenar la producción completa. Solo recomendamos proveedores que pasan todos estos
+                    filtros — si no lo superan, te lo decimos y buscamos otra alternativa.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-question-circle"></i>
+                    <span>¿Cuánto tiempo tarda una importación desde Asia a Centroamérica?</span>
+                </div>
+                <p class="faq-answer">
+                    Para carga marítima desde China hasta Panamá, el tiempo de tránsito oscila entre 28 y
+                    40 días. Si necesitas mayor rapidez, el flete aéreo reduce este tiempo a 7-14 días,
+                    aunque con un costo más elevado. A eso hay que sumar el tiempo de producción en fábrica
+                    (generalmente 15-30 días dependiendo del producto). Nuestro equipo coordina todo para
+                    minimizar demoras y te mantiene informado con actualizaciones en tiempo real.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-question-circle"></i>
+                    <span>¿Qué pasa si la mercancía llega dañada o no es lo que pedí?</span>
+                </div>
+                <p class="faq-answer">
+                    Todas las operaciones que gestionamos incluyen seguro de carga internacional que cubre
+                    daños en tránsito. Además, antes del envío realizamos una inspección de calidad para
+                    verificar que la mercancía cumple las especificaciones acordadas. Si hay discrepancias,
+                    las gestionamos directamente con el proveedor antes de que la carga salga del origen —
+                    no después de que ya llegó a tu almacén.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-question-circle"></i>
+                    <span>¿Cuáles son los principales documentos para importar a Centroamérica?</span>
+                </div>
+                <p class="faq-answer">
+                    Los documentos esenciales son: factura comercial del proveedor, lista de empaque
+                    (packing list), conocimiento de embarque (BL marítimo o AWB aéreo), certificado de
+                    origen cuando aplican preferencias arancelarias, y la declaración aduanera de
+                    importación. Según el tipo de producto pueden requerirse permisos sanitarios,
+                    fitosanitarios o de ministerios específicos. Pacunato gestiona y verifica toda esta
+                    documentación para que tu importación no se detenga en aduana.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{% url 'website:asesoria' %}" class="btn-outline">
+                <i class="fas fa-headset"></i>
+                ¿Tienes otra pregunta? Habla con un Asesor
+            </a>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
 

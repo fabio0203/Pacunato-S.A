@@ -1,7 +1,124 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Servicios - Pacunato S.A.{% endblock %}
+{% block title %}Servicios de Importación y Logística Internacional | Pacunato S.A.{% endblock %}
+
+{% block meta_description %}Descubre los 6 servicios de Pacunato S.A.: búsqueda y verificación de proveedores, cotización, gestión de compras, consolidación de mercancía y coordinación de envíos internacionales desde Panamá.{% endblock %}
+
+{% block meta_keywords %}servicios de importación Panamá, agente de compras centroamerica, búsqueda de proveedores internacionales, verificación proveedores China, consolidación de carga Panamá, logística internacional centroamerica{% endblock %}
+
+{% block og_title %}Servicios de Importación y Logística | Pacunato S.A. Panamá{% endblock %}
+{% block og_description %}6 servicios integrales para importar sin riesgos: búsqueda de proveedores, verificación, cotización, compras, consolidación y envíos internacionales desde Panamá.{% endblock %}
+
+{% block breadcrumb_schema %},
+    {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Servicios",
+        "item": "https://www.pacunato.com/servicios/"
+    }
+{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Service",
+            "name": "Búsqueda de Proveedores Internacionales",
+            "serviceType": "Sourcing de Proveedores",
+            "provider": {"@id": "https://www.pacunato.com/#organization"},
+            "description": "Investigación exhaustiva de mercado para encontrar proveedores confiables en Asia, Europa y Latinoamérica. Incluye análisis de capacidades, precios competitivos y verificación de certificaciones.",
+            "areaServed": "Centroamérica",
+            "url": "https://www.pacunato.com/servicios/#busqueda-proveedores"
+        },
+        {
+            "@type": "Service",
+            "name": "Verificación de Proveedores",
+            "serviceType": "Auditoría de Proveedores",
+            "provider": {"@id": "https://www.pacunato.com/#organization"},
+            "description": "Verificación de licencias, auditorías físicas de instalaciones, revisión de historial comercial, control de calidad de muestras y validación de referencias antes de realizar cualquier pago.",
+            "areaServed": "Centroamérica",
+            "url": "https://www.pacunato.com/servicios/#verificacion-proveedores"
+        },
+        {
+            "@type": "Service",
+            "name": "Cotización y Negociación Internacional",
+            "serviceType": "Negociación Comercial",
+            "provider": {"@id": "https://www.pacunato.com/#organization"},
+            "description": "Solicitud y análisis comparativo de múltiples cotizaciones, negociación de precios y términos, gestión de contratos y asesoría en INCOTERMS para obtener las mejores condiciones comerciales.",
+            "areaServed": "Centroamérica",
+            "url": "https://www.pacunato.com/servicios/#cotizacion-negociacion"
+        },
+        {
+            "@type": "Service",
+            "name": "Gestión de Compras Internacionales",
+            "serviceType": "Gestión de Compras",
+            "provider": {"@id": "https://www.pacunato.com/#organization"},
+            "description": "Procesamiento de órdenes de compra, control de pagos seguros, seguimiento de producción, documentación comercial completa y reportes de estado en tiempo real.",
+            "areaServed": "Centroamérica",
+            "url": "https://www.pacunato.com/servicios/#gestion-compras"
+        },
+        {
+            "@type": "Service",
+            "name": "Consolidación y Manejo de Mercancía",
+            "serviceType": "Consolidación de Carga",
+            "provider": {"@id": "https://www.pacunato.com/#organization"},
+            "description": "Recepción en instalaciones propias, inspección de calidad, consolidación de múltiples proveedores en un solo envío, embalaje profesional y almacenamiento temporal seguro.",
+            "areaServed": "Centroamérica",
+            "url": "https://www.pacunato.com/servicios/#consolidacion"
+        },
+        {
+            "@type": "Service",
+            "name": "Coordinación de Envíos Internacionales",
+            "serviceType": "Logística Internacional",
+            "provider": {"@id": "https://www.pacunato.com/#organization"},
+            "description": "Gestión de transporte marítimo y aéreo, despacho aduanero completo, seguro de carga internacional, tracking en tiempo real y entrega en destino final.",
+            "areaServed": "Centroamérica",
+            "url": "https://www.pacunato.com/servicios/"
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "¿Cuánto tiempo tarda el proceso de importación con Pacunato?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Depende del origen y modalidad de transporte. Para envíos aéreos desde Asia, el tiempo estimado es de 5 a 15 días. Para transporte marítimo, generalmente entre 25 y 45 días. Nuestro equipo optimiza los plazos según tu urgencia y presupuesto, y te mantenemos informado en cada etapa del proceso."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Trabajan con cualquier tipo de mercancía?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Trabajamos con una amplia variedad de categorías incluyendo electrónica, textiles, insumos industriales, productos de consumo, materiales de construcción, equipos y maquinaria. Hay restricciones para mercancías peligrosas o ilegales. Contáctanos para confirmar si podemos trabajar con tu producto específico."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cómo garantizan que los proveedores son confiables?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Realizamos un proceso riguroso de verificación que incluye: revisión de documentos legales y licencias de operación, auditoría de instalaciones físicas cuando es posible, análisis de historial comercial y referencias de otros compradores, control de calidad de muestras antes de la producción masiva, y validación de certificaciones de calidad pertinentes."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cuál es el monto mínimo de importación para trabajar con ustedes?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No tenemos un monto mínimo fijo. Sin embargo, para que la relación costo-beneficio sea favorable para el cliente, generalmente recomendamos operaciones a partir de $3,000 USD. Para proyectos menores, también podemos asesorarte sobre las mejores opciones disponibles."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <!-- Page Hero -->
