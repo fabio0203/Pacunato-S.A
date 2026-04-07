@@ -189,6 +189,13 @@ ul {
     color: var(--text-light);
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    position: relative;
 }
 
 .nav-menu {
@@ -236,9 +243,9 @@ ul {
     background-image: url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2070');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     padding-top: 80px;
-    filter: brightness(0.9) contrast(1.2); /* Reduce brillo  */
+    filter: brightness(0.9) contrast(1.2);
 }
 
 /* Overlay con animación - MENOS AZUL */
@@ -1281,11 +1288,18 @@ section {
     }
     
     .mobile-menu-btn {
-        display: block;
+        display: flex;
     }
     
+    .hero {
+        background-attachment: scroll;
+        background-position: center center;
+        min-height: 100svh;
+    }
+
     .hero-buttons {
         flex-direction: column;
+        align-items: center;
     }
     
     .form-row {
