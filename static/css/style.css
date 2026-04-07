@@ -196,8 +196,10 @@ ul {
     min-height: 44px;
     align-items: center;
     justify-content: center;
-    z-index: 1001;
+    z-index: 1100;
     position: relative;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-menu {
@@ -242,28 +244,25 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    background-color: #0a0a0a;
     background-image: url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2070');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-attachment: scroll;
     padding-top: 80px;
-    overflow: hidden;
 }
 
-/* Overlay con animación - MENOS AZUL */
+/* Overlay */
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(
-        135deg, 
-        rgba(0, 62, 138, 0.5) 0%,    /* Antes: 0.9 → Ahora: 0.5 (más transparente) */
-        rgba(0, 10, 20, 0.7) 100%     /* Antes: 0.95 → Ahora: 0.7 (más transparente) */
+        135deg,
+        rgba(0, 62, 138, 0.5) 0%,
+        rgba(0, 10, 20, 0.7) 100%
     );
-    animation: overlayPulse 8s ease-in-out infinite;
     z-index: 1;
 }
 
