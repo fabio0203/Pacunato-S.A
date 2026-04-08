@@ -1313,9 +1313,21 @@ section {
         background-attachment: scroll;
         background-position: center center;
         background-size: cover;
-        height: 100svh;
-        min-height: 600px;
-        max-height: 900px;
+        min-height: 100svh;
+        height: auto;
+        padding-top: 100px;
+        padding-bottom: 3rem;
+        align-items: flex-start;
+    }
+
+    .hero-content {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .hero-title {
+        min-height: auto;
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
     }
 
     .hero-buttons {
