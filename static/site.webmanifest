@@ -1,0 +1,21 @@
+{
+    "name": "Pacunato S.A.",
+    "short_name": "Pacunato",
+    "description": "Compras Internacionales y Logística desde Panamá",
+    "start_url": "/",
+    "display": "browser",
+    "background_color": "#0a0a0a",
+    "theme_color": "#00B4D8",
+    "icons": [
+        {
+            "src": "/static/images/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/images/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

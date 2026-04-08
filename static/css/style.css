@@ -252,9 +252,14 @@ ul {
     padding-top: 80px;
 }
 
-/* Overlay removido */
-.hero-overlay {
-    display: none;
+/* Overlay via pseudo-elemento — siempre cubre el 100% del hero sin importar height */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 20, 60, 0.52);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .hero-content {
