@@ -68,16 +68,72 @@
                 <i class="fas fa-plane-departure" style="color: var(--primary-color);"></i>
                 País de Origen *
             </label>
-            <input type="text"
-                   id="pais_origen"
-                   name="pais_origen"
-                   required
-                   minlength="2"
-                   maxlength="50"
-                   pattern="[A-Za-zÀ-ÿñÑ\s]+"
-                   title="Ingresa el nombre del país"
-                   autocomplete="country-name"
-                   placeholder="Ej: China, Estados Unidos, México...">
+            <select id="pais_origen" name="pais_origen" required>
+                <option value="">Selecciona el país de origen</option>
+                <optgroup label="Más comunes">
+                    <option value="Panamá">Panamá</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <option value="China">China</option>
+                    <option value="México">México</option>
+                    <option value="Colombia">Colombia</option>
+                </optgroup>
+                <optgroup label="Centroamérica">
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Belice">Belice</option>
+                </optgroup>
+                <optgroup label="Caribe">
+                    <option value="Cuba">Cuba</option>
+                    <option value="República Dominicana">República Dominicana</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="Haití">Haití</option>
+                    <option value="Puerto Rico">Puerto Rico</option>
+                    <option value="Trinidad y Tobago">Trinidad y Tobago</option>
+                </optgroup>
+                <optgroup label="Sudamérica">
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Perú">Perú</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Paraguay">Paraguay</option>
+                </optgroup>
+                <optgroup label="Europa">
+                    <option value="España">España</option>
+                    <option value="Alemania">Alemania</option>
+                    <option value="Italia">Italia</option>
+                    <option value="Francia">Francia</option>
+                    <option value="Países Bajos">Países Bajos</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Reino Unido">Reino Unido</option>
+                    <option value="Turquía">Turquía</option>
+                </optgroup>
+                <optgroup label="Asia">
+                    <option value="Japón">Japón</option>
+                    <option value="Corea del Sur">Corea del Sur</option>
+                    <option value="India">India</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Tailandia">Tailandia</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Hong Kong">Hong Kong</option>
+                    <option value="Taiwán">Taiwán</option>
+                    <option value="Bangladés">Bangladés</option>
+                </optgroup>
+                <optgroup label="Otros">
+                    <option value="Canadá">Canadá</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Emiratos Árabes Unidos">Emiratos Árabes Unidos</option>
+                    <option value="Sudáfrica">Sudáfrica</option>
+                    <option value="Marruecos">Marruecos</option>
+                    <option value="Otro">Otro</option>
+                </optgroup>
+            </select>
             <small style="display: block; margin-top: 0.5rem; color: var(--text-gray); font-size: 0.85rem;">
                 <i class="fas fa-info-circle"></i> País donde se fabrica o compra la mercancía
             </small>
@@ -88,16 +144,44 @@
                 <i class="fas fa-plane-arrival" style="color: var(--success-color, #00D9A5);"></i>
                 País de Destino *
             </label>
-            <input type="text"
-                   id="pais_destino"
-                   name="pais_destino"
-                   required
-                   minlength="2"
-                   maxlength="50"
-                   pattern="[A-Za-zÀ-ÿñÑ\s]+"
-                   title="Ingresa el nombre del país"
-                   autocomplete="country-name"
-                   placeholder="Ej: Panamá, Colombia, Costa Rica...">
+            <select id="pais_destino" name="pais_destino" required>
+                <option value="">Selecciona el país de destino</option>
+                <optgroup label="Más comunes">
+                    <option value="Cuba">Cuba</option>
+                    <option value="Panamá">Panamá</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                </optgroup>
+                <optgroup label="Centroamérica">
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Belice">Belice</option>
+                    <option value="México">México</option>
+                </optgroup>
+                <optgroup label="Caribe">
+                    <option value="República Dominicana">República Dominicana</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="Haití">Haití</option>
+                    <option value="Puerto Rico">Puerto Rico</option>
+                    <option value="Trinidad y Tobago">Trinidad y Tobago</option>
+                </optgroup>
+                <optgroup label="Sudamérica">
+                    <option value="Colombia">Colombia</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Perú">Perú</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Bolivia">Bolivia</option>
+                </optgroup>
+                <optgroup label="Otros">
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <option value="España">España</option>
+                    <option value="Otro">Otro</option>
+                </optgroup>
+            </select>
             <small style="display: block; margin-top: 0.5rem; color: var(--text-gray); font-size: 0.85rem;">
                 <i class="fas fa-info-circle"></i> País donde recibirás la mercancía
             </small>
