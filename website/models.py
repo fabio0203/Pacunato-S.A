@@ -39,6 +39,7 @@ class BlogPost(models.Model):
     excerpt = models.TextField(max_length=300, verbose_name='Extracto')
     content = models.TextField(verbose_name='Contenido')
     featured_image = models.ImageField(upload_to='blog/', verbose_name='Imagen Destacada', blank=True)
+    featured_image_url = models.URLField(max_length=500, verbose_name='URL de Imagen (Cloudinary)', blank=True, help_text='Pega aquí la URL de la imagen subida a Cloudinary')
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='eventos')
     author = models.CharField(max_length=100, default='Equipo Pacunato')
     read_time = models.IntegerField(default=3, verbose_name='Tiempo de Lectura (min)')

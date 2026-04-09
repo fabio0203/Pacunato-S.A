@@ -8,7 +8,7 @@
 {% block og_type %}article{% endblock %}
 {% block og_title %}{{ post.title }}{% endblock %}
 {% block og_description %}{{ post.excerpt|truncatechars:155 }}{% endblock %}
-{% block og_image %}{% if post.featured_image %}{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}{% else %}https://www.pacunato.com{% static 'images/logo.png' %}{% endif %}{% endblock %}
+{% block og_image %}{% if post.featured_image_url %}{{ post.featured_image_url }}{% elif post.featured_image %}{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}{% else %}https://www.pacunato.com{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
 {% block breadcrumb_schema %},
     {
@@ -134,7 +134,9 @@
             <article class="post-main-content">
                 <!-- Featured Image -->
                 <div class="post-featured-image">
-                    {% if post.featured_image %}
+                    {% if post.featured_image_url %}
+                        <img src="{{ post.featured_image_url }}" alt="{{ post.title }}">
+                    {% elif post.featured_image %}
                         <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                     {% else %}
                         <img src="{% static 'images/director.jpeg' %}" alt="{{ post.title }}">
