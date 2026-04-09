@@ -4,7 +4,7 @@ services:
     runtime: python
     plan: starter
     buildCommand: ./build.sh
-    startCommand: gunicorn pacunato_project.wsgi:application --bind 0.0.0.0:$PORT
+    startCommand: gunicorn pacunato_project.wsgi:application
     envVars:
       - key: PYTHON_VERSION
         value: 3.13.0
