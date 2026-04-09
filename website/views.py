@@ -201,8 +201,7 @@ def asesoria(request):
                     subject='Recibimos tu consulta — Pacunato S.A.',
                     message=(
                         f'Hola {nombre},\n\n'
-                        f'Hemos recibido tu consulta y te responderemos en menos de 24 horas.\n\n'
-                        f'Tu consulta:\n{duda}\n\n'
+                        f'gracias por contactarnos, en breve nuestro equipo se pondrá en contacto.\n\n'
                         f'Si tienes una urgencia, escríbenos a info@pacunato.com '
                         f'o por WhatsApp al +507 6441-8437.\n\n'
                         f'Saludos,\nEquipo Pacunato S.A.'
@@ -288,9 +287,7 @@ def cotizacion(request):
                     subject='Recibimos tu solicitud de cotización — Pacunato S.A.',
                     message=(
                         f'Hola {nombre},\n\n'
-                        f'Hemos recibido tu solicitud de cotización para la ruta '
-                        f'{pais_origen} → {pais_destino}.\n\n'
-                        f'Nuestro equipo la revisará y te contactará en menos de 48 horas.\n\n'
+                        f'gracias por contactarnos, en breve nuestro equipo se pondrá en contacto.\n\n'
                         f'Si tienes una urgencia, escríbenos a info@pacunato.com '
                         f'o por WhatsApp al +507 6441-8437.\n\n'
                         f'Saludos,\nEquipo Pacunato S.A.'
