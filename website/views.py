@@ -439,10 +439,6 @@ def suscribir_newsletter(request):
                     f'✗ Subestimar los tiempos — el proceso completo toma 30 a 90 días\n'
                     f'✗ No documentar el origen de los fondos — las transacciones en MLC requieren trazabilidad\n'
                     f'✗ No consolidar la carga — pierdes dinero enviando contenedores a medio llenar\n\n'
-                    f'¿CUÁNTO CUESTA IMPORTAR DESDE PANAMÁ A CUBA?\n\n'
-                    f'• Flete LCL: desde $300 USD\n'
-                    f'• Contenedor FCL 20 pies: entre $1,200 y $2,500 USD\n'
-                    f'• Tiempo total del proceso: 30 a 60 días para una operación bien coordinada\n\n'
                     f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n'
                     f'¿Listo para importar? En Pacunato S.A. nos encargamos de todo el proceso.\n'
                     f'Solicita tu cotización gratuita en: https://www.pacunato.com/#cotizacion\n\n'
@@ -453,8 +449,8 @@ def suscribir_newsletter(request):
                     f'Email: info@pacunato.com\n'
                     f'WhatsApp: +507 6441-8437\n'
                     f'Web: https://www.pacunato.com\n\n'
-                    f'¿Quieres recibir más contenido sobre importaciones, logística y comercio internacional?\n'
-                    f'Suscríbete a nuestro newsletter: https://www.pacunato.com/#newsletter\n\n'
+                    f'De vez en cuando nuestro equipo te enviará recomendaciones, novedades del sector '
+                    f'y contenido de interés sobre importaciones y comercio internacional.\n\n'
                     f'Saludos,\nEquipo Pacunato S.A.'
                 )
             else:
