@@ -137,7 +137,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'info@pacunato.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD', '')
-DEFAULT_FROM_EMAIL = 'Pacunato S.A. <info@pacunato.com>'
+DEFAULT_FROM_EMAIL = '"Pacunato S.A." <info@pacunato.com>'
 SERVER_EMAIL = 'info@pacunato.com'
 CONTACT_EMAIL = 'info@pacunato.com'
 
