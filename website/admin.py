@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     BlogPost, BlogTag, BlogPostView,
     ConsultaAsesoria, SolicitudCotizacion,
-    NewsletterSubscriber
+    NewsletterSubscriber, SolicitudGuia
 )
 
 # ============================================
@@ -295,3 +295,34 @@ class NewsletterSubscriberAdmin(admin.ModelAdmin):
         count = queryset.update(is_active=True, unsubscribed_date=None)
         self.message_user(request, f'{count} suscriptor(es) reactivado(s).')
     reactivar_suscriptores.short_description = 'Reactivar suscriptores'
+
+
+# ============================================
+# ADMIN DE SOLICITUDES DE GUÍA DE IMPORTACIÓN
+# ============================================
+
+@admin.register(SolicitudGuia)
+class SolicitudGuiaAdmin(admin.ModelAdmin):
+    list_display = ['email', 'name', 'subscribed_date', 'is_active']
+    list_filter = ['is_active', 'subscribed_date']
+    search_fields = ['email', 'name']
+    readonly_fields = ['subscribed_date', 'consent_date', 'ip_address', 'source_page']
+
+    fieldsets = (
+        ('Datos del Solicitante', {
+            'fields': ('email', 'name')
+        }),
+        ('Estado', {
+            'fields': ('is_active', 'subscribed_date')
+        }),
+        ('Tracking', {
+            'fields': ('source_page', 'ip_address'),
+            'classes': ('collapse',)
+        }),
+    )
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).filter(source_page='home-lead-magnet')
+
+    def has_add_permission(self, request):
+        return False

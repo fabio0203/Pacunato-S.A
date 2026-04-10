@@ -211,6 +211,20 @@ class NewsletterSubscriber(models.Model):
         verbose_name = "Suscriptor Newsletter"
         verbose_name_plural = "Suscriptores Newsletter"
         ordering = ['-subscribed_date']
-    
+
     def __str__(self):
         return f"{self.email} - {'Activo' if self.is_active else 'Inactivo'}"
+
+
+class SolicitudGuia(NewsletterSubscriber):
+    """Proxy model para ver solo solicitudes de la guía de importación en el admin"""
+
+    class Meta:
+        proxy = True
+        verbose_name = "Solicitud de Guía"
+        verbose_name_plural = "Solicitudes de Guía de Importación"
+
+    def save(self, *args, **kwargs):
+        if not self.source_page:
+            self.source_page = 'home-lead-magnet'
+        super().save(*args, **kwargs)

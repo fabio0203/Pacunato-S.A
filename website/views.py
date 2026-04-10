@@ -193,9 +193,14 @@ def asesoria(request):
                     ),
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[settings.CONTACT_EMAIL],
-                    fail_silently=True,
+                    fail_silently=False,
                 )
-                # Auto-respuesta al usuario
+                print(f"✅ Email equipo enviado — Asesoría #{consulta.id}")
+            except Exception as e:
+                print(f"⚠️ Error email equipo (Asesoría): {str(e)}")
+
+            # Auto-respuesta al usuario
+            try:
                 send_mail(
                     subject='Recibimos tu consulta — Pacunato S.A.',
                     message=(
@@ -208,10 +213,11 @@ def asesoria(request):
                     ),
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[email],
-                    fail_silently=True,
+                    fail_silently=False,
                 )
-            except Exception:
-                pass
+                print(f"✅ Email cliente enviado — Asesoría #{consulta.id} → {email}")
+            except Exception as e:
+                print(f"⚠️ Error email cliente (Asesoría): {str(e)}")
 
             return render(request, 'asesoria.html', {
                 'mensaje_exito': True,
@@ -263,8 +269,8 @@ def cotizacion(request):
             )
             
             # Notificación al equipo de Pacunato
+            empresa_str = f' ({empresa})' if empresa else ''
             try:
-                empresa_str = f' ({empresa})' if empresa else ''
                 send_mail(
                     subject=f'[Nueva Cotización] {nombre}{empresa_str} — {pais_origen} → {pais_destino}',
                     message=(
@@ -280,9 +286,14 @@ def cotizacion(request):
                     ),
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[settings.CONTACT_EMAIL],
-                    fail_silently=True,
+                    fail_silently=False,
                 )
-                # Auto-respuesta al usuario
+                print(f"✅ Email equipo enviado — Cotización #{solicitud.id}")
+            except Exception as e:
+                print(f"⚠️ Error email equipo (Cotización): {str(e)}")
+
+            # Auto-respuesta al usuario
+            try:
                 send_mail(
                     subject='Recibimos tu solicitud de cotización — Pacunato S.A.',
                     message=(
@@ -295,10 +306,11 @@ def cotizacion(request):
                     ),
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[email],
-                    fail_silently=True,
+                    fail_silently=False,
                 )
-            except Exception:
-                pass
+                print(f"✅ Email cliente enviado — Cotización #{solicitud.id} → {email}")
+            except Exception as e:
+                print(f"⚠️ Error email cliente (Cotización): {str(e)}")
 
             messages.success(request, f'¡Gracias {nombre}! Tu solicitud ha sido enviada.')
             return redirect('website:home')
