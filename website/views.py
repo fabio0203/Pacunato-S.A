@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.conf import settings
 from django.utils import timezone
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 import json
 import re
 
@@ -181,9 +181,9 @@ def asesoria(request):
             
             # Notificación al equipo de Pacunato
             try:
-                send_mail(
-                    subject=f'[Nueva Consulta] {nombre} - Asesoría',
-                    message=(
+                msg = EmailMessage(
+                    subject=f'[Nueva Consulta de Asesoría] {nombre} — {email}',
+                    body=(
                         f'Tipo: Consulta de Asesoría\n\n'
                         f'Nombre: {nombre}\n'
                         f'Email: {email}\n'
@@ -192,9 +192,10 @@ def asesoria(request):
                         f'ID en base de datos: #{consulta.id}'
                     ),
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[settings.CONTACT_EMAIL],
-                    fail_silently=False,
+                    to=[settings.CONTACT_EMAIL],
+                    reply_to=[email],
                 )
+                msg.send(fail_silently=False)
                 print(f"✅ Email equipo enviado — Asesoría #{consulta.id}")
             except Exception as e:
                 print(f"⚠️ Error email equipo (Asesoría): {str(e)}")
@@ -271,9 +272,9 @@ def cotizacion(request):
             # Notificación al equipo de Pacunato
             empresa_str = f' ({empresa})' if empresa else ''
             try:
-                send_mail(
+                msg = EmailMessage(
                     subject=f'[Nueva Cotización] {nombre}{empresa_str} — {pais_origen} → {pais_destino}',
-                    message=(
+                    body=(
                         f'Tipo: Solicitud de Cotización\n\n'
                         f'Nombre: {nombre}\n'
                         f'Empresa: {empresa or "No especificada"}\n'
@@ -285,9 +286,10 @@ def cotizacion(request):
                         f'ID en base de datos: #{solicitud.id}'
                     ),
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[settings.CONTACT_EMAIL],
-                    fail_silently=False,
+                    to=[settings.CONTACT_EMAIL],
+                    reply_to=[email],
                 )
+                msg.send(fail_silently=False)
                 print(f"✅ Email equipo enviado — Cotización #{solicitud.id}")
             except Exception as e:
                 print(f"⚠️ Error email equipo (Cotización): {str(e)}")
@@ -380,9 +382,9 @@ def suscribir_newsletter(request):
         # --- Email a info@pacunato.com ---
         try:
             tipo_label = 'Solicitud de Guía de Importación' if es_guia else 'Suscripción al Newsletter'
-            send_mail(
+            msg = EmailMessage(
                 subject=f'[{tipo_label}] {nombre_display} — {email}',
-                message=(
+                body=(
                     f'Tipo: {tipo_label}\n\n'
                     f'Nombre: {nombre_display}\n'
                     f'Email: {email}\n'
@@ -391,9 +393,10 @@ def suscribir_newsletter(request):
                     f'IP: {ip_address}'
                 ),
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.CONTACT_EMAIL],
-                fail_silently=False,
+                to=[settings.CONTACT_EMAIL],
+                reply_to=[email],
             )
+            msg.send(fail_silently=False)
         except Exception as e:
             print(f"⚠️ Error email interno: {str(e)}")
 
