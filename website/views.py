@@ -178,7 +178,14 @@ def asesoria(request):
                 ip_address=get_client_ip(request),
                 user_agent=request.META.get('HTTP_USER_AGENT', '')[:500]
             )
-            
+
+            # Registrar en Google Sheets
+            from .sheets import log_to_sheets
+            log_to_sheets('Asesoria', [
+                timezone.now().strftime('%Y-%m-%d %H:%M'),
+                nombre, email, telefono, duda
+            ])
+
             # Notificación al equipo de Pacunato
             try:
                 msg = EmailMessage(
@@ -268,7 +275,15 @@ def cotizacion(request):
                 ip_address=get_client_ip(request),
                 user_agent=request.META.get('HTTP_USER_AGENT', '')[:500]
             )
-            
+
+            # Registrar en Google Sheets
+            from .sheets import log_to_sheets
+            log_to_sheets('Cotizacion', [
+                timezone.now().strftime('%Y-%m-%d %H:%M'),
+                nombre, empresa, email, telefono,
+                pais_origen, pais_destino, tipo_servicio, mensaje
+            ])
+
             # Notificación al equipo de Pacunato
             empresa_str = f' ({empresa})' if empresa else ''
             try:
@@ -378,6 +393,19 @@ def suscribir_newsletter(request):
             is_new = False
 
         nombre_display = name if name else 'Cliente'
+
+        # Registrar en Google Sheets
+        from .sheets import log_to_sheets
+        if es_guia:
+            log_to_sheets('Guia', [
+                timezone.now().strftime('%Y-%m-%d %H:%M'),
+                nombre_display, email
+            ])
+        else:
+            log_to_sheets('Newsletter', [
+                timezone.now().strftime('%Y-%m-%d %H:%M'),
+                nombre_display, email, source
+            ])
 
         # --- Email a info@pacunato.com ---
         try:
