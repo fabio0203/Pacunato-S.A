@@ -142,22 +142,3 @@ SERVER_EMAIL = 'info@pacunato.com'
 CONTACT_EMAIL = 'info@pacunato.com'
 
 
-# ============================================
-# WEBHOOKS DE AUTOMATIZACIÓN
-# ============================================
-
-# Make.com (legacy - siendo migrado a n8n)
-MAKE_WEBHOOK_ASESORIA = os.environ.get(
-    'MAKE_WEBHOOK_ASESORIA',
-    'https://hook.eu2.make.com/TU_WEBHOOK_ID_ASESORIA'
-)
-MAKE_WEBHOOK_COTIZACION = os.environ.get(
-    'MAKE_WEBHOOK_COTIZACION',
-    'https://hook.eu2.make.com/TU_WEBHOOK_ID_COTIZACION'
-)
-
-# n8n (nuevo)
-N8N_WEBHOOK_BASE_URL = os.environ.get(
-    'N8N_WEBHOOK_BASE_URL',
-    'https://eduarodriguez.app.n8n.cloud/webhook/'
-)

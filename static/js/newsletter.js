@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Suscribiendo...';
             
             try {
+                const sourceInput = this.querySelector('input[name="source"]');
+                const source = sourceInput ? sourceInput.value : '';
+
                 const response = await fetch('/suscribir-newsletter/', {
                     method: 'POST',
                     headers: {
@@ -43,7 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify({
                         email: email,
                         name: name,
-                        page: window.location.href
+                        page: window.location.href,
+                        source: source
                     })
                 });
                 

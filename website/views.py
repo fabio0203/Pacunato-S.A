@@ -7,7 +7,6 @@ from django.conf import settings
 from django.utils import timezone
 from django.core.mail import send_mail
 import json
-import requests
 import re
 
 def home(request):
@@ -314,31 +313,26 @@ def cotizacion(request):
 @csrf_exempt
 @require_POST
 def suscribir_newsletter(request):
-    """Vista para suscripción al newsletter"""
+    """Vista para suscripción al newsletter y solicitud de guía"""
     from .models import NewsletterSubscriber
-    
+
     try:
         data = json.loads(request.body)
         email = data.get('email', '').strip().lower()
         name = data.get('name', '').strip()
-        
+        source = data.get('source', data.get('page', request.META.get('HTTP_REFERER', '')))
+
         if not email:
-            return JsonResponse({
-                'success': False,
-                'message': 'El email es requerido'
-            }, status=400)
-        
+            return JsonResponse({'success': False, 'message': 'El email es requerido'}, status=400)
+
         email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
         if not re.match(email_regex, email):
-            return JsonResponse({
-                'success': False,
-                'message': 'Email inválido'
-            }, status=400)
-        
+            return JsonResponse({'success': False, 'message': 'Email inválido'}, status=400)
+
         ip_address = request.META.get('REMOTE_ADDR')
         user_agent = request.META.get('HTTP_USER_AGENT', '')
-        source_page = data.get('page', request.META.get('HTTP_REFERER', ''))
-        
+        es_guia = source == 'home-lead-magnet'
+
         subscriber, created = NewsletterSubscriber.objects.get_or_create(
             email=email,
             defaults={
@@ -346,125 +340,153 @@ def suscribir_newsletter(request):
                 'is_active': True,
                 'ip_address': ip_address,
                 'user_agent': user_agent,
-                'source_page': source_page,
+                'source_page': source,
                 'consent_given': True,
                 'consent_date': timezone.now()
             }
         )
-        
+
         if created:
-            message = '¡Gracias por suscribirte!'
+            message = '¡Gracias! Revisa tu correo.' if es_guia else '¡Gracias por suscribirte!'
             is_new = True
         else:
-            if subscriber.is_active:
-                return JsonResponse({
-                    'success': False,
-                    'message': 'Este email ya está suscrito'
-                }, status=400)
-            else:
-                subscriber.is_active = True
-                subscriber.unsubscribed_date = None
-                subscriber.consent_date = timezone.now()
-                subscriber.name = name if name else subscriber.name
-                subscriber.ip_address = ip_address
-                subscriber.user_agent = user_agent
-                subscriber.source_page = source_page
-                subscriber.save()
-                message = '¡Bienvenido de nuevo!'
-                is_new = False
-        
+            if subscriber.is_active and not es_guia:
+                return JsonResponse({'success': False, 'message': 'Este email ya está suscrito'}, status=400)
+            subscriber.is_active = True
+            subscriber.unsubscribed_date = None
+            subscriber.consent_date = timezone.now()
+            subscriber.name = name if name else subscriber.name
+            subscriber.ip_address = ip_address
+            subscriber.user_agent = user_agent
+            subscriber.source_page = source
+            subscriber.save()
+            message = '¡Gracias! Revisa tu correo.' if es_guia else '¡Bienvenido de nuevo!'
+            is_new = False
+
+        nombre_display = name if name else 'Cliente'
+
+        # --- Email a info@pacunato.com ---
         try:
-            enviar_a_make_newsletter(subscriber)
+            tipo_label = 'Solicitud de Guía de Importación' if es_guia else 'Suscripción al Newsletter'
+            send_mail(
+                subject=f'[{tipo_label}] {nombre_display} — {email}',
+                message=(
+                    f'Tipo: {tipo_label}\n\n'
+                    f'Nombre: {nombre_display}\n'
+                    f'Email: {email}\n'
+                    f'Fuente: {source}\n'
+                    f'Estado: {"Nuevo suscriptor" if is_new else "Suscriptor reactivado"}\n'
+                    f'IP: {ip_address}'
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.CONTACT_EMAIL],
+                fail_silently=False,
+            )
         except Exception as e:
-            print(f"⚠️ Error enviando a Make: {str(e)}")
-        
-        print(f"✅ Newsletter: {email} - {'Nuevo' if is_new else 'Reactivado'}")
-        
-        return JsonResponse({
-            'success': True,
-            'message': message
-        })
-        
+            print(f"⚠️ Error email interno: {str(e)}")
+
+        # --- Auto-respuesta al usuario ---
+        try:
+            if es_guia:
+                # Email con la guía de importación
+                asunto_usuario = 'Tu Guía de Importación — Pacunato S.A.'
+                cuerpo_usuario = (
+                    f'Hola {nombre_display},\n\n'
+                    f'gracias por tu interés en Pacunato S.A. Aquí está tu guía completa sobre cómo importar a Cuba desde Panamá.\n\n'
+                    f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+                    f'CÓMO IMPORTAR A CUBA DESDE PANAMÁ\n'
+                    f'Guía Completa para Empresas — 2026\n'
+                    f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n'
+                    f'Panamá, con su Zona Libre de Colón — la segunda zona franca más grande del mundo — '
+                    f'actúa como hub natural para abastecer a empresas e importadoras cubanas con productos de todo el mundo.\n\n'
+                    f'¿POR QUÉ PANAMÁ ES EL PUNTO DE PARTIDA IDEAL?\n\n'
+                    f'• Zona Libre de Colón: más de 2,600 empresas operando, acceso a productos de Asia, Europa y Norteamérica\n'
+                    f'• Conectividad marítima directa: rutas regulares hacia el Puerto de Mariel y Puerto de La Habana\n'
+                    f'• Infraestructura logística avanzada: operadores y agencias con experiencia en la ruta Panamá–Cuba\n'
+                    f'• Ubicación estratégica: menos de 3 días de tránsito marítimo desde Panamá a Cuba\n\n'
+                    f'PROCESO PASO A PASO\n\n'
+                    f'1. Identificar el producto y el proveedor\n'
+                    f'   Desde Panamá puedes acceder a proveedores globales. En Pacunato buscamos y verificamos proveedores para que no tengas que hacerlo tú.\n\n'
+                    f'2. Verificar que el producto puede ingresar a Cuba\n'
+                    f'   Cuba tiene restricciones para ciertos productos. Verificamos permisos del MINSAP, MINAG o CITMA según el caso.\n\n'
+                    f'3. Identificar la entidad importadora en Cuba\n'
+                    f'   Sin el receptor legal correcto, la mercancía no entra. Conocemos el ecosistema cubano y te orientamos desde el primer día.\n\n'
+                    f'4. Cotizar el flete\n'
+                    f'   • LCL (consolidada): ideal para volúmenes pequeños, reduce costos\n'
+                    f'   • FCL (contenedor completo): para volúmenes mayores, mayor control\n'
+                    f'   Tiempo de tránsito: 3 a 7 días desde Panamá.\n\n'
+                    f'5. Preparar la documentación\n'
+                    f'   Factura comercial, packing list, Bill of Lading, certificado de origen, permisos sanitarios y contrato comercial.\n\n'
+                    f'6. Despacho aduanero en Cuba\n'
+                    f'   Lo gestiona la entidad importadora cubana con su agente de aduana local.\n\n'
+                    f'ERRORES MÁS COMUNES (Y CÓMO EVITARLOS)\n\n'
+                    f'✗ No verificar al receptor cubano — puede bloquear toda la operación\n'
+                    f'✗ Subestimar los tiempos — el proceso completo toma 30 a 90 días\n'
+                    f'✗ No documentar el origen de los fondos — las transacciones en MLC requieren trazabilidad\n'
+                    f'✗ No consolidar la carga — pierdes dinero enviando contenedores a medio llenar\n\n'
+                    f'¿CUÁNTO CUESTA IMPORTAR DESDE PANAMÁ A CUBA?\n\n'
+                    f'• Flete LCL: desde $300 USD\n'
+                    f'• Contenedor FCL 20 pies: entre $1,200 y $2,500 USD\n'
+                    f'• Tiempo total del proceso: 30 a 60 días para una operación bien coordinada\n\n'
+                    f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n'
+                    f'¿Listo para importar? En Pacunato S.A. nos encargamos de todo el proceso.\n'
+                    f'Solicita tu cotización gratuita en: https://www.pacunato.com/#cotizacion\n\n'
+                    f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+                    f'DATOS DE CONTACTO\n'
+                    f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+                    f'Pacunato S.A.\n'
+                    f'Email: info@pacunato.com\n'
+                    f'WhatsApp: +507 6441-8437\n'
+                    f'Web: https://www.pacunato.com\n\n'
+                    f'¿Quieres recibir más contenido sobre importaciones, logística y comercio internacional?\n'
+                    f'Suscríbete a nuestro newsletter: https://www.pacunato.com/#newsletter\n\n'
+                    f'Saludos,\nEquipo Pacunato S.A.'
+                )
+            else:
+                # Email de bienvenida al newsletter
+                asunto_usuario = 'Bienvenido al Newsletter de Pacunato S.A.'
+                cuerpo_usuario = (
+                    f'Hola {nombre_display},\n\n'
+                    f'gracias por suscribirte. A partir de ahora recibirás de nuestra parte:\n\n'
+                    f'• Guías prácticas sobre importaciones y logística internacional\n'
+                    f'• Novedades del sector de comercio exterior en Panamá y Centroamérica\n'
+                    f'• Consejos para optimizar tus operaciones de importación\n'
+                    f'• Oportunidades y tendencias del mercado\n\n'
+                    f'Si en algún momento necesitas importar o tienes alguna consulta, estamos aquí para ayudarte.\n\n'
+                    f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+                    f'DATOS DE CONTACTO\n'
+                    f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+                    f'Pacunato S.A.\n'
+                    f'Email: info@pacunato.com\n'
+                    f'WhatsApp: +507 6441-8437\n'
+                    f'Web: https://www.pacunato.com\n\n'
+                    f'Saludos,\nEquipo Pacunato S.A.'
+                )
+
+            send_mail(
+                subject=asunto_usuario,
+                message=cuerpo_usuario,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            print(f"⚠️ Error email usuario: {str(e)}")
+
+        print(f"✅ Newsletter: {email} — {'Guía' if es_guia else 'Newsletter'} — {'Nuevo' if is_new else 'Reactivado'}")
+
+        return JsonResponse({'success': True, 'message': message})
+
     except json.JSONDecodeError:
-        return JsonResponse({
-            'success': False,
-            'message': 'Datos inválidos'
-        }, status=400)
-        
+        return JsonResponse({'success': False, 'message': 'Datos inválidos'}, status=400)
+
     except Exception as e:
         print(f"❌ Error newsletter: {str(e)}")
-        return JsonResponse({
-            'success': False,
-            'message': 'Error al procesar la suscripción'
-        }, status=500)
+        return JsonResponse({'success': False, 'message': 'Error al procesar la suscripción'}, status=500)
 
 # ============================================
 # FUNCIONES AUXILIARES
 # ============================================
-
-def enviar_a_make(webhook_url, data):
-    """Envía datos al webhook de Make.com"""
-    try:
-        response = requests.post(
-            webhook_url,
-            json=data,
-            headers={'Content-Type': 'application/json'},
-            timeout=10
-        )
-        
-        if response.status_code == 200:
-            print(f"✅ Datos enviados a Make: {data.get('tipo')}")
-            return True
-        else:
-            print(f"⚠️ Error Make. Status: {response.status_code}")
-            return False
-            
-    except requests.exceptions.Timeout:
-        print("⚠️ Timeout Make")
-        return False
-    except Exception as e:
-        print(f"⚠️ Error Make: {str(e)}")
-        return False
-
-def enviar_a_make_newsletter(subscriber):
-    """Envía datos de newsletter a Make"""
-    MAKE_WEBHOOK_URL = ''
-    
-    if not MAKE_WEBHOOK_URL:
-        print("ℹ️ Make webhook no configurado")
-        return
-    
-    payload = {
-        'email': subscriber.email,
-        'name': subscriber.name,
-        'timestamp': subscriber.subscribed_date.isoformat(),
-        'ip_address': subscriber.ip_address,
-        'user_agent': subscriber.user_agent,
-        'source': subscriber.source_page,
-        'is_new': subscriber.subscribed_date == subscriber.consent_date,
-        'consent': subscriber.consent_given,
-        'language': 'es',
-        'company': 'Pacunato S.A.'
-    }
-    
-    try:
-        response = requests.post(
-            MAKE_WEBHOOK_URL,
-            json=payload,
-            timeout=5
-        )
-        
-        if response.status_code == 200:
-            subscriber.sent_to_make = True
-            subscriber.save()
-            print(f"✅ Enviado a Make: {subscriber.email}")
-        else:
-            print(f"⚠️ Make error: {response.status_code}")
-            
-    except requests.exceptions.Timeout:
-        print(f"⚠️ Timeout Make")
-    except Exception as e:
-        print(f"⚠️ Error Make: {str(e)}")
 
 def get_client_ip(request):
     """Obtiene la IP real del cliente"""
