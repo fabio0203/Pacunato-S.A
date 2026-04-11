@@ -251,30 +251,11 @@
             
             <!-- Sidebar -->
             <aside class="post-sidebar">
-                <!-- Table of Contents -->
-                <div class="sidebar-widget sticky-widget">
+                <!-- Table of Contents (generado dinámicamente por JS) -->
+                <div class="sidebar-widget sticky-widget" id="toc-widget">
                     <h3 class="widget-title">Contenido</h3>
-                    <nav class="table-of-contents">
-                        <a href="#" class="toc-link active">
-                            <i class="fas fa-circle"></i>
-                            Fortaleciendo Alianzas Estratégicas
-                        </a>
-                        <a href="#" class="toc-link">
-                            <i class="fas fa-circle"></i>
-                            Logros Principales del Encuentro
-                        </a>
-                        <a href="#" class="toc-link">
-                            <i class="fas fa-circle"></i>
-                            Compromiso con la Calidad
-                        </a>
-                        <a href="#" class="toc-link">
-                            <i class="fas fa-circle"></i>
-                            Próximos Pasos
-                        </a>
-                        <a href="#" class="toc-link">
-                            <i class="fas fa-circle"></i>
-                            Conclusión
-                        </a>
+                    <nav class="table-of-contents" id="toc-nav">
+                        <!-- Se llena automáticamente con los H2 del artículo -->
                     </nav>
                 </div>
                 
@@ -366,5 +347,57 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ============================================
+// TOC DINÁMICO — Lee los H2 del artículo
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    const tocNav = document.getElementById('toc-nav');
+    const tocWidget = document.getElementById('toc-widget');
+    const contentBody = document.querySelector('.post-content-body');
+
+    if (!tocNav || !contentBody) return;
+
+    const headings = contentBody.querySelectorAll('h2');
+
+    if (headings.length === 0) {
+        tocWidget.style.display = 'none';
+        return;
+    }
+
+    headings.forEach(function(heading, index) {
+        // Asignar ID si no tiene
+        if (!heading.id) {
+            heading.id = 'section-' + index;
+        }
+
+        const link = document.createElement('a');
+        link.href = '#' + heading.id;
+        link.className = 'toc-link' + (index === 0 ? ' active' : '');
+        link.innerHTML = '<i class="fas fa-circle"></i> ' + heading.textContent;
+
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById(heading.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        tocNav.appendChild(link);
+    });
+
+    // Resaltar sección activa al hacer scroll
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                document.querySelectorAll('.toc-link').forEach(function(link) {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                });
+            }
+        });
+    }, { rootMargin: '0px 0px -60% 0px' });
+
+    headings.forEach(h => observer.observe(h));
+});
 </script>
 {% endblock %}
