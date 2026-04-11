@@ -767,6 +767,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>Te la enviamos directo a tu correo en menos de 5 minutos.</p>
                 <form id="leadMagnetForm" class="newsletter-form" novalidate>
                     {% csrf_token %}
+                    <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;overflow:hidden;" aria-hidden="true" tabindex="-1">
+                        <input type="text" name="website" value="" autocomplete="off" tabindex="-1">
+                    </div>
                     <input type="text"
                            name="name"
                            placeholder="Tu nombre"

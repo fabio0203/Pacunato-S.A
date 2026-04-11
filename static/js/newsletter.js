@@ -10,10 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const emailInput = this.querySelector('input[type="email"]');
             const nameInput = this.querySelector('input[name="name"]');
+            const honeypotInput = this.querySelector('input[name="website"]');
             const submitBtn = this.querySelector('button[type="submit"]');
-            
+
             const email = emailInput.value.trim();
             const name = nameInput ? nameInput.value.trim() : '';
+            const honeypot = honeypotInput ? honeypotInput.value : '';
+
+            // Si el honeypot tiene valor, es un bot — fingir éxito silenciosamente
+            if (honeypot) {
+                form.reset();
+                return;
+            }
             
             // Validación
             if (!email) {
@@ -47,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         email: email,
                         name: name,
                         page: window.location.href,
-                        source: source
+                        source: source,
+                        website: honeypot
                     })
                 });
                 

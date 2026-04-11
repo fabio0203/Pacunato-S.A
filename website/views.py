@@ -158,11 +158,15 @@ def asesoria(request):
     from .models import ConsultaAsesoria
     
     if request.method == 'POST':
+        # Honeypot: si viene relleno es un bot
+        if request.POST.get('website', ''):
+            return render(request, 'asesoria.html', {'mensaje_exito': True, 'nombre': 'Usuario'})
+
         nombre = request.POST.get('nombre', '').strip()
         email = request.POST.get('email', '').strip()
         telefono = request.POST.get('telefono', '').strip()
         duda = request.POST.get('duda', '').strip()
-        
+
         if not all([nombre, email, telefono, duda]):
             return render(request, 'asesoria.html', {
                 'mensaje_error': 'Por favor completa todos los campos requeridos.',
@@ -249,6 +253,10 @@ def cotizacion(request):
     from .models import SolicitudCotizacion
     
     if request.method == 'POST':
+        # Honeypot: si viene relleno es un bot
+        if request.POST.get('website', ''):
+            return redirect('website:home')
+
         nombre = request.POST.get('nombre', '').strip()
         empresa = request.POST.get('empresa', '').strip()
         email = request.POST.get('email', '').strip()
@@ -257,7 +265,7 @@ def cotizacion(request):
         pais_destino = request.POST.get('pais_destino', '').strip()
         tipo_servicio = request.POST.get('tipo_servicio', '').strip()
         mensaje = request.POST.get('mensaje', '').strip()
-        
+
         if not all([nombre, email, telefono, pais_origen, pais_destino, tipo_servicio, mensaje]):
             messages.error(request, 'Por favor completa todos los campos requeridos.')
             return redirect('website:home')
@@ -347,6 +355,11 @@ def suscribir_newsletter(request):
 
     try:
         data = json.loads(request.body)
+
+        # Honeypot: si viene relleno es un bot — fingir éxito
+        if data.get('website', ''):
+            return JsonResponse({'success': True, 'message': '¡Gracias por suscribirte!'})
+
         email = data.get('email', '').strip().lower()
         name = data.get('name', '').strip()
         source = data.get('source', data.get('page', request.META.get('HTTP_REFERER', '')))
