@@ -157,6 +157,7 @@ class SolicitudCotizacionAdmin(admin.ModelAdmin):
         'telefono',
         'get_ruta_display',
         'tipo_servicio',
+        'get_fuente_badge',
         'fecha_envio',
         'procesado',
     ]
@@ -165,6 +166,7 @@ class SolicitudCotizacionAdmin(admin.ModelAdmin):
         'procesado',
         'tipo_servicio',
         'pais_destino',
+        'source_page',
         'fecha_envio'
     ]
 
@@ -178,7 +180,7 @@ class SolicitudCotizacionAdmin(admin.ModelAdmin):
         'mensaje'
     ]
 
-    readonly_fields = ['fecha_envio', 'ip_address', 'user_agent', 'fecha_procesamiento']
+    readonly_fields = ['fecha_envio', 'ip_address', 'user_agent', 'fecha_procesamiento', 'source_page']
 
     fieldsets = (
         ('Información del Cliente', {
@@ -194,11 +196,32 @@ class SolicitudCotizacionAdmin(admin.ModelAdmin):
         ('Estado', {
             'fields': ('procesado', 'fecha_procesamiento', 'notas_admin')
         }),
+        ('Origen de la Solicitud', {
+            'fields': ('source_page',),
+        }),
         ('Metadata', {
             'fields': ('fecha_envio', 'ip_address', 'user_agent'),
             'classes': ('collapse',)
         }),
     )
+
+    def get_fuente_badge(self, obj):
+        from django.utils.html import format_html
+        fuente = obj.source_page or ''
+        if fuente == 'landing-importacion':
+            return format_html(
+                '<span style="background:#00B4D8;color:#000;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">⭐ LANDING</span>'
+            )
+        elif fuente:
+            return format_html(
+                '<span style="background:#444;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">{}</span>',
+                fuente
+            )
+        return format_html(
+            '<span style="color:#888;font-size:11px;">Home</span>'
+        )
+    get_fuente_badge.short_description = 'Fuente'
+    get_fuente_badge.allow_tags = True
 
     actions = ['marcar_como_procesado', 'marcar_como_no_procesado', 'exportar_a_csv']
 

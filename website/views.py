@@ -24,6 +24,10 @@ def nosotros(request):
     """Vista de la página quiénes somos"""
     return render(request, 'nosotros.html')
 
+def landing_importacion(request):
+    """Landing page SEO: empresa de importacion y exportacion panama"""
+    return render(request, 'landing_importacion.html')
+
 def blog(request):
     """Vista para la página principal del blog con datos dinámicos"""
     from .models import BlogPost
@@ -265,11 +269,12 @@ def cotizacion(request):
         pais_destino = request.POST.get('pais_destino', '').strip()
         tipo_servicio = request.POST.get('tipo_servicio', '').strip()
         mensaje = request.POST.get('mensaje', '').strip()
+        source_page = request.POST.get('source_page', '').strip()
 
         if not all([nombre, email, telefono, pais_origen, pais_destino, tipo_servicio, mensaje]):
             messages.error(request, 'Por favor completa todos los campos requeridos.')
             return redirect('website:home')
-        
+
         try:
             solicitud = SolicitudCotizacion.objects.create(
                 nombre=nombre,
@@ -280,25 +285,29 @@ def cotizacion(request):
                 pais_destino=pais_destino,
                 tipo_servicio=tipo_servicio,
                 mensaje=mensaje,
+                source_page=source_page,
                 ip_address=get_client_ip(request),
                 user_agent=request.META.get('HTTP_USER_AGENT', '')[:500]
             )
 
             # Registrar en Google Sheets
             from .sheets import log_to_sheets
+            fuente_display = 'Landing Importación' if source_page == 'landing-importacion' else (source_page or 'Home')
             log_to_sheets('Cotizacion', [
                 timezone.now().strftime('%Y-%m-%d %H:%M'),
                 nombre, empresa, email, telefono,
-                pais_origen, pais_destino, tipo_servicio, mensaje
+                pais_origen, pais_destino, tipo_servicio, mensaje, fuente_display
             ])
 
             # Notificación al equipo de Pacunato
             empresa_str = f' ({empresa})' if empresa else ''
+            fuente_label = f'⭐ LANDING: empresa-importacion-exportacion-panama' if source_page == 'landing-importacion' else f'Página: {source_page or "Home"}'
             try:
                 msg = EmailMessage(
                     subject=f'[Nueva Cotización] {nombre}{empresa_str} — {pais_origen} → {pais_destino}',
                     body=(
-                        f'Tipo: Solicitud de Cotización\n\n'
+                        f'Tipo: Solicitud de Cotización\n'
+                        f'Fuente: {fuente_label}\n\n'
                         f'Nombre: {nombre}\n'
                         f'Empresa: {empresa or "No especificada"}\n'
                         f'Email: {email}\n'
@@ -448,37 +457,38 @@ def suscribir_newsletter(request):
                 asunto_usuario = 'Tu Guía de Importación — Pacunato S.A.'
                 cuerpo_usuario = (
                     f'Hola {nombre_display},\n\n'
-                    f'gracias por tu interés en Pacunato S.A. Aquí está tu guía completa sobre cómo importar a Cuba desde Panamá.\n\n'
+                    f'gracias por tu interés en Pacunato S.A. Aquí está tu guía completa sobre cómo importar a Centroamérica y el Caribe desde Panamá.\n\n'
                     f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
-                    f'CÓMO IMPORTAR A CUBA DESDE PANAMÁ\n'
+                    f'CÓMO IMPORTAR A CENTROAMÉRICA Y EL CARIBE DESDE PANAMÁ\n'
                     f'Guía Completa para Empresas — 2026\n'
                     f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n'
                     f'Panamá, con su Zona Libre de Colón — la segunda zona franca más grande del mundo — '
-                    f'actúa como hub natural para abastecer a empresas e importadoras cubanas con productos de todo el mundo.\n\n'
+                    f'actúa como hub natural para abastecer a empresas importadoras en Guatemala, Honduras, El Salvador, '
+                    f'Costa Rica, República Dominicana y otros mercados de la región con productos de todo el mundo.\n\n'
                     f'¿POR QUÉ PANAMÁ ES EL PUNTO DE PARTIDA IDEAL?\n\n'
                     f'• Zona Libre de Colón: más de 2,600 empresas operando, acceso a productos de Asia, Europa y Norteamérica\n'
-                    f'• Conectividad marítima directa: rutas regulares hacia el Puerto de Mariel y Puerto de La Habana\n'
-                    f'• Infraestructura logística avanzada: operadores y agencias con experiencia en la ruta Panamá–Cuba\n'
-                    f'• Ubicación estratégica: menos de 3 días de tránsito marítimo desde Panamá a Cuba\n\n'
+                    f'• Conectividad marítima directa: rutas regulares hacia los principales puertos centroamericanos y caribeños\n'
+                    f'• Infraestructura logística avanzada: operadores y agencias con experiencia en todas las rutas regionales\n'
+                    f'• Ubicación estratégica: acceso directo al Pacífico y al Atlántico, pocos días de tránsito a cualquier destino\n\n'
                     f'PROCESO PASO A PASO\n\n'
                     f'1. Identificar el producto y el proveedor\n'
                     f'   Desde Panamá puedes acceder a proveedores globales. En Pacunato buscamos y verificamos proveedores para que no tengas que hacerlo tú.\n\n'
-                    f'2. Verificar que el producto puede ingresar a Cuba\n'
-                    f'   Cuba tiene restricciones para ciertos productos. Verificamos permisos del MINSAP, MINAG o CITMA según el caso.\n\n'
-                    f'3. Identificar la entidad importadora en Cuba\n'
-                    f'   Sin el receptor legal correcto, la mercancía no entra. Conocemos el ecosistema cubano y te orientamos desde el primer día.\n\n'
-                    f'4. Cotizar el flete\n'
-                    f'   • LCL (consolidada): ideal para volúmenes pequeños, reduce costos\n'
-                    f'   • FCL (contenedor completo): para volúmenes mayores, mayor control\n'
-                    f'   Tiempo de tránsito: 3 a 7 días desde Panamá.\n\n'
+                    f'2. Verificar los requisitos de importación en el país destino\n'
+                    f'   Cada país tiene sus propios aranceles, restricciones y permisos especiales. Verificarlo antes evita costosas demoras en aduana.\n\n'
+                    f'3. Definir el importador o receptor en destino\n'
+                    f'   Puede ser tu propia empresa, un distribuidor local o un operador logístico. Este paso define los documentos y los impuestos que aplican.\n\n'
+                    f'4. Elegir la modalidad de transporte y cotizar el flete\n'
+                    f'   • LCL (consolidada): ideal para volúmenes pequeños y medianos, reduce costos\n'
+                    f'   • FCL (contenedor completo): para volúmenes mayores, mayor control e integridad de la carga\n'
+                    f'   Tiempo de tránsito: 3 a 7 días a puertos centroamericanos.\n\n'
                     f'5. Preparar la documentación\n'
-                    f'   Factura comercial, packing list, Bill of Lading, certificado de origen, permisos sanitarios y contrato comercial.\n\n'
-                    f'6. Despacho aduanero en Cuba\n'
-                    f'   Lo gestiona la entidad importadora cubana con su agente de aduana local.\n\n'
+                    f'   Factura comercial, packing list, Bill of Lading, certificado de origen y permisos sanitarios o técnicos según el producto.\n\n'
+                    f'6. Despacho aduanero en destino\n'
+                    f'   Lo gestiona el importador o su agente de aduana local. El valor en aduana incluye costo + seguro + flete (valor CIF).\n\n'
                     f'ERRORES MÁS COMUNES (Y CÓMO EVITARLOS)\n\n'
-                    f'✗ No verificar al receptor cubano — puede bloquear toda la operación\n'
-                    f'✗ Subestimar los tiempos — el proceso completo toma 30 a 90 días\n'
-                    f'✗ No documentar el origen de los fondos — las transacciones en MLC requieren trazabilidad\n'
+                    f'✗ No verificar los aranceles con anticipación — varían significativamente entre países\n'
+                    f'✗ Subestimar los tiempos — el proceso completo puede tomar entre 3 y 6 semanas\n'
+                    f'✗ Elegir productos con restricciones sin verificarlo — algunos requieren registros previos\n'
                     f'✗ No consolidar la carga — pierdes dinero enviando contenedores a medio llenar\n\n'
                     f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n'
                     f'¿Listo para importar? En Pacunato S.A. nos encargamos de todo el proceso.\n'
@@ -570,6 +580,7 @@ def sitemap_xml(request):
     static_urls = [
         {'loc': reverse('website:home'), 'priority': '1.0', 'changefreq': 'daily'},
         {'loc': reverse('website:servicios'), 'priority': '0.9', 'changefreq': 'weekly'},
+        {'loc': reverse('website:landing_importacion'), 'priority': '0.9', 'changefreq': 'monthly'},
         {'loc': reverse('website:nosotros'), 'priority': '0.8', 'changefreq': 'monthly'},
         {'loc': reverse('website:blog'), 'priority': '0.8', 'changefreq': 'daily'},
         {'loc': reverse('website:contacto'), 'priority': '0.7', 'changefreq': 'monthly'},

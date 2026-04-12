@@ -1,0 +1,578 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Empresa de Importación y Exportación en Panamá | Pacunato S.A.{% endblock %}
+
+{% block meta_description %}Pacunato S.A. — empresa de importación y exportación en Panamá con más de 3 años de experiencia. Importación Centroamérica y el Caribe desde la Zona Libre de Colón. Cotiza gratis en 24h.{% endblock %}
+
+{% block meta_keywords %}empresa de importacion y exportacion, empresa de importacion y exportacion en panama, importacion centroamerica, importacion centroamerica desde panama, agente de importacion panama, logistica panama centroamerica{% endblock %}
+
+{% block og_title %}Empresa de Importación y Exportación en Panamá | Pacunato S.A.{% endblock %}
+{% block og_description %}Conectamos tu negocio con proveedores verificados. Importación Centroamérica y el Caribe desde Panamá. Cotiza gratis en 24h.{% endblock %}
+
+{% block breadcrumb_schema %},
+    {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Empresa de Importación y Exportación en Panamá",
+        "item": "https://www.pacunato.com/empresa-importacion-exportacion-panama/"
+    }
+{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://www.pacunato.com/#organization",
+            "name": "Pacunato S.A.",
+            "alternateName": "Empresa de Importación y Exportación en Panamá",
+            "url": "https://www.pacunato.com",
+            "description": "Pacunato S.A. es una empresa de importación y exportación en Panamá especializada en importación Centroamérica y el Caribe. Operamos desde la Zona Libre de Colón conectando negocios con proveedores verificados en todo el mundo.",
+            "telephone": "+50764418437",
+            "email": "info@pacunato.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "PA",
+                "addressLocality": "Ciudad de Panamá"
+            },
+            "areaServed": [
+                "Guatemala", "Honduras", "El Salvador", "Costa Rica",
+                "Nicaragua", "República Dominicana", "Jamaica", "Panamá"
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "¿Qué hace una empresa de importación y exportación en Panamá?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Una empresa de importación y exportación en Panamá actúa como intermediaria entre compradores y proveedores internacionales. Se encarga de buscar proveedores verificados, negociar precios, gestionar la compra, consolidar mercancía y coordinar el envío hacia el país de destino. Pacunato S.A. ofrece este servicio completo operando desde la Zona Libre de Colón."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Por qué importar desde Panamá a Centroamérica y el Caribe?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Panamá es el hub logístico natural de la región. La Zona Libre de Colón — la segunda zona franca más grande del mundo — permite acceder a productos de Asia, Europa y Norteamérica con ventajas arancelarias únicas. Además, Panamá cuenta con rutas marítimas directas y frecuentes hacia todos los puertos centroamericanos y caribeños, con tiempos de tránsito de 3 a 7 días."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cuánto cuesta el servicio de importación con Pacunato S.A.?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "El costo depende del tipo de servicio, el volumen de mercancía y el destino. Ofrecemos cotizaciones personalizadas sin costo ni compromiso. Puedes solicitar tu cotización gratuita a través del formulario en esta página y recibirás respuesta en menos de 24 horas."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Necesito estar en Panamá para gestionar la importación?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. Con Pacunato S.A. como tu agente de importación en Panamá, puedes gestionar todo el proceso de forma remota. Actuamos como tu representante local: coordinamos con proveedores, navieras y operadores logísticos en tu nombre. Tu empresa en el país de destino es la que figura como importadora."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="page-hero">
+    <div class="container">
+        <div class="hero-content-page">
+            <div class="section-badge">EMPRESA DE IMPORTACIÓN Y EXPORTACIÓN EN PANAMÁ</div>
+            <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--text-light); line-height: 1.15; margin-bottom: 1.5rem;">
+                Empresa de Importación y Exportación en <span class="text-primary">Panamá</span>
+            </h1>
+            <p style="font-size: 1.2rem; color: var(--text-gray); max-width: 650px; margin: 0 auto 2.5rem;">
+                Conectamos tu negocio con proveedores verificados en todo el mundo.
+                Operamos desde la <strong style="color: var(--text-light);">Zona Libre de Colón</strong> para abastecer a empresas en
+                Centroamérica, el Caribe y más destinos.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#cotizacion" class="btn-primary btn-lg">
+                    <i class="fas fa-paper-plane"></i>
+                    Solicitar Cotización Gratis
+                </a>
+                <a href="{% url 'website:servicios' %}" class="btn-secondary btn-lg">
+                    <i class="fas fa-list-alt"></i>
+                    Ver Nuestros Servicios
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     POR QUÉ PANAMÁ — importacion centroamerica
+     ============================================ -->
+<section style="padding: 100px 0; background: var(--dark-bg);">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">VENTAJA COMPETITIVA</div>
+            <h2 class="section-title">¿Por qué elegir una empresa de importación en <span class="text-primary">Panamá</span> para Centroamérica?</h2>
+            <p class="section-description">
+                Panamá no es solo un punto geográfico — es el hub logístico más estratégico de toda la región.
+            </p>
+        </div>
+
+        <div class="services-grid" style="margin-top: 3rem;">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-warehouse"></i>
+                </div>
+                <h3>Zona Libre de Colón</h3>
+                <p>La segunda zona franca más grande del mundo, con más de 2,600 empresas. Acceso a productos de Asia, Europa y Norteamérica con ventajas arancelarias únicas y precios imbatibles.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-ship"></i>
+                </div>
+                <h3>Conectividad Marítima Directa</h3>
+                <p>Rutas marítimas regulares hacia todos los puertos centroamericanos y caribeños. Tiempos de tránsito de 3 a 7 días hacia la mayoría de destinos de la región.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>Ubicación Estratégica</h3>
+                <p>En el centro del continente, con acceso directo al Pacífico y al Atlántico. Panamá es la puerta natural de entrada para mercancía de todo el mundo hacia Centroamérica y el Caribe.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Tratados Comerciales</h3>
+                <p>Panamá tiene acuerdos comerciales con múltiples países que facilitan el flujo de mercancías y reducen las cargas arancelarias para tu operación de importación.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SERVICIOS DE IMPORTACIÓN Y EXPORTACIÓN
+     ============================================ -->
+<section style="padding: 100px 0; background: #0a0a0a;">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">LO QUE HACEMOS</div>
+            <h2 class="section-title">Servicios de <span class="text-primary">Importación y Exportación</span></h2>
+            <p class="section-description">
+                Gestionamos cada etapa del proceso para que tu mercancía llegue sin complicaciones.
+            </p>
+        </div>
+
+        <div class="services-grid" style="margin-top: 3rem;">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-search-dollar"></i></div>
+                <h3>Búsqueda de Proveedores</h3>
+                <p>Conectamos tu negocio con proveedores confiables en Panamá, Latinoamérica, Asia y el resto del mundo.</p>
+                <div class="service-details">
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Investigación exhaustiva de mercado</li>
+                        <li><i class="fas fa-check"></i> Evaluación de precios competitivos</li>
+                        <li><i class="fas fa-check"></i> Conexión directa con fabricantes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-user-check"></i></div>
+                <h3>Verificación de Proveedores</h3>
+                <p>Validamos la confiabilidad, calidad y cumplimiento de cada proveedor antes de trabajar con ellos.</p>
+                <div class="service-details">
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Verificación de licencias y permisos</li>
+                        <li><i class="fas fa-check"></i> Revisión de historial comercial</li>
+                        <li><i class="fas fa-check"></i> Validación de referencias</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                <h3>Cotización y Negociación</h3>
+                <p>Gestionamos cotizaciones competitivas y negociamos las mejores condiciones comerciales para ti.</p>
+                <div class="service-details">
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Solicitud de múltiples cotizaciones</li>
+                        <li><i class="fas fa-check"></i> Negociación de precios y términos</li>
+                        <li><i class="fas fa-check"></i> Asesoría en términos INCOTERMS</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+                <h3>Gestión de Compras</h3>
+                <p>Realizamos la compra completa en tu nombre con total seguridad, transparencia y trazabilidad.</p>
+                <div class="service-details">
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Procesamiento de órdenes de compra</li>
+                        <li><i class="fas fa-check"></i> Control de pagos seguros</li>
+                        <li><i class="fas fa-check"></i> Documentación comercial completa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-boxes"></i></div>
+                <h3>Consolidación de Mercancía</h3>
+                <p>Recibimos, inspeccionamos, consolidamos y preparamos tu mercancía para el envío internacional.</p>
+                <div class="service-details">
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Consolidación de múltiples proveedores</li>
+                        <li><i class="fas fa-check"></i> Inspección de calidad exhaustiva</li>
+                        <li><i class="fas fa-check"></i> Embalaje y etiquetado profesional</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shipping-fast"></i></div>
+                <h3>Coordinación de Envíos</h3>
+                <p>Gestionamos todo el proceso logístico desde el origen hasta la entrega en tu destino final.</p>
+                <div class="service-details">
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Gestión de transporte marítimo/aéreo</li>
+                        <li><i class="fas fa-check"></i> Despacho aduanero completo</li>
+                        <li><i class="fas fa-check"></i> Tracking en tiempo real</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     MERCADOS — importacion centroamerica y caribe
+     ============================================ -->
+<section style="padding: 100px 0; background: var(--dark-bg);">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">DESTINOS</div>
+            <h2 class="section-title">Importación <span class="text-primary">Centroamérica y el Caribe</span> desde Panamá</h2>
+            <p class="section-description">
+                Llevamos tu mercancía a los principales mercados de la región.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+            {% for pais, icono in mercados %}
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem 1rem; text-align: center; transition: border-color 0.3s ease;">
+                <i class="{{ icono }}" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.75rem; display: block;"></i>
+                <span style="color: var(--text-light); font-weight: 600; font-size: 0.95rem;">{{ pais }}</span>
+            </div>
+            {% empty %}
+            <!-- Países hardcoded si no hay contexto -->
+            {% endfor %}
+        </div>
+
+        <!-- Países hardcoded (siempre visibles, no dependen del contexto) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;" id="paises-grid">
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Guatemala</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Honduras</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>El Salvador</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Costa Rica</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Nicaragua</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>República Dominicana</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Jamaica</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Haití</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Trinidad y Tobago</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Colombia</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Venezuela</span>
+            </div>
+            <div class="pais-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Y más destinos</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     CÓMO FUNCIONA
+     ============================================ -->
+<section style="padding: 100px 0; background: #0a0a0a;">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">PROCESO</div>
+            <h2 class="section-title">Cómo trabajamos como tu <span class="text-primary">empresa de importación</span></h2>
+            <p class="section-description">4 pasos simples para que tu mercancía llegue sin complicaciones.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 4rem; position: relative;">
+            <div style="text-align: center; padding: 2rem 1.5rem;">
+                <div style="width: 64px; height: 64px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: 900; color: #000;">1</div>
+                <h3 style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0.75rem;">Consulta Gratuita</h3>
+                <p style="color: var(--text-gray); font-size: 0.95rem;">Nos cuentas qué necesitas importar, desde dónde y hacia dónde. Sin costo, sin compromiso.</p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem 1.5rem;">
+                <div style="width: 64px; height: 64px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: 900; color: #000;">2</div>
+                <h3 style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0.75rem;">Buscamos Proveedores</h3>
+                <p style="color: var(--text-gray); font-size: 0.95rem;">Identificamos, verificamos y negociamos con los mejores proveedores para tu producto específico.</p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem 1.5rem;">
+                <div style="width: 64px; height: 64px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: 900; color: #000;">3</div>
+                <h3 style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0.75rem;">Gestionamos la Compra</h3>
+                <p style="color: var(--text-gray); font-size: 0.95rem;">Ejecutamos la compra, gestionamos la documentación y preparamos el envío desde Panamá.</p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem 1.5rem;">
+                <div style="width: 64px; height: 64px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: 900; color: #000;">4</div>
+                <h3 style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0.75rem;">Entrega en Destino</h3>
+                <p style="color: var(--text-gray); font-size: 0.95rem;">Coordinamos el envío internacional y hacemos seguimiento hasta que tu mercancía llega.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FAQ — Rich Snippets
+     ============================================ -->
+<section style="padding: 100px 0; background: var(--dark-bg);">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">PREGUNTAS FRECUENTES</div>
+            <h2 class="section-title">Preguntas frecuentes sobre <span class="text-primary">importación desde Panamá</span></h2>
+        </div>
+
+        <div style="max-width: 800px; margin: 3rem auto 0;" id="faq-landing">
+            <div class="faq-item-landing">
+                <button class="faq-btn-landing" onclick="toggleFaq(this)">
+                    <span>¿Qué hace una empresa de importación y exportación en Panamá?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer-landing">
+                    <p>Una empresa de importación y exportación en Panamá actúa como intermediaria entre compradores y proveedores internacionales. Se encarga de buscar proveedores verificados, negociar precios, gestionar la compra, consolidar mercancía y coordinar el envío hacia el país de destino. Pacunato S.A. ofrece este servicio completo operando desde la Zona Libre de Colón.</p>
+                </div>
+            </div>
+
+            <div class="faq-item-landing">
+                <button class="faq-btn-landing" onclick="toggleFaq(this)">
+                    <span>¿Por qué importar desde Panamá a Centroamérica y el Caribe?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer-landing">
+                    <p>Panamá es el hub logístico natural de la región. La Zona Libre de Colón — la segunda zona franca más grande del mundo — permite acceder a productos de Asia, Europa y Norteamérica con ventajas arancelarias únicas. Además, Panamá cuenta con rutas marítimas directas hacia todos los puertos centroamericanos y caribeños, con tiempos de tránsito de 3 a 7 días.</p>
+                </div>
+            </div>
+
+            <div class="faq-item-landing">
+                <button class="faq-btn-landing" onclick="toggleFaq(this)">
+                    <span>¿Cuánto cuesta el servicio de importación con Pacunato S.A.?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer-landing">
+                    <p>El costo depende del tipo de servicio, el volumen de mercancía y el destino. Ofrecemos cotizaciones personalizadas sin costo ni compromiso. Puedes solicitar tu cotización gratuita a través del formulario en esta página y recibirás respuesta en menos de 24 horas.</p>
+                </div>
+            </div>
+
+            <div class="faq-item-landing">
+                <button class="faq-btn-landing" onclick="toggleFaq(this)">
+                    <span>¿Necesito estar en Panamá para gestionar la importación?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer-landing">
+                    <p>No. Con Pacunato S.A. como tu agente de importación en Panamá, puedes gestionar todo el proceso de forma remota. Actuamos como tu representante local: coordinamos con proveedores, navieras y operadores logísticos en tu nombre. Tu empresa en el país de destino es la que figura como importadora.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FORMULARIO DE COTIZACIÓN
+     ============================================ -->
+<section class="quote" id="cotizacion" style="padding: 100px 0;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+            <!-- Columna izquierda: texto -->
+            <div>
+                <div class="section-badge">COTIZA SIN COMPROMISO</div>
+                <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--text-light); line-height: 1.2; margin: 1rem 0 1.5rem;">
+                    Cotiza con tu <span class="text-primary">Empresa de Importación</span> en Panamá
+                </h2>
+                <p style="color: var(--text-gray); font-size: 1rem; line-height: 1.7; margin-bottom: 2rem;">
+                    Cuéntanos qué necesitas importar y en menos de 24 horas te enviamos una propuesta personalizada sin costo.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; color: var(--text-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 1.1rem;"></i>
+                        <span>Respuesta en menos de 24 horas</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; color: var(--text-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 1.1rem;"></i>
+                        <span>Sin costo ni compromiso</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; color: var(--text-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 1.1rem;"></i>
+                        <span>Asesoría personalizada incluida</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; color: var(--text-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 1.1rem;"></i>
+                        <span>Gestión 100% remota disponible</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna derecha: formulario -->
+            <div>
+                {% include '_quote_form.html' with source_page='landing-importacion' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/quote-form.js' %}"></script>
+<script>
+/* FAQ accordion */
+function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer-landing');
+    const icon = btn.querySelector('i');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item-landing.open').forEach(function(el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-answer-landing').style.maxHeight = '0';
+        el.querySelector('i').style.transform = 'rotate(0deg)';
+    });
+
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
+
+<style>
+/* Tarjetas de países */
+.pais-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+.pais-card:hover {
+    border-color: var(--primary-color);
+    background: rgba(0, 180, 216, 0.06);
+}
+.pais-card i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    display: block;
+}
+.pais-card span {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+/* FAQ */
+.faq-item-landing {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.faq-btn-landing {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: none;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    gap: 1rem;
+    transition: background 0.3s ease;
+}
+.faq-btn-landing:hover {
+    background: rgba(0, 180, 216, 0.08);
+}
+.faq-btn-landing i {
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+.faq-answer-landing {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+.faq-answer-landing p {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin: 0;
+}
+/* Responsive formulario */
+@media (max-width: 768px) {
+    #cotizacion .container > div {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+}
+</style>
+{% endblock %}

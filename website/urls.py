@@ -18,6 +18,9 @@ urlpatterns = [
     path('privacidad/', views.privacidad, name='privacidad'),
     path('terminos/', views.terminos, name='terminos'),
 
+    # Landing pages SEO
+    path('empresa-importacion-exportacion-panama/', views.landing_importacion, name='landing_importacion'),
+
     # Formularios
     path('asesoria/', views.asesoria, name='asesoria'),
     path('cotizacion/', views.cotizacion, name='cotizacion'),

@@ -162,9 +162,12 @@ class SolicitudCotizacion(models.Model):
     enviado_make = models.BooleanField(default=False, verbose_name="Enviado a Make")
     fecha_procesamiento = models.DateTimeField(null=True, blank=True, verbose_name="Fecha de Procesamiento")
     
+    # Fuente de la solicitud
+    source_page = models.CharField(max_length=200, blank=True, verbose_name="Página de Origen")
+
     # Notas internas
     notas_admin = models.TextField(blank=True, verbose_name="Notas del Administrador")
-    
+
     class Meta:
         verbose_name = "Solicitud de Cotización"
         verbose_name_plural = "Solicitudes de Cotización"
