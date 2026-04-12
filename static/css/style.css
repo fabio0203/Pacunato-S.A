@@ -245,7 +245,7 @@ ul {
     align-items: center;
     justify-content: center;
     background-color: #0a0a0a;
-    background-image: url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2070');
+    background-image: url('/static/images/warehouse.webp');
     background-size: cover;
     background-position: center top;
     background-attachment: scroll;
@@ -464,27 +464,27 @@ section {
 
 /* Imágenes específicas para cada card */
 .service-card:nth-child(1) {
-    background-image: url('/static/images/servicios1.jpg');
+    background-image: url('/static/images/servicios1.webp');
 }
 
 .service-card:nth-child(2) {
-    background-image: url('/static/images/servicios2.jpg');
+    background-image: url('/static/images/servicios2.webp');
 }
 
 .service-card:nth-child(3) {
-    background-image: url('/static/images/servicios3.jpg');
+    background-image: url('/static/images/servicios3.webp');
 }
 
 .service-card:nth-child(4) {
-    background-image: url('/static/images/servicios4.jpg');
+    background-image: url('/static/images/servicios4.webp');
 }
 
 .service-card:nth-child(5) {
-    background-image: url('/static/images/servicios5.jpg');
+    background-image: url('/static/images/servicios5.webp');
 }
 
 .service-card:nth-child(6) {
-    background-image: url('/static/images/servicios6.jpg');
+    background-image: url('/static/images/servicios6.webp');
 }
 
 /* Efecto hover - MISMO QUE STATS CARD */
@@ -593,7 +593,7 @@ section {
     overflow: hidden;
     
     /* Imagen de fondo */
-    background-image: url('/static/images/warehouse1.jpg');
+    background-image: url('/static/images/warehouse1.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -740,19 +740,19 @@ section {
 
 /* Imágenes específicas para cada card */
 .trust-card:nth-child(1) {
-    background-image: url('/static/images/confianza1.jpg');
+    background-image: url('/static/images/confianza1.webp');
 }
 
 .trust-card:nth-child(2) {
-    background-image: url('/static/images/confianza2.jpg');
+    background-image: url('/static/images/confianza2.webp');
 }
 
 .trust-card:nth-child(3) {
-    background-image: url('/static/images/confianza3.jpg');
+    background-image: url('/static/images/confianza3.webp');
 }
 
 .trust-card:nth-child(4) {
-    background-image: url('/static/images/confianza4.jpg');
+    background-image: url('/static/images/confianza4.webp');
 }
 
 /* Efecto hover - MISMO QUE STATS CARD */
@@ -1417,7 +1417,7 @@ section {
     padding: 0 20px;
     
     /* Imagen de fondo */
-    background-image: url('/static/images/warehouse.jpg');
+    background-image: url('/static/images/warehouse.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1728,19 +1728,19 @@ section {
 
 /* Imágenes específicas para cada card */
 .benefit-box:nth-child(1) {
-    background-image: url('/static/images/servicios3.jpg');
+    background-image: url('/static/images/servicios3.webp');
 }
 
 .benefit-box:nth-child(2) {
-    background-image: url('/static/images/servicios4.jpg');
+    background-image: url('/static/images/servicios4.webp');
 }
 
 .benefit-box:nth-child(3) {
-    background-image: url('/static/images/servicios2.jpg');
+    background-image: url('/static/images/servicios2.webp');
 }
 
 .benefit-box:nth-child(4) {
-    background-image: url('/static/images/confianza4.jpg');
+    background-image: url('/static/images/confianza4.webp');
 }
 
 /* Efecto hover */
@@ -1899,7 +1899,7 @@ section {
     overflow: hidden;
     padding: 120px 20px 80px;
     
-    background-image: url('/static/images/warehouse.jpg');
+    background-image: url('/static/images/warehouse.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2658,7 +2658,7 @@ section {
     /* ⭐ IMAGEN + GRADIENTE EN UNA SOLA LÍNEA */
     background: 
         linear-gradient(135deg, rgba(2, 62, 138, 0.7) 0%, rgba(10, 10, 20, 0.85) 100%),
-        url('/static/images/warehouse.jpg') center/cover no-repeat fixed;
+        url('/static/images/warehouse.webp') center/cover no-repeat fixed;
 }
 
 /* Contenido del hero */

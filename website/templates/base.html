@@ -89,29 +89,22 @@
          PRELOAD CRITICAL RESOURCES
          ============================================ -->
     <link rel="preload" href="{% static 'css/style.css' %}" as="style">
-    <link rel="preload" href="{% static 'css/preloader.css' %}" as="style">
+    <link rel="preload" href="{% static 'images/warehouse.webp' %}" as="image" fetchpriority="high">
 
     <!-- ============================================
-         STYLESHEETS — CRÍTICOS (bloquean render intencionalmente)
+         STYLESHEETS
          ============================================ -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal-system.css' %}">
+    <link rel="stylesheet" href="{% static 'css/whatsapp-widget.css' %}">
 
-    <!-- Google Fonts — carga asíncrona para no bloquear render -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome — carga asíncrona (mayor causa de render-blocking) -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"></noscript>
-
-    <!-- CSS no críticos — cargan después del primer paint -->
-    <link rel="preload" href="{% static 'css/modal-system.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="{% static 'css/whatsapp-widget.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="{% static 'css/modal-system.css' %}">
-        <link rel="stylesheet" href="{% static 'css/whatsapp-widget.css' %}">
-    </noscript>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 
     <!-- ============================================
          SCHEMA.ORG JSON-LD - STRUCTURED DATA
