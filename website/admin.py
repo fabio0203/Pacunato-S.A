@@ -221,7 +221,6 @@ class SolicitudCotizacionAdmin(admin.ModelAdmin):
             '<span style="color:#888;font-size:11px;">Home</span>'
         )
     get_fuente_badge.short_description = 'Fuente'
-    get_fuente_badge.allow_tags = True
 
     actions = ['marcar_como_procesado', 'marcar_como_no_procesado', 'exportar_a_csv']
 
