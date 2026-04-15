@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'website.context_processors.recaptcha',
             ],
         },
     },
@@ -140,5 +141,13 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD', '')
 DEFAULT_FROM_EMAIL = '"Pacunato S.A." <info@pacunato.com>'
 SERVER_EMAIL = 'info@pacunato.com'
 CONTACT_EMAIL = 'info@pacunato.com'
+
+
+# ============================================
+# RECAPTCHA v3
+# ============================================
+
+RECAPTCHA_SITE_KEY = os.environ.get('RECAPTCHA_SITE_KEY', '')
+RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY', '')
 
 

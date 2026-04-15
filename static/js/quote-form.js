@@ -98,11 +98,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Preparar datos
         const formData = new FormData(quoteForm);
-        
+
+        // Obtener token reCAPTCHA v3 antes de enviar
+        if (window.grecaptcha && typeof RECAPTCHA_SITE_KEY !== 'undefined') {
+            try {
+                await new Promise((resolve) => {
+                    grecaptcha.ready(async function() {
+                        const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'cotizacion' });
+                        const tokenField = document.getElementById('recaptchaTokenQuote');
+                        if (tokenField) tokenField.value = token;
+                        resolve();
+                    });
+                });
+            } catch (rcErr) {
+                console.warn('⚠️ reCAPTCHA error (no bloquea envío):', rcErr);
+            }
+        }
+
         try {
             // Obtener CSRF token
             const csrftoken = getCookie('csrftoken');
-            
+
             // Enviar por AJAX
             const response = await fetch(quoteForm.action, {
                 method: 'POST',

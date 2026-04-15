@@ -8,6 +8,37 @@ from django.utils import timezone
 from django.core.mail import send_mail, EmailMessage
 import json
 import re
+import urllib.request
+import urllib.parse
+
+
+def verificar_recaptcha(token):
+    """
+    Verifica un token de reCAPTCHA v3 con Google.
+    Retorna (valido: bool, score: float).
+    Si no hay secret key configurada (dev), siempre pasa.
+    Si Google falla, deja pasar para no bloquear usuarios reales.
+    """
+    secret = settings.RECAPTCHA_SECRET_KEY
+    if not secret:
+        return True, 1.0
+    if not token:
+        return False, 0.0
+    try:
+        data = urllib.parse.urlencode({
+            'secret': secret,
+            'response': token,
+        }).encode()
+        req = urllib.request.Request(
+            'https://www.google.com/recaptcha/api/siteverify',
+            data=data
+        )
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            result = json.loads(resp.read())
+        return result.get('success', False), result.get('score', 0.0)
+    except Exception as e:
+        print(f"⚠️ reCAPTCHA verify error: {str(e)}")
+        return True, 1.0  # Si Google falla, no penalizar al usuario
 
 def home(request):
     """Vista principal de la página de inicio"""
@@ -167,6 +198,14 @@ def asesoria(request):
             return render(request, 'asesoria.html', {'mensaje_exito': True, 'nombre': 'Usuario'})
 
         nombre = request.POST.get('nombre', '').strip()
+
+        # reCAPTCHA v3
+        recaptcha_token = request.POST.get('recaptcha_token', '')
+        valido, score = verificar_recaptcha(recaptcha_token)
+        if not valido or score < 0.5:
+            print(f"⚠️ reCAPTCHA asesoria bloqueado — score: {score} IP: {get_client_ip(request)}")
+            return render(request, 'asesoria.html', {'mensaje_exito': True, 'nombre': nombre or 'Usuario'})
+
         email = request.POST.get('email', '').strip()
         telefono = request.POST.get('telefono', '').strip()
         duda = request.POST.get('duda', '').strip()
@@ -271,6 +310,14 @@ def cotizacion(request):
         mensaje = request.POST.get('mensaje', '').strip()
         source_page = request.POST.get('source_page', '').strip()
 
+        # reCAPTCHA v3
+        recaptcha_token = request.POST.get('recaptcha_token', '')
+        valido, score = verificar_recaptcha(recaptcha_token)
+        if not valido or score < 0.5:
+            print(f"⚠️ reCAPTCHA cotizacion bloqueado — score: {score} IP: {get_client_ip(request)}")
+            messages.success(request, f'¡Gracias {nombre or "!"}! Tu solicitud ha sido enviada.')
+            return redirect('website:home')
+
         if not all([nombre, email, telefono, pais_origen, pais_destino, tipo_servicio, mensaje]):
             messages.error(request, 'Por favor completa todos los campos requeridos.')
             return redirect('website:home')
@@ -367,6 +414,13 @@ def suscribir_newsletter(request):
 
         # Honeypot: si viene relleno es un bot — fingir éxito
         if data.get('website', ''):
+            return JsonResponse({'success': True, 'message': '¡Gracias por suscribirte!'})
+
+        # reCAPTCHA v3
+        recaptcha_token = data.get('recaptcha_token', '')
+        valido, score = verificar_recaptcha(recaptcha_token)
+        if not valido or score < 0.5:
+            print(f"⚠️ reCAPTCHA newsletter bloqueado — score: {score}")
             return JsonResponse({'success': True, 'message': '¡Gracias por suscribirte!'})
 
         email = data.get('email', '').strip().lower()

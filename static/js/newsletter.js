@@ -45,6 +45,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 const sourceInput = this.querySelector('input[name="source"]');
                 const source = sourceInput ? sourceInput.value : '';
 
+                // Obtener token reCAPTCHA v3
+                let recaptchaToken = '';
+                if (window.grecaptcha && typeof RECAPTCHA_SITE_KEY !== 'undefined') {
+                    try {
+                        recaptchaToken = await new Promise((resolve) => {
+                            grecaptcha.ready(async function() {
+                                const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'newsletter' });
+                                resolve(token);
+                            });
+                        });
+                    } catch (rcErr) {
+                        console.warn('⚠️ reCAPTCHA error (no bloquea envío):', rcErr);
+                    }
+                }
+
                 const response = await fetch('/suscribir-newsletter/', {
                     method: 'POST',
                     headers: {
@@ -56,7 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         name: name,
                         page: window.location.href,
                         source: source,
-                        website: honeypot
+                        website: honeypot,
+                        recaptcha_token: recaptchaToken
                     })
                 });
                 

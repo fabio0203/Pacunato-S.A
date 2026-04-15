@@ -58,6 +58,7 @@
                     <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;overflow:hidden;" aria-hidden="true" tabindex="-1">
                         <input type="text" name="website" value="" autocomplete="off" tabindex="-1">
                     </div>
+                    <input type="hidden" name="recaptcha_token" id="recaptchaTokenAsesoria">
                     
                     <div class="form-group">
                         <label for="nombre">Nombre Completo *</label>
@@ -648,11 +649,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Preparar datos
         const formData = new FormData(asesoriaForm);
-        
+
+        // Obtener token reCAPTCHA v3 antes de enviar
+        if (window.grecaptcha && typeof RECAPTCHA_SITE_KEY !== 'undefined') {
+            try {
+                await new Promise((resolve) => {
+                    grecaptcha.ready(async function() {
+                        const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'asesoria' });
+                        const tokenField = document.getElementById('recaptchaTokenAsesoria');
+                        if (tokenField) tokenField.value = token;
+                        resolve();
+                    });
+                });
+            } catch (rcErr) {
+                console.warn('⚠️ reCAPTCHA error (no bloquea envío):', rcErr);
+            }
+        }
+
         try {
             // Obtener CSRF token
             const csrftoken = getCookie('csrftoken');
-            
+
             // Enviar por AJAX
             const response = await fetch(asesoriaForm.action || window.location.href, {
                 method: 'POST',
