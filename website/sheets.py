@@ -35,17 +35,30 @@ def _fix_json_control_chars(s):
     return ''.join(result)
 
 
+def _extract_sheet_id(value):
+    """
+    Acepta tanto el ID puro como la URL completa de Google Sheets.
+    https://docs.google.com/spreadsheets/d/SHEET_ID/edit?... → SHEET_ID
+    """
+    import re
+    match = re.search(r'/spreadsheets/d/([a-zA-Z0-9_-]+)', value)
+    if match:
+        return match.group(1)
+    return value.strip()
+
+
 def get_sheet(tab_name):
     creds_json = os.environ.get('GOOGLE_CREDENTIALS_JSON', '').strip()
-    sheet_id = os.environ.get('GOOGLE_SHEETS_ID', '').strip()
+    sheet_id_raw = os.environ.get('GOOGLE_SHEETS_ID', '').strip()
+    sheet_id = _extract_sheet_id(sheet_id_raw)
 
     if not creds_json:
         print(f"Google Sheets: GOOGLE_CREDENTIALS_JSON no configurado (longitud raw: {len(os.environ.get('GOOGLE_CREDENTIALS_JSON', ''))})")
         return None
     if not sheet_id:
-        print(f"Google Sheets: GOOGLE_SHEETS_ID no configurado (longitud raw: {len(os.environ.get('GOOGLE_SHEETS_ID', ''))})")
+        print(f"Google Sheets: GOOGLE_SHEETS_ID no configurado")
         return None
-    print(f"Google Sheets: creds_json longitud={len(creds_json)}, sheet_id={sheet_id}, tab={tab_name}")
+    print(f"Google Sheets: sheet_id={sheet_id}, tab={tab_name}")
 
     try:
         creds_data = json.loads(creds_json)
