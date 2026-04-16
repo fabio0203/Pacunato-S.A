@@ -24,7 +24,10 @@ def verificar_recaptcha(token):
         print("⚠️ reCAPTCHA: RECAPTCHA_SECRET_KEY no configurado — pasando sin verificar")
         return True, 1.0
     if not token:
-        return False, 0.0
+        # Token vacío = JS no cargó (reCAPTCHA script no disponible en el browser)
+        # No bloquear — el bot seguirá bloqueado por honeypot
+        print("⚠️ reCAPTCHA: token vacío recibido — verificar RECAPTCHA_SITE_KEY en Render")
+        return True, 1.0
     try:
         data = urllib.parse.urlencode({
             'secret': secret,
