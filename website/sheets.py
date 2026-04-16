@@ -17,10 +17,6 @@ def get_sheet(tab_name):
         print("⚠️ Google Sheets: GOOGLE_SHEETS_ID no configurado en Render")
         return None
 
-    # Fix: Render sometimes stores \\n instead of real \n in env vars,
-    # which breaks the private_key field in the service account JSON.
-    creds_json = creds_json.replace('\\n', '\n')
-
     try:
         creds_data = json.loads(creds_json)
     except json.JSONDecodeError as e:
