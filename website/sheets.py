@@ -35,15 +35,16 @@ def _fix_json_control_chars(s):
 
 
 def get_sheet(tab_name):
-    creds_json = os.environ.get('GOOGLE_CREDENTIALS_JSON', '')
-    sheet_id = os.environ.get('GOOGLE_SHEETS_ID', '')
+    creds_json = os.environ.get('GOOGLE_CREDENTIALS_JSON', '').strip()
+    sheet_id = os.environ.get('GOOGLE_SHEETS_ID', '').strip()
 
     if not creds_json:
-        print("Google Sheets: GOOGLE_CREDENTIALS_JSON no configurado en Render")
+        print(f"Google Sheets: GOOGLE_CREDENTIALS_JSON no configurado (longitud raw: {len(os.environ.get('GOOGLE_CREDENTIALS_JSON', ''))})")
         return None
     if not sheet_id:
-        print("Google Sheets: GOOGLE_SHEETS_ID no configurado en Render")
+        print(f"Google Sheets: GOOGLE_SHEETS_ID no configurado (longitud raw: {len(os.environ.get('GOOGLE_SHEETS_ID', ''))})")
         return None
+    print(f"Google Sheets: creds_json longitud={len(creds_json)}, primeros 20 chars: {creds_json[:20]}")
 
     try:
         creds_data = json.loads(creds_json)
