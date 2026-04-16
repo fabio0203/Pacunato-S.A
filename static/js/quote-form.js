@@ -96,10 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (btnText) btnText.style.display = 'none';
         if (btnLoading) btnLoading.style.display = 'inline';
         
-        // Preparar datos
-        const formData = new FormData(quoteForm);
-
-        // Obtener token reCAPTCHA v3 antes de enviar
+        // Obtener token reCAPTCHA v3 ANTES de crear FormData
         if (window.grecaptcha && typeof RECAPTCHA_SITE_KEY !== 'undefined') {
             try {
                 await new Promise((resolve) => {
@@ -107,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'cotizacion' });
                         const tokenField = document.getElementById('recaptchaTokenQuote');
                         if (tokenField) tokenField.value = token;
+                        console.log('✅ reCAPTCHA token obtenido, longitud:', token ? token.length : 0);
                         resolve();
                     });
                 });
@@ -114,6 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.warn('⚠️ reCAPTCHA error (no bloquea envío):', rcErr);
             }
         }
+
+        // Preparar datos DESPUÉS de que el token esté en el campo
+        const formData = new FormData(quoteForm);
 
         try {
             // Obtener CSRF token

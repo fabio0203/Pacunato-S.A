@@ -1,6 +1,7 @@
 import gspread
 import json
 import os
+import traceback
 from google.oauth2.service_account import Credentials
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
@@ -44,22 +45,32 @@ def get_sheet(tab_name):
     if not sheet_id:
         print(f"Google Sheets: GOOGLE_SHEETS_ID no configurado (longitud raw: {len(os.environ.get('GOOGLE_SHEETS_ID', ''))})")
         return None
-    print(f"Google Sheets: creds_json longitud={len(creds_json)}, primeros 20 chars: {creds_json[:20]}")
+    print(f"Google Sheets: creds_json longitud={len(creds_json)}, sheet_id={sheet_id}, tab={tab_name}")
 
     try:
         creds_data = json.loads(creds_json)
+        print(f"Google Sheets: JSON parseado OK, client_email={creds_data.get('client_email', 'N/A')}")
     except json.JSONDecodeError:
         # Render stored literal newlines inside string values — fix and retry
         try:
             creds_data = json.loads(_fix_json_control_chars(creds_json))
-            print("Google Sheets: JSON corregido (newlines literales en private_key)")
+            print(f"Google Sheets: JSON corregido, client_email={creds_data.get('client_email', 'N/A')}")
         except json.JSONDecodeError as e:
             print(f"Google Sheets: GOOGLE_CREDENTIALS_JSON no es JSON valido: {e}")
             return None
 
-    creds = Credentials.from_service_account_info(creds_data, scopes=SCOPES)
-    client = gspread.authorize(creds)
-    return client.open_by_key(sheet_id).worksheet(tab_name)
+    try:
+        creds = Credentials.from_service_account_info(creds_data, scopes=SCOPES)
+        print("Google Sheets: Credentials creadas OK")
+        client = gspread.authorize(creds)
+        print("Google Sheets: Client autorizado OK")
+        sheet = client.open_by_key(sheet_id).worksheet(tab_name)
+        print(f"Google Sheets: Worksheet '{tab_name}' abierta OK")
+        return sheet
+    except Exception as e:
+        print(f"Google Sheets: error en auth/open: {type(e).__name__}: {e}")
+        print(traceback.format_exc())
+        return None
 
 
 def log_to_sheets(tab_name, row_data):
