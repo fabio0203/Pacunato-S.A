@@ -206,18 +206,18 @@ class SolicitudCotizacionAdmin(admin.ModelAdmin):
     )
 
     def get_fuente_badge(self, obj):
-        from django.utils.html import format_html
+        from django.utils.html import format_html, mark_safe
         fuente = obj.source_page or ''
         if fuente == 'landing-importacion':
-            return format_html(
-                '<span style="background:#00B4D8;color:#000;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">⭐ LANDING</span>'
+            return mark_safe(
+                '<span style="background:#00B4D8;color:#000;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;">LANDING</span>'
             )
         elif fuente:
             return format_html(
                 '<span style="background:#444;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">{}</span>',
                 fuente
             )
-        return format_html(
+        return mark_safe(
             '<span style="color:#888;font-size:11px;">Home</span>'
         )
     get_fuente_badge.short_description = 'Fuente'
