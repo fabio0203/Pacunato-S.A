@@ -46,10 +46,16 @@ def verificar_recaptcha(token):
         # Log completo para diagnóstico
         print(f"🔍 reCAPTCHA resultado: success={success} score={score} errors={error_codes}")
 
-        # Si Google dice invalid-input-secret = las claves están mal configuradas
-        # En ese caso dejar pasar para no bloquear usuarios reales
+        # Claves mal configuradas → dejar pasar
         if 'invalid-input-secret' in error_codes:
             print("⚠️ reCAPTCHA: RECAPTCHA_SECRET_KEY inválido en Render — verifica las env vars")
+            return True, 1.0
+
+        # browser-error = problema de red del usuario con Google (no es bot)
+        # El token llegó desde el browser, pero Google no pudo verificar la comunicación.
+        # Un bot con POST directo nunca genera este error (tiene token vacío).
+        if 'browser-error' in error_codes:
+            print("⚠️ reCAPTCHA: browser-error — problema de red del usuario, dejando pasar")
             return True, 1.0
 
         return success, score
