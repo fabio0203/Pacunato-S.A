@@ -21,6 +21,7 @@ def verificar_recaptcha(token):
     """
     secret = settings.RECAPTCHA_SECRET_KEY
     if not secret:
+        print("⚠️ reCAPTCHA: RECAPTCHA_SECRET_KEY no configurado — pasando sin verificar")
         return True, 1.0
     if not token:
         return False, 0.0
@@ -35,7 +36,21 @@ def verificar_recaptcha(token):
         )
         with urllib.request.urlopen(req, timeout=5) as resp:
             result = json.loads(resp.read())
-        return result.get('success', False), result.get('score', 0.0)
+
+        success = result.get('success', False)
+        score = result.get('score', 0.0)
+        error_codes = result.get('error-codes', [])
+
+        # Log completo para diagnóstico
+        print(f"🔍 reCAPTCHA resultado: success={success} score={score} errors={error_codes}")
+
+        # Si Google dice invalid-input-secret = las claves están mal configuradas
+        # En ese caso dejar pasar para no bloquear usuarios reales
+        if 'invalid-input-secret' in error_codes:
+            print("⚠️ reCAPTCHA: RECAPTCHA_SECRET_KEY inválido en Render — verifica las env vars")
+            return True, 1.0
+
+        return success, score
     except Exception as e:
         print(f"⚠️ reCAPTCHA verify error: {str(e)}")
         return True, 1.0  # Si Google falla, no penalizar al usuario
