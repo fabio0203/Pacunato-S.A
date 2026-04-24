@@ -20,6 +20,7 @@ urlpatterns = [
 
     # Landing pages SEO
     path('empresa-importacion-exportacion-panama/', views.landing_importacion, name='landing_importacion'),
+    path('importar-desde-china-centroamerica/', views.landing_china, name='landing_china'),
 
     # Formularios
     path('asesoria/', views.asesoria, name='asesoria'),

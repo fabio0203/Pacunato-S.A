@@ -82,6 +82,10 @@ def landing_importacion(request):
     """Landing page SEO: empresa de importacion y exportacion panama"""
     return render(request, 'landing_importacion.html')
 
+def landing_china(request):
+    """Landing page SEO: importar desde china a centroamerica"""
+    return render(request, 'landing_china.html')
+
 def blog(request):
     """Vista para la página principal del blog con datos dinámicos"""
     from .models import BlogPost
@@ -658,6 +662,7 @@ def sitemap_xml(request):
         {'loc': reverse('website:home'), 'priority': '1.0', 'changefreq': 'daily'},
         {'loc': reverse('website:servicios'), 'priority': '0.9', 'changefreq': 'weekly'},
         {'loc': reverse('website:landing_importacion'), 'priority': '0.9', 'changefreq': 'monthly'},
+        {'loc': reverse('website:landing_china'), 'priority': '0.9', 'changefreq': 'monthly'},
         {'loc': reverse('website:nosotros'), 'priority': '0.8', 'changefreq': 'monthly'},
         {'loc': reverse('website:blog'), 'priority': '0.8', 'changefreq': 'daily'},
         {'loc': reverse('website:contacto'), 'priority': '0.7', 'changefreq': 'monthly'},

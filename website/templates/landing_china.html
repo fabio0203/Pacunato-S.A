@@ -1,0 +1,420 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Importar desde China a Centroamérica vía Panamá | Pacunato S.A.{% endblock %}
+
+{% block meta_description %}Importa desde China a Centroamérica de forma segura a través de Panamá. Pacunato S.A. gestiona la búsqueda de proveedores chinos, verificación, compra, consolidación de carga y envío. Cotiza gratis.{% endblock %}
+
+{% block meta_keywords %}importar desde china, como importar desde china, importar desde china a centroamerica, importar desde china panama, proveedores chinos, agente compras china panama{% endblock %}
+
+{% block og_title %}Importar desde China a Centroamérica vía Panamá | Pacunato S.A.{% endblock %}
+{% block og_description %}Gestión completa para importar desde China a Centroamérica: proveedores verificados, consolidación de carga y envío vía Zona Libre de Colón. Cotiza gratis en 24h.{% endblock %}
+
+{% block breadcrumb_schema %},
+    {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Importar desde China a Centroamérica",
+        "item": "https://www.pacunato.com/importar-desde-china-centroamerica/"
+    }
+{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Service",
+            "name": "Importación desde China a Centroamérica vía Panamá",
+            "serviceType": "Agente de Compras Internacional",
+            "provider": {"@id": "https://www.pacunato.com/#organization"},
+            "description": "Servicio completo para importar desde China a Centroamérica vía Panamá: búsqueda y verificación de proveedores chinos, gestión de compras, consolidación de carga en la Zona Libre de Colón y coordinación de envíos internacionales.",
+            "areaServed": ["Guatemala", "Honduras", "El Salvador", "Costa Rica", "Nicaragua", "República Dominicana"],
+            "url": "https://www.pacunato.com/importar-desde-china-centroamerica/"
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "¿Por qué importar desde China a través de Panamá en lugar de directo?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Importar vía Panamá permite consolidar mercancía de múltiples proveedores chinos en un solo envío, reduciendo el costo de flete. Además, la Zona Libre de Colón ofrece ventajas arancelarias y acceso a rutas marítimas directas y frecuentes hacia toda Centroamérica con tiempos de tránsito de 3 a 7 días desde Panamá (frente a 25-40 días desde China directamente)."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cuánto tiempo tarda importar desde China a Centroamérica vía Panamá?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "El tiempo total depende de la modalidad: para envíos marítimos, la travesía China-Panamá toma entre 20 y 35 días, más 3-7 días de tránsito Panamá-Centroamérica. Para envíos aéreos desde China, el tiempo es de 5-10 días hasta Panamá más 1-3 días al destino final. Vía marítima el costo es mucho menor; vía aérea se usa para pedidos urgentes o mercancía de alto valor."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cómo verifican que los proveedores chinos son confiables?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Aplicamos un proceso de verificación de 5 etapas: verificación documental (licencia comercial, certificaciones), revisión de historial comercial en plataformas B2B, contacto con referencias de compradores anteriores, evaluación de muestras físicas y, para pedidos grandes, inspección pre-embarque en la fábrica. Todo antes de confirmar cualquier compra."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "¿Cuánto cuesta el servicio de importación desde China a través de Pacunato S.A.?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "El costo depende del volumen de la operación, el tipo de producto y los servicios requeridos. Trabajamos con una comisión sobre el valor de la mercancía o una tarifa fija según el proyecto. La cotización es gratuita y sin compromiso. En muchos casos, los ahorros obtenidos en negociación y consolidación de flete superan el costo de nuestro servicio."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="page-hero">
+    <div class="container">
+        <div class="hero-content-page">
+            <div class="section-badge">IMPORTAR DESDE CHINA A CENTROAMÉRICA</div>
+            <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--text-light); line-height: 1.15; margin-bottom: 1.5rem;">
+                Importa desde <span class="text-primary">China</span> a Centroamérica<br>vía Panamá — Sin Riesgos
+            </h1>
+            <p style="font-size: 1.2rem; color: var(--text-gray); max-width: 680px; margin: 0 auto 2.5rem;">
+                Gestionamos todo el proceso: buscamos proveedores chinos verificados, negociamos los precios, consolidamos la carga en la <strong style="color: var(--text-light);">Zona Libre de Colón</strong> y la enviamos directamente a tu país.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#cotizacion" class="btn-primary btn-lg">
+                    <i class="fas fa-paper-plane"></i>
+                    Cotizar mi Importación
+                </a>
+                <a href="{% url 'website:servicios' %}" class="btn-secondary btn-lg">
+                    <i class="fas fa-list-alt"></i>
+                    Ver Servicios
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     POR QUÉ VÍA PANAMÁ
+     ============================================ -->
+<section style="padding: 100px 0; background: var(--dark-bg);">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">VENTAJA ESTRATÉGICA</div>
+            <h2 class="section-title">¿Por qué importar desde China <span class="text-primary">a través de Panamá</span>?</h2>
+            <p class="section-description">
+                Panamá no es solo una escala — es el hub logístico más eficiente para llevar mercancía de China a toda Centroamérica.
+            </p>
+        </div>
+
+        <div class="services-grid" style="margin-top: 3rem;">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-boxes"></i></div>
+                <h3>Consolidación de Múltiples Proveedores</h3>
+                <p>Compra de 5, 10 o 20 proveedores chinos distintos y consolida todo en un único envío desde la Zona Libre de Colón. Un solo flete, un solo despacho aduanero en destino.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-ship"></i></div>
+                <h3>Rutas Marítimas Directas y Frecuentes</h3>
+                <p>Desde Panamá salen servicios marítimos semanales a todos los puertos centroamericanos. Tiempos de tránsito de 3 a 7 días desde Panamá — mucho más rápido que desde China directamente.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-warehouse"></i></div>
+                <h3>Zona Libre de Colón</h3>
+                <p>La segunda zona franca más grande del mundo. Miles de distribuidores con stock disponible de productos asiáticos y europeos, sin necesidad de esperar producción desde China.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Control de Calidad Previo al Envío</h3>
+                <p>Inspeccionamos la mercancía antes de que salga de China o al llegar a Panamá. Detectamos problemas cuando aún hay tiempo de solucionarlos, antes de que tu carga esté en el barco.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-percentage"></i></div>
+                <h3>Ventajas Arancelarias</h3>
+                <p>Panamá tiene acuerdos comerciales con varios países de la región. Dependiendo del producto y el destino, puedes beneficiarte de aranceles reducidos o cero al importar vía Panamá.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+                <h3>Tu Representante Local en Panamá</h3>
+                <p>No necesitas viajar ni hablar chino. Pacunato S.A. actúa como tu equipo en Panamá: negocia con proveedores, coordina el flete y te mantiene informado en todo momento.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     PROCESO PASO A PASO
+     ============================================ -->
+<section style="padding: 100px 0; background: #0a0a0a;">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">CÓMO FUNCIONA</div>
+            <h2 class="section-title">Proceso para <span class="text-primary">importar desde China</span> a Centroamérica</h2>
+            <p class="section-description">6 pasos para que tu mercancía llegue de China a tu bodega sin complicaciones.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 4rem;">
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem;">
+                <div style="width: 48px; height: 48px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; color: #000; margin-bottom: 1.25rem;">1</div>
+                <h3 style="color: var(--text-light); font-size: 1.05rem; margin-bottom: 0.75rem;">Consulta Gratuita</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem; line-height: 1.7;">Nos cuentas qué producto quieres importar desde China, en qué cantidad y hacia qué país. Sin costo, sin compromiso.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem;">
+                <div style="width: 48px; height: 48px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; color: #000; margin-bottom: 1.25rem;">2</div>
+                <h3 style="color: var(--text-light); font-size: 1.05rem; margin-bottom: 0.75rem;">Búsqueda y Verificación de Proveedores</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem; line-height: 1.7;">Identificamos proveedores chinos confiables, verificamos sus documentos, referencias y capacidad de producción.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem;">
+                <div style="width: 48px; height: 48px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; color: #000; margin-bottom: 1.25rem;">3</div>
+                <h3 style="color: var(--text-light); font-size: 1.05rem; margin-bottom: 0.75rem;">Negociación y Compra</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem; line-height: 1.7;">Negociamos el mejor precio y condiciones. Gestionamos el pago de forma segura y hacemos seguimiento de la producción.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem;">
+                <div style="width: 48px; height: 48px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; color: #000; margin-bottom: 1.25rem;">4</div>
+                <h3 style="color: var(--text-light); font-size: 1.05rem; margin-bottom: 0.75rem;">Inspección Pre-embarque</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem; line-height: 1.7;">Coordinamos inspección de calidad en China antes del envío. Detectamos problemas cuando todavía se pueden corregir.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem;">
+                <div style="width: 48px; height: 48px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; color: #000; margin-bottom: 1.25rem;">5</div>
+                <h3 style="color: var(--text-light); font-size: 1.05rem; margin-bottom: 0.75rem;">Consolidación en Panamá</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem; line-height: 1.7;">Tu mercancía llega a la Zona Libre de Colón. La consolidamos, inspeccionamos y preparamos el despacho de exportación.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(0,180,216,0.3); border-radius: 16px; padding: 2rem;">
+                <div style="width: 48px; height: 48px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; color: #000; margin-bottom: 1.25rem;">6</div>
+                <h3 style="color: var(--text-light); font-size: 1.05rem; margin-bottom: 0.75rem;">Entrega en tu País</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem; line-height: 1.7;">Gestionamos el envío marítimo desde Panamá a tu destino. 3 a 7 días de tránsito hacia cualquier puerto centroamericano.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     TIEMPOS Y COSTOS
+     ============================================ -->
+<section style="padding: 100px 0; background: var(--dark-bg);">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">TIEMPOS Y COSTOS</div>
+            <h2 class="section-title">¿Cuánto tarda y cuánto cuesta <span class="text-primary">importar desde China</span>?</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2.5rem;">
+                <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1.25rem;"><i class="fas fa-ship"></i></div>
+                <h3 style="color: var(--text-light); font-size: 1.2rem; margin-bottom: 0.75rem;">Marítimo LCL (Consolidado)</h3>
+                <p style="color: var(--text-gray); line-height: 1.7; margin-bottom: 1rem;">China → Panamá: 25-35 días<br>Panamá → Centroamérica: 3-7 días<br><strong style="color: var(--text-light);">Total: 30-45 días</strong></p>
+                <p style="color: var(--primary-color); font-size: 0.9rem;">Ideal para: 1-15 CBM de mercancía</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2.5rem;">
+                <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1.25rem;"><i class="fas fa-ship"></i></div>
+                <h3 style="color: var(--text-light); font-size: 1.2rem; margin-bottom: 0.75rem;">Marítimo FCL (Contenedor Completo)</h3>
+                <p style="color: var(--text-gray); line-height: 1.7; margin-bottom: 1rem;">China → Panamá: 20-30 días<br>Panamá → Centroamérica: 3-7 días<br><strong style="color: var(--text-light);">Total: 25-40 días</strong></p>
+                <p style="color: var(--primary-color); font-size: 0.9rem;">Ideal para: 15+ CBM de mercancía</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2.5rem;">
+                <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1.25rem;"><i class="fas fa-plane"></i></div>
+                <h3 style="color: var(--text-light); font-size: 1.2rem; margin-bottom: 0.75rem;">Aéreo</h3>
+                <p style="color: var(--text-gray); line-height: 1.7; margin-bottom: 1rem;">China → Panamá: 5-8 días<br>Panamá → Centroamérica: 1-3 días<br><strong style="color: var(--text-light);">Total: 7-12 días</strong></p>
+                <p style="color: var(--primary-color); font-size: 0.9rem;">Ideal para: urgencias y alto valor</p>
+            </div>
+        </div>
+
+        <div style="max-width: 700px; margin: 3rem auto 0; text-align: center; background: rgba(0,180,216,0.08); border: 1px solid rgba(0,180,216,0.2); border-radius: 12px; padding: 2rem;">
+            <p style="color: var(--text-gray); line-height: 1.8;">
+                El costo exacto de tu importación depende del producto, volumen, origen y destino. Solicita una <strong style="color: var(--text-light);">cotización personalizada gratuita</strong> y te enviamos un desglose completo en menos de 24 horas.
+            </p>
+            <a href="#cotizacion" class="btn-primary" style="margin-top: 1rem; display: inline-flex;">
+                <i class="fas fa-paper-plane"></i>
+                Cotizar ahora
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section style="padding: 100px 0; background: #0a0a0a;">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">PREGUNTAS FRECUENTES</div>
+            <h2 class="section-title">Preguntas frecuentes sobre <span class="text-primary">importar desde China</span></h2>
+        </div>
+
+        <div style="max-width: 800px; margin: 3rem auto 0;" id="faq-china">
+            <div class="faq-item-landing">
+                <button class="faq-btn-landing" onclick="toggleFaqChina(this)">
+                    <span>¿Por qué importar desde China a través de Panamá en lugar de directo?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer-landing">
+                    <p>Importar vía Panamá permite consolidar mercancía de múltiples proveedores chinos en un solo envío, reduciendo el costo de flete. Además, la Zona Libre de Colón ofrece ventajas arancelarias y acceso a rutas marítimas directas y frecuentes hacia toda Centroamérica con tiempos de tránsito de 3 a 7 días desde Panamá.</p>
+                </div>
+            </div>
+
+            <div class="faq-item-landing">
+                <button class="faq-btn-landing" onclick="toggleFaqChina(this)">
+                    <span>¿Cuánto tiempo tarda importar desde China a Centroamérica vía Panamá?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer-landing">
+                    <p>Para envíos marítimos, la travesía China-Panamá toma entre 20 y 35 días, más 3-7 días de tránsito Panamá-Centroamérica. Para envíos aéreos desde China, el tiempo es de 5-10 días hasta Panamá más 1-3 días al destino final. Vía marítima el costo es mucho menor; vía aérea se usa para pedidos urgentes o mercancía de alto valor.</p>
+                </div>
+            </div>
+
+            <div class="faq-item-landing">
+                <button class="faq-btn-landing" onclick="toggleFaqChina(this)">
+                    <span>¿Cómo verifican que los proveedores chinos son confiables?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer-landing">
+                    <p>Aplicamos un proceso de verificación en 5 etapas: verificación documental (licencia comercial, certificaciones), revisión de historial comercial, contacto con referencias de compradores anteriores, evaluación de muestras físicas y, para pedidos grandes, inspección pre-embarque en la fábrica en China. Todo antes de confirmar cualquier compra.</p>
+                </div>
+            </div>
+
+            <div class="faq-item-landing">
+                <button class="faq-btn-landing" onclick="toggleFaqChina(this)">
+                    <span>¿Cuánto cuesta el servicio de importación desde China a través de Pacunato S.A.?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer-landing">
+                    <p>El costo depende del volumen de la operación, el tipo de producto y los servicios requeridos. Trabajamos con una comisión sobre el valor de la mercancía o una tarifa fija según el proyecto. La cotización es gratuita y sin compromiso. En muchos casos, los ahorros obtenidos en negociación y consolidación de flete superan el costo de nuestro servicio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     LINK INTERNO A LANDING PRINCIPAL
+     ============================================ -->
+<section style="padding: 60px 0; background: var(--dark-bg);">
+    <div class="container" style="text-align: center;">
+        <p style="color: var(--text-gray); font-size: 1rem; line-height: 1.8; max-width: 650px; margin: 0 auto;">
+            Pacunato S.A. es una <a href="{% url 'website:landing_importacion' %}" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">empresa de importación y exportación en Panamá</a> con más de 3 años de experiencia gestionando operaciones de importación desde China, Asia y el resto del mundo hacia Centroamérica y el Caribe.
+        </p>
+    </div>
+</section>
+
+<!-- ============================================
+     FORMULARIO DE COTIZACIÓN
+     ============================================ -->
+<section class="quote" id="cotizacion" style="padding: 100px 0;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+            <div>
+                <div class="section-badge">COTIZA SIN COMPROMISO</div>
+                <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--text-light); line-height: 1.2; margin: 1rem 0 1.5rem;">
+                    Cotiza tu <span class="text-primary">Importación desde China</span>
+                </h2>
+                <p style="color: var(--text-gray); font-size: 1rem; line-height: 1.7; margin-bottom: 2rem;">
+                    Cuéntanos qué quieres importar desde China, en qué cantidad y hacia qué país. En menos de 24 horas te enviamos una propuesta personalizada sin costo.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; color: var(--text-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 1.1rem;"></i>
+                        <span>Respuesta en menos de 24 horas</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; color: var(--text-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 1.1rem;"></i>
+                        <span>Proveedores verificados en China</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; color: var(--text-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 1.1rem;"></i>
+                        <span>Gestión 100% remota</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; color: var(--text-gray);">
+                        <i class="fas fa-check-circle" style="color: var(--primary-color); font-size: 1.1rem;"></i>
+                        <span>Sin costo ni compromiso</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                {% include '_quote_form.html' with source_page='landing-china' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/quote-form.js' %}"></script>
+<script>
+function toggleFaqChina(btn) {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer-landing');
+    const icon = btn.querySelector('i');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('#faq-china .faq-item-landing.open').forEach(function(el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-answer-landing').style.maxHeight = '0';
+        el.querySelector('i').style.transform = 'rotate(0deg)';
+    });
+
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
+
+<style>
+.faq-item-landing {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.faq-btn-landing {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: none;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    gap: 1rem;
+    transition: background 0.3s ease;
+}
+.faq-btn-landing:hover { background: rgba(0,180,216,0.08); }
+.faq-btn-landing i { color: var(--primary-color); transition: transform 0.3s ease; flex-shrink: 0; }
+.faq-answer-landing { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-answer-landing p { padding: 0 1.5rem 1.25rem; color: var(--text-gray); line-height: 1.7; margin: 0; }
+@media (max-width: 768px) {
+    #cotizacion .container > div {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+}
+</style>
+{% endblock %}
