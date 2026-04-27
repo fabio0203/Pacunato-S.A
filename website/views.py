@@ -127,6 +127,47 @@ def blog(request):
 
     return render(request, 'blog.html', context)
 
+def blog_categoria(request, categoria):
+    """Vista de posts filtrados por categoría — página indexable por Google"""
+    from .models import BlogPost
+
+    CATEGORIAS = {
+        'logistica': {
+            'nombre': 'Logística Internacional',
+            'descripcion': 'Artículos sobre consolidación de carga, fletes internacionales, despacho aduanero y agentes de carga desde Panamá hacia Centroamérica y el Caribe.',
+            'code': 'logistica',
+        },
+        'comercio': {
+            'nombre': 'Comercio Internacional',
+            'descripcion': 'Guías sobre importación, verificación de proveedores, agentes de compras internacionales y comercio exterior desde Panamá.',
+            'code': 'comercio',
+        },
+        'tendencias': {
+            'nombre': 'Tendencias',
+            'descripcion': 'Tendencias y novedades en logística, importación y comercio internacional desde Panamá.',
+            'code': 'tendencias',
+        },
+        'eventos': {
+            'nombre': 'Eventos',
+            'descripcion': 'Eventos, ferias y actividades de Pacunato S.A. en el mundo del comercio internacional.',
+            'code': 'eventos',
+        },
+    }
+
+    if categoria not in CATEGORIAS:
+        from django.http import Http404
+        raise Http404
+
+    info = CATEGORIAS[categoria]
+    posts = BlogPost.objects.filter(is_published=True, category=info['code']).order_by('-created_at')
+
+    context = {
+        'categoria': info,
+        'posts': posts,
+        'total': posts.count(),
+    }
+    return render(request, 'blog_categoria.html', context)
+
 def blog_post(request, slug=None):
     """
     Vista para artículo individual con conteo de vistas únicas
@@ -665,6 +706,8 @@ def sitemap_xml(request):
         {'loc': reverse('website:landing_china'), 'priority': '0.9', 'changefreq': 'monthly'},
         {'loc': reverse('website:nosotros'), 'priority': '0.8', 'changefreq': 'monthly'},
         {'loc': reverse('website:blog'), 'priority': '0.8', 'changefreq': 'daily'},
+        {'loc': reverse('website:blog_categoria', kwargs={'categoria': 'logistica'}), 'priority': '0.7', 'changefreq': 'weekly'},
+        {'loc': reverse('website:blog_categoria', kwargs={'categoria': 'comercio'}), 'priority': '0.7', 'changefreq': 'weekly'},
         {'loc': reverse('website:contacto'), 'priority': '0.7', 'changefreq': 'monthly'},
         {'loc': reverse('website:asesoria'), 'priority': '0.7', 'changefreq': 'monthly'},
         {'loc': reverse('website:cotizacion'), 'priority': '0.7', 'changefreq': 'monthly'},

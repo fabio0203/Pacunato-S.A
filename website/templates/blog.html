@@ -181,7 +181,7 @@
                     <ul class="categories-list">
                         {% for category_code, category_data in category_counts.items %}
                         <li>
-                            <a href="#" class="category-item {% if category_data.count > 0 %}active{% endif %}">
+                            <a href="{% url 'website:blog_categoria' categoria=category_code %}" class="category-item {% if category_data.count > 0 %}active{% endif %}">
                                 <span class="category-name">
                                     {% if category_code == 'eventos' %}
                                         <i class="fas fa-handshake"></i>

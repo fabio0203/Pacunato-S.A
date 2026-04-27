@@ -12,6 +12,7 @@ urlpatterns = [
     
     # Blog Routes
     path('blog/', views.blog, name='blog'),
+    path('blog/categoria/<str:categoria>/', views.blog_categoria, name='blog_categoria'),
     path('blog/<slug:slug>/', views.blog_post, name='blog_post'),
     
     # Páginas legales
